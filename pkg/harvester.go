@@ -6,13 +6,15 @@ import (
 
 	"github.com/sfborg/harvester/internal/ent/data"
 	"github.com/sfborg/harvester/internal/io/list"
+	"github.com/sfborg/harvester/pkg/config"
 )
 
 type harvester struct {
+	cfg config.Config
 }
 
-func New() Harvester {
-	res := harvester{}
+func New(cfg config.Config) Harvester {
+	res := harvester{cfg: cfg}
 	return &res
 }
 

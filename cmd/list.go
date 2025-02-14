@@ -22,33 +22,37 @@ THE SOFTWARE.
 package cmd
 
 import (
-	"os"
+	"fmt"
 
+	harvester "github.com/sfborg/harvester/pkg"
 	"github.com/sfborg/harvester/pkg/config"
 	"github.com/spf13/cobra"
 )
 
-var opts []config.Option
-
-// rootCmd represents the base command when called without any subcommands
-var rootCmd = &cobra.Command{
-	Use:   "harvester",
-	Short: "Converts datasets to SFGA format.",
+// listCmd represents the list command
+var listCmd = &cobra.Command{
+	Use:   "list",
+	Short: "Shows list of supported datasets.",
 	Run: func(cmd *cobra.Command, args []string) {
-		versionFlag(cmd)
-		_ = cmd.Help()
+		flags := []flagFunc{verboseFlag}
+		for _, v := range flags {
+			v(cmd)
+		}
+
+		cfg := config.New(opts...)
+
+		hr := harvester.New(cfg)
+
+		list := hr.List()
+		for i, v := range list {
+			fmt.Printf("%0.2d %s", i+1, v)
+			fmt.Println()
+		}
 	},
 }
 
-// Execute adds all child commands to the root command and sets flags appropriately.
-// This is called by main.main(). It only needs to happen once to the rootCmd.
-func Execute() {
-	err := rootCmd.Execute()
-	if err != nil {
-		os.Exit(1)
-	}
-}
-
 func init() {
-	rootCmd.Flags().BoolP("version", "V", false, "Show harvester's version")
+	rootCmd.AddCommand(listCmd)
+
+	listCmd.Flags().BoolP("verbose", "v", false, "Return details")
 }
