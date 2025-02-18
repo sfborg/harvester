@@ -2,6 +2,7 @@ package harvester
 
 import (
 	"fmt"
+	"log/slog"
 	"sort"
 
 	"github.com/sfborg/harvester/internal/ent/data"
@@ -11,34 +12,49 @@ import (
 
 type harvester struct {
 	cfg config.Config
+	ds  map[string]data.Convertor
 }
 
 func New(cfg config.Config) Harvester {
-	res := harvester{cfg: cfg}
+	res := harvester{
+		cfg: cfg,
+		ds:  list.DataSets(cfg),
+	}
+
 	return &res
 }
 
 func (h *harvester) List() []string {
 	var res []string
-	for k := range list.DataSets {
+	for k := range h.ds {
 		res = append(res, k)
 	}
 	sort.Strings(res)
 	return res
 }
 
-func (h *harvester) Convert(label string) error {
+func (h *harvester) Convert(label, path string) error {
 	var err error
 	var ds data.Convertor
 	var ok bool
-	if ds, ok = list.DataSets[label]; !ok {
+	if ds, ok = h.ds[label]; !ok {
 		err = fmt.Errorf("Label '%s' does not exist", label)
 		return err
 	}
-	err = ds.Download()
+
+	slog.Info("Downloading", "source", ds.Label())
+	path, err = ds.Download()
 	if err != nil {
 		return err
 	}
+
+	slog.Info("Extracting files", "source", ds.Label())
+	err = ds.Extract(path)
+	if err != nil {
+		return err
+	}
+
+	slog.Info("Creating SFG archive")
 	err = ds.ToSFGA()
 	if err != nil {
 		return err
