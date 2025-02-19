@@ -26,7 +26,6 @@ import (
 	"os"
 	"strconv"
 
-	"github.com/sfborg/harvester/internal/io/sysio"
 	harvester "github.com/sfborg/harvester/pkg"
 	"github.com/sfborg/harvester/pkg/config"
 	"github.com/spf13/cobra"
@@ -42,14 +41,12 @@ var makeCmd = &cobra.Command{
 			os.Exit(0)
 		}
 
-		cfg := config.New(opts...)
-
-		err := sysio.ResetCache(cfg)
-		if err != nil {
-			slog.Error("Cannot reset cache", "error", err)
-			os.Exit(1)
+		flags := []flagFunc{skipFlag}
+		for _, v := range flags {
+			v(cmd)
 		}
 
+		cfg := config.New(opts...)
 		hr := harvester.New(cfg)
 
 		ds := getDataSource(hr, args[0])
@@ -64,7 +61,7 @@ var makeCmd = &cobra.Command{
 			path = args[1]
 		}
 
-		err = hr.Convert(ds, path)
+		err := hr.Convert(ds, path)
 		if err != nil {
 			slog.Error(
 				"Cannot convert source to SFGA file",
@@ -79,15 +76,9 @@ var makeCmd = &cobra.Command{
 func init() {
 	rootCmd.AddCommand(makeCmd)
 
-	// Here you will define your flags and configuration settings.
-
-	// Cobra supports Persistent Flags which will work for this command
-	// and all subcommands, e.g.:
-	// makeCmd.PersistentFlags().String("foo", "", "A help for foo")
-
-	// Cobra supports local flags which will only run when this command
-	// is called directly, e.g.:
-	// makeCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
+	makeCmd.Flags().BoolP(
+		"skip-download", "s", false, "skip downloading and extracting source",
+	)
 }
 
 func getDataSource(hr harvester.Harvester, ds string) string {

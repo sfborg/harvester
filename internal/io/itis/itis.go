@@ -1,6 +1,9 @@
 package itis
 
 import (
+	"database/sql"
+
+	"github.com/sfborg/from-coldp/pkg/ent/sfgarc"
 	"github.com/sfborg/harvester/internal/ent/data"
 	"github.com/sfborg/harvester/internal/io/base"
 	"github.com/sfborg/harvester/pkg/config"
@@ -8,7 +11,9 @@ import (
 
 type itis struct {
 	data.Convertor
-	cfg config.Config
+	cfg    config.Config
+	itisDb *sql.DB
+	sfga   sfgarc.Archive
 }
 
 var New = func(cfg config.Config) data.Convertor {

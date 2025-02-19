@@ -1,10 +1,13 @@
 package data
 
+import (
+	"github.com/sfborg/from-coldp/pkg/ent/sfgarc"
+)
+
 // Convertor provides methods for converting data from an external source to
 // the SFGA file format. Implementations of this interface handle the specific
 // details of each external data source (e.g., ITIS, GBIF, etc.).
 type Convertor interface {
-
 	// Label returns a short, unique identifier for the external data source.
 	// This label is typically used for internal identification and file naming.
 	// For example: "itis".
@@ -42,5 +45,5 @@ type Convertor interface {
 	// ToSFGA converts the extracted data to the SFGA file format.  This method
 	// should use the data previously extracted by the Extract() method.  An
 	// error is returned if the conversion fails.
-	ToSFGA() error
+	ToSFGA(sfgarc.Archive) error
 }

@@ -1,18 +1,22 @@
 package harvester
 
 import (
+	"database/sql"
 	"fmt"
 	"log/slog"
 	"sort"
 
+	"github.com/sfborg/from-coldp/pkg/ent/sfgarc"
 	"github.com/sfborg/harvester/internal/ent/data"
 	"github.com/sfborg/harvester/internal/io/list"
 	"github.com/sfborg/harvester/pkg/config"
 )
 
 type harvester struct {
-	cfg config.Config
-	ds  map[string]data.Convertor
+	cfg    config.Config
+	ds     map[string]data.Convertor
+	itisDB *sql.DB
+	sfga   sfgarc.Archive
 }
 
 func New(cfg config.Config) Harvester {
@@ -42,20 +46,24 @@ func (h *harvester) Convert(label, path string) error {
 		return err
 	}
 
-	slog.Info("Downloading", "source", ds.Label())
-	path, err = ds.Download()
-	if err != nil {
-		return err
-	}
+	if h.cfg.SkipDownload {
+		slog.Info("Skipping download step", "source", ds.Label())
+	} else {
+		slog.Info("Downloading", "source", ds.Label())
+		path, err = ds.Download()
+		if err != nil {
+			return err
+		}
 
-	slog.Info("Extracting files", "source", ds.Label())
-	err = ds.Extract(path)
-	if err != nil {
-		return err
+		slog.Info("Extracting files", "source", ds.Label())
+		err = ds.Extract(path)
+		if err != nil {
+			return err
+		}
 	}
 
 	slog.Info("Creating SFG archive")
-	err = ds.ToSFGA()
+	err = ds.ToSFGA(h.sfga)
 	if err != nil {
 		return err
 	}

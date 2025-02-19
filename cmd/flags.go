@@ -26,3 +26,10 @@ func verboseFlag(cmd *cobra.Command) {
 		opts = append(opts, config.OptWithVerbose(true))
 	}
 }
+
+func skipFlag(cmd *cobra.Command) {
+	b, _ := cmd.Flags().GetBool("skip-download")
+	if b {
+		opts = append(opts, config.OptSkipDownload(true))
+	}
+}

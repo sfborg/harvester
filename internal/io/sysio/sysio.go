@@ -8,7 +8,7 @@ import (
 )
 
 func ResetCache(cfg config.Config) error {
-	err := emptyCacheDir(cfg.CacheDir)
+	err := EmptyDir(cfg.CacheDir)
 	if err != nil {
 		return err
 	}
@@ -30,7 +30,7 @@ func ResetCache(cfg config.Config) error {
 	return nil
 }
 
-func emptyCacheDir(cacheDir string) error {
+func EmptyDir(cacheDir string) error {
 	switch gnsys.GetDirState(cacheDir) {
 	case gnsys.DirAbsent:
 		return gnsys.MakeDir(cacheDir)

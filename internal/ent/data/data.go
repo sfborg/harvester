@@ -1,5 +1,7 @@
 package data
 
+import "database/sql"
+
 // Set contains metadata required for conversion of an external
 // biodiversity data source to SFGA format.
 type Set struct {
@@ -25,6 +27,8 @@ type Set struct {
 	// The URL can be provided by the maintainers of the source, or be
 	// manually created if not available otherwise.
 	URL string
+	// DB provides connection to SFGA database.
+	DB *sql.DB
 	// New function creates the instance of Convertor interface from the
 	// data provided in the set.
 	New func(Set) Convertor
