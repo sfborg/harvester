@@ -1,27 +1,31 @@
 package base
 
 import (
+	"errors"
 	"fmt"
 	"log/slog"
 
 	"github.com/gnames/gnsys"
-	"github.com/sfborg/from-coldp/pkg/ent/sfgarc"
 	"github.com/sfborg/harvester/internal/ent/data"
 	"github.com/sfborg/harvester/internal/io/sysio"
 	"github.com/sfborg/harvester/pkg/config"
 	"github.com/sfborg/sflib/ent/sfga"
+	"github.com/sfborg/sflib/io/sfgaio"
 )
 
 // Convertor implements default methods of data.Convertor interface.
 type Convertor struct {
-	set data.Set
+	set *data.Set
 	cfg config.Config
-	sch sfga.Schema
 }
 
-func New(cfg config.Config, s data.Set) data.Convertor {
+func New(cfg config.Config, s *data.Set) data.Convertor {
 	res := Convertor{cfg: cfg, set: s}
 	return &res
+}
+
+func (c *Convertor) Config() config.Config {
+	return c.cfg
 }
 
 func (c *Convertor) Label() string {
@@ -47,6 +51,22 @@ func (c *Convertor) Download() (string, error) {
 		return "", err
 	}
 
+	if c.cfg.LocalFile != "" {
+		slog.Info(
+			"Using local file", "source", c.set.Label, "file", c.cfg.LocalFile,
+		)
+		return c.cfg.LocalFile, nil
+	}
+
+	if c.set.URL == "" {
+		err = errors.New("no local file path given")
+		slog.Error(
+			"Local file is required to import data.",
+			"source", c.set.Label, "error", err)
+		return "", err
+	}
+
+	slog.Info("Downloading", "source", c.set.Label)
 	path, err = gnsys.Download(c.set.URL, c.cfg.DownloadDir, true)
 	if err != nil {
 		return path, err
@@ -54,7 +74,7 @@ func (c *Convertor) Download() (string, error) {
 	return path, nil
 }
 
-func (c *Convertor) Extract(path string) error {
+func (c *Convertor) Import(path string) error {
 	var f gnsys.Extractor
 	switch gnsys.GetFileType(path) {
 	case gnsys.ZipFT:
@@ -77,7 +97,22 @@ func (c *Convertor) Extract(path string) error {
 	return nil
 }
 
-func (c *Convertor) ToSFGA(_ sfgarc.Archive) error {
+func (c *Convertor) InitSFGA() (sfga.Archive, error) {
+	sysio.EmptyDir(c.cfg.SfgaDir)
+
+	sfga := sfgaio.New()
+	err := sfga.Create(c.cfg.SfgaDir)
+	if err != nil {
+		return nil, err
+	}
+	_, err = sfga.Connect()
+	if err != nil {
+		return nil, err
+	}
+	return sfga, nil
+}
+
+func (c *Convertor) ToSFGA(_ sfga.Archive) error {
 	slog.Info("Running a placeholder ToSFGA method")
 	return nil
 }

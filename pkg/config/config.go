@@ -1,29 +1,16 @@
 package config
 
 import (
+	"fmt"
 	"os"
 	"path/filepath"
-
-	"github.com/sfborg/sflib/ent/sfga"
 )
 
 var (
-	// repoURL is the URL to the SFGA schema repository.
-	repoURL = "https://github.com/sfborg/sfga"
-
-	// tag of the sfga repo to get correct schema version.
-	repoTag = "v0.3.24"
-
-	// schemaHash is the sha256 sum of the correponding schema version.
-	schemaHash = "b1db9df2e759f"
-
 	jobsNum = 5
 )
 
 type Config struct {
-	// GitRepo contains data for sfga schema Git repository.
-	sfga.GitRepo
-
 	// TempRepoDir is a temporary location to schema files downloaded from GitHub.
 	TempRepoDir string
 
@@ -39,6 +26,10 @@ type Config struct {
 	// SfgaDir contains files of the built SFGA file.
 	SfgaDir string
 
+	// LocalFile if set to a local file path, this file will be used as a
+	// source data instead of a download from internet.
+	LocalFile string
+
 	// WithVerbose indicates that more information might be shown in the
 	// output information.
 	WithVerbose bool
@@ -47,10 +38,14 @@ type Config struct {
 	// development to save time and bandwidth.
 	SkipDownload bool
 
+	// JobsNum sets the number of concurrent jobs to set, if it is
+	// needed.
 	JobsNum int
 
+	// BatchSize determines the size of slices to import into SFGA.
 	BatchSize int
 
+	// WithZipOutput indicates that zipped archives have to be created.
 	WithZipOutput bool
 }
 
@@ -67,6 +62,18 @@ func OptCacheDir(s string) Option {
 func OptWithVerbose(b bool) Option {
 	return func(c *Config) {
 		c.WithVerbose = b
+	}
+}
+
+func OptLocalFile(s string) Option {
+	return func(c *Config) {
+		c.LocalFile = s
+	}
+}
+
+func OptWithZipOutput(b bool) Option {
+	return func(c *Config) {
+		c.WithZipOutput = b
 	}
 }
 
@@ -87,11 +94,6 @@ func New(opts ...Option) Config {
 	schemaRepo := filepath.Join(tmpDir, "sfborg", "sfga")
 
 	res := Config{
-		GitRepo: sfga.GitRepo{
-			URL:          repoURL,
-			Tag:          repoTag,
-			ShaSchemaSQL: schemaHash,
-		},
 		TempRepoDir: schemaRepo,
 		CacheDir:    cacheDir,
 		JobsNum:     jobsNum,
@@ -104,5 +106,7 @@ func New(opts ...Option) Config {
 	res.DownloadDir = filepath.Join(res.CacheDir, "download")
 	res.ExtractDir = filepath.Join(res.CacheDir, "extract")
 	res.SfgaDir = filepath.Join(res.CacheDir, "sfga")
+
+	fmt.Printf("CONF: %#v\n", res)
 	return res
 }

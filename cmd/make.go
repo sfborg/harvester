@@ -41,7 +41,7 @@ var makeCmd = &cobra.Command{
 			os.Exit(0)
 		}
 
-		flags := []flagFunc{skipFlag}
+		flags := []flagFunc{skipFlag, fileFlag, zipFlag}
 		for _, v := range flags {
 			v(cmd)
 		}
@@ -49,23 +49,23 @@ var makeCmd = &cobra.Command{
 		cfg := config.New(opts...)
 		hr := harvester.New(cfg)
 
-		ds := getDataSource(hr, args[0])
-		if ds == "" {
+		l := getLabel(hr, args[0])
+		if l == "" {
 			slog.Error("Cannot find given source label", "input", args[0])
 			slog.Info("Use `list` command to find registered sources")
 			os.Exit(1)
 		}
 
-		path := ds
+		outPath := l
 		if len(args) == 2 {
-			path = args[1]
+			outPath = args[1]
 		}
 
-		err := hr.Convert(ds, path)
+		err := hr.Convert(l, outPath)
 		if err != nil {
 			slog.Error(
 				"Cannot convert source to SFGA file",
-				"source", ds, "path", path, "error", err,
+				"source", l, "path", outPath, "error", err,
 			)
 			os.Exit(1)
 		}
@@ -73,15 +73,7 @@ var makeCmd = &cobra.Command{
 	},
 }
 
-func init() {
-	rootCmd.AddCommand(makeCmd)
-
-	makeCmd.Flags().BoolP(
-		"skip-download", "s", false, "skip downloading and extracting source",
-	)
-}
-
-func getDataSource(hr harvester.Harvester, ds string) string {
+func getLabel(hr harvester.Harvester, ds string) string {
 	list := hr.List()
 	idx, _ := strconv.Atoi(ds)
 	if idx > 0 && len(list) >= idx {
@@ -93,4 +85,18 @@ func getDataSource(hr harvester.Harvester, ds string) string {
 		}
 	}
 	return ""
+}
+
+func init() {
+	rootCmd.AddCommand(makeCmd)
+
+	makeCmd.Flags().StringP(
+		"local-file", "f", "", "get data from local file",
+	)
+	makeCmd.Flags().BoolP(
+		"skip-download", "s", false, "skip downloading and extracting source",
+	)
+	makeCmd.Flags().BoolP(
+		"zip-output", "z", false, "compress output with zip",
+	)
 }

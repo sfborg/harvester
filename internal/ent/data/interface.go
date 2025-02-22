@@ -1,7 +1,8 @@
 package data
 
 import (
-	"github.com/sfborg/from-coldp/pkg/ent/sfgarc"
+	"github.com/sfborg/harvester/pkg/config"
+	"github.com/sfborg/sflib/ent/sfga"
 )
 
 // Convertor provides methods for converting data from an external source to
@@ -16,6 +17,9 @@ type Convertor interface {
 	// Name returns the official, human-readable name of the external data
 	// source. For example: "Integrated Taxonomic Information System".
 	Name() string
+
+	// Config returns the configuration data.
+	Config() config.Config
 
 	// Description provides a detailed description of the data source, including
 	// information about its data structure, update frequency, and any known
@@ -36,14 +40,18 @@ type Convertor interface {
 	// checking if the file already exists before downloading).
 	Download() (string, error)
 
-	// Extract extracts the relevant data from the downloaded file.  The 'path'
+	// Import extracts the relevant data from the downloaded file.  The 'path'
 	// argument is the path returned by the Download() method.  The extracted
 	// data should be placed in a separate cache directory.  An error is returned
 	// if extraction fails.
-	Extract(path string) error
+	Import(path string) error
+
+	// InitSFGA creates empty sfga.Archive and returns its instance.
+	// In case of a failure it returns an error.
+	InitSFGA() (sfga.Archive, error)
 
 	// ToSFGA converts the extracted data to the SFGA file format.  This method
 	// should use the data previously extracted by the Extract() method.  An
 	// error is returned if the conversion fails.
-	ToSFGA(sfgarc.Archive) error
+	ToSFGA(sfga.Archive) error
 }

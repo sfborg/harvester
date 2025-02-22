@@ -6,17 +6,17 @@ import (
 	"log/slog"
 	"sort"
 
-	"github.com/sfborg/from-coldp/pkg/ent/sfgarc"
 	"github.com/sfborg/harvester/internal/ent/data"
 	"github.com/sfborg/harvester/internal/io/list"
 	"github.com/sfborg/harvester/pkg/config"
+	"github.com/sfborg/sflib/ent/sfga"
 )
 
 type harvester struct {
 	cfg    config.Config
 	ds     map[string]data.Convertor
 	itisDB *sql.DB
-	sfga   sfgarc.Archive
+	sfga   sfga.Archive
 }
 
 func New(cfg config.Config) Harvester {
@@ -37,10 +37,12 @@ func (h *harvester) List() []string {
 	return res
 }
 
-func (h *harvester) Convert(label, path string) error {
+func (h *harvester) Convert(label, outPath string) error {
 	var err error
+	var sfga sfga.Archive
 	var ds data.Convertor
 	var ok bool
+	var dlPath string
 	if ds, ok = h.ds[label]; !ok {
 		err = fmt.Errorf("Label '%s' does not exist", label)
 		return err
@@ -49,23 +51,29 @@ func (h *harvester) Convert(label, path string) error {
 	if h.cfg.SkipDownload {
 		slog.Info("Skipping download step", "source", ds.Label())
 	} else {
-		slog.Info("Downloading", "source", ds.Label())
-		path, err = ds.Download()
+		dlPath, err = ds.Download()
 		if err != nil {
 			return err
 		}
 
 		slog.Info("Extracting files", "source", ds.Label())
-		err = ds.Extract(path)
+		err = ds.Import(dlPath)
 		if err != nil {
 			return err
 		}
 	}
 
 	slog.Info("Creating SFG archive")
-	err = ds.ToSFGA(h.sfga)
+	sfga, err = ds.InitSFGA()
 	if err != nil {
 		return err
 	}
+
+	err = ds.ToSFGA(sfga)
+	if err != nil {
+		return err
+	}
+
+	sfga.Export(outPath, ds.Config().WithZipOutput)
 	return nil
 }

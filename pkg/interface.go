@@ -2,5 +2,5 @@ package harvester
 
 type Harvester interface {
 	List() []string
-	Convert(dataset, path string) error
+	Convert(datasetLabel, outPath string) error
 }
