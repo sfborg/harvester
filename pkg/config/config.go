@@ -1,7 +1,6 @@
 package config
 
 import (
-	"fmt"
 	"os"
 	"path/filepath"
 )
@@ -107,6 +106,5 @@ func New(opts ...Option) Config {
 	res.ExtractDir = filepath.Join(res.CacheDir, "extract")
 	res.SfgaDir = filepath.Join(res.CacheDir, "sfga")
 
-	fmt.Printf("CONF: %#v\n", res)
 	return res
 }

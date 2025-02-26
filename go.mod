@@ -1,13 +1,14 @@
 module github.com/sfborg/harvester
 
-go 1.23.5
+go 1.23.6
 
 replace github.com/sfborg/from-coldp => ../from-coldp
 
 require (
+	github.com/dustin/go-humanize v1.0.1
 	github.com/gnames/coldp v0.3.8
 	github.com/gnames/gnlib v0.44.0
-	github.com/gnames/gnsys v0.3.6
+	github.com/gnames/gnsys v0.3.7
 	github.com/lmittmann/tint v1.0.7
 	github.com/sfborg/sflib v0.2.3
 	github.com/spf13/cobra v1.9.1
@@ -19,7 +20,6 @@ require (
 	github.com/VividCortex/ewma v1.2.0 // indirect
 	github.com/cheggaaa/pb/v3 v3.1.6 // indirect
 	github.com/davecgh/go-spew v1.1.2-0.20180830191138-d8f796af33cc // indirect
-	github.com/dustin/go-humanize v1.0.1 // indirect
 	github.com/fatih/color v1.18.0 // indirect
 	github.com/gnames/gnfmt v0.5.4 // indirect
 	github.com/google/uuid v1.6.0 // indirect
