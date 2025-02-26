@@ -2,8 +2,6 @@ module github.com/sfborg/harvester
 
 go 1.23.6
 
-replace github.com/sfborg/from-coldp => ../from-coldp
-
 require (
 	github.com/dustin/go-humanize v1.0.1
 	github.com/gnames/coldp v0.3.8

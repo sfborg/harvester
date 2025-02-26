@@ -3,6 +3,7 @@ package ion
 import (
 	"bufio"
 	"fmt"
+	"iter"
 	"os"
 	"path/filepath"
 	"strings"
@@ -13,9 +14,9 @@ import (
 
 // nameIterator returns an iterator function that yields coldp.Name
 // structs from a TSV file scanner.
-func nameIterator(scanner *bufio.Scanner) func(func(coldp.Name) bool) {
+func nameIterator(scanner *bufio.Scanner) iter.Seq[coldp.Name] {
 	return func(yield func(coldp.Name) bool) {
-		fields := struct {
+		fld := struct {
 			id, name, authorship int
 		}{
 			id:         0,
@@ -27,10 +28,10 @@ func nameIterator(scanner *bufio.Scanner) func(func(coldp.Name) bool) {
 			line := scanner.Text()
 			row := strings.Split(line, "\t")
 			n := coldp.Name{
-				ID:                   row[fields.id],
-				ScientificName:       row[fields.name],
-				Authorship:           row[fields.authorship],
-				ScientificNameString: row[fields.name] + " " + row[fields.authorship],
+				ID:                   row[fld.id],
+				ScientificName:       row[fld.name],
+				Authorship:           row[fld.authorship],
+				ScientificNameString: row[fld.name] + " " + row[fld.authorship],
 			}
 			if !yield(n) {
 				return
@@ -89,8 +90,8 @@ func (i *ion) importNames() error {
 func processBatch(i *ion, names []coldp.Name, count int) error {
 	fmt.Fprint(os.Stderr, "\r", strings.Repeat(" ", 80))
 	fmt.Fprintf(os.Stderr, "\rProcessed %s lines", humanize.Comma(int64(count)))
-	err := i.sfga.InsertNames(names)
 
+	err := i.sfga.InsertNames(names)
 	if err != nil {
 		return err
 	}
