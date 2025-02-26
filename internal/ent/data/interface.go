@@ -9,6 +9,14 @@ import (
 // the SFGA file format. Implementations of this interface handle the specific
 // details of each external data source (e.g., ITIS, GBIF, etc.).
 type Convertor interface {
+	Accessor
+	Processor
+	Parser
+}
+
+// Accessor provides methods to get data from internal fields of the
+// Accessor implenentation.
+type Accessor interface {
 	// Label returns a short, unique identifier for the external data source.
 	// This label is typically used for internal identification and file naming.
 	// For example: "itis".
@@ -32,7 +40,10 @@ type Convertor interface {
 	// Description() method MUST provide detailed instructions for these manual
 	// steps.
 	ManualSteps() bool
+}
 
+// Processor contains actions for converting source into SFGArchive.
+type Processor interface {
 	// Download downloads the data from the external source and stores it in a
 	// local cache. It returns the path to the downloaded file in the cache.  If
 	// the download fails, an error is returned, and the returned path may be an
@@ -54,4 +65,11 @@ type Convertor interface {
 	// should use the data previously extracted by the Extract() method.  An
 	// error is returned if the conversion fails.
 	ToSFGA(sfga.Archive) error
+}
+
+// Parser contains method to parse scientific names and
+// collect relevant data to Parsed object.
+type Parser interface {
+	// Parse converts string into Parsed result.
+	Parse(name string) Parsed
 }

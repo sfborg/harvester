@@ -3,6 +3,8 @@ package config
 import (
 	"os"
 	"path/filepath"
+
+	"github.com/gnames/gnparser/ent/nomcode"
 )
 
 var (
@@ -28,6 +30,9 @@ type Config struct {
 	// LocalFile if set to a local file path, this file will be used as a
 	// source data instead of a download from internet.
 	LocalFile string
+
+	// Code provides nomenclatural code setting to use in GNparser.
+	Code nomcode.Code
 
 	// WithVerbose indicates that more information might be shown in the
 	// output information.
@@ -82,6 +87,12 @@ func OptSkipDownload(b bool) Option {
 	}
 }
 
+func OptCode(code nomcode.Code) Option {
+	return func(c *Config) {
+		c.Code = code
+	}
+}
+
 func New(opts ...Option) Config {
 	tmpDir := os.TempDir()
 	cacheDir, err := os.UserCacheDir()
@@ -96,6 +107,7 @@ func New(opts ...Option) Config {
 		TempRepoDir: schemaRepo,
 		CacheDir:    cacheDir,
 		JobsNum:     jobsNum,
+		Code:        nomcode.Unknown,
 		BatchSize:   50_000,
 	}
 	for _, opt := range opts {

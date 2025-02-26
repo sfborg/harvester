@@ -91,7 +91,7 @@ func init() {
 	rootCmd.AddCommand(makeCmd)
 
 	makeCmd.Flags().StringP(
-		"local-file", "f", "", "get data from local file",
+		"file", "f", "", "get data from local file or URL",
 	)
 	makeCmd.Flags().BoolP(
 		"skip-download", "s", false, "skip downloading and extracting source",

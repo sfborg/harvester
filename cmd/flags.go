@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"os"
 
+	"github.com/gnames/gnparser/ent/nomcode"
 	harvester "github.com/sfborg/harvester/pkg"
 	"github.com/sfborg/harvester/pkg/config"
 	"github.com/spf13/cobra"
@@ -35,7 +36,7 @@ func zipFlag(cmd *cobra.Command) {
 }
 
 func fileFlag(cmd *cobra.Command) {
-	s, _ := cmd.Flags().GetString("local-file")
+	s, _ := cmd.Flags().GetString("file")
 	if s != "" {
 		opts = append(opts, config.OptLocalFile(s))
 	}
@@ -45,5 +46,13 @@ func skipFlag(cmd *cobra.Command) {
 	b, _ := cmd.Flags().GetBool("skip-download")
 	if b {
 		opts = append(opts, config.OptSkipDownload(true))
+	}
+}
+
+func codeFlag(cmd *cobra.Command) {
+	s, _ := cmd.Flags().GetString("code")
+	if s != "" {
+		code := nomcode.New(s)
+		opts = append(opts, config.OptCode(code))
 	}
 }

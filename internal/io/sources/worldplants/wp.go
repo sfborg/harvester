@@ -18,8 +18,8 @@ var New = func(cfg config.Config) data.Convertor {
 		Label: "world-plants",
 		Name:  "World of Plants",
 		Description: `
-    World of Plants data file has to be taken from local drive.
-    Use --local-file option.
+    World of Plants data file has to provided either local path or remote URL.
+    Use --file option.
     `,
 		ManualSteps: true,
 	}

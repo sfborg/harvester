@@ -22,7 +22,7 @@ type harvester struct {
 func New(cfg config.Config) Harvester {
 	res := harvester{
 		cfg: cfg,
-		ds:  list.DataSets(cfg),
+		ds:  list.GetDataSets(cfg),
 	}
 
 	return &res
