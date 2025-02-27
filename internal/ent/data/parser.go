@@ -11,6 +11,9 @@ type Parsed struct {
 	// CanonicalSimple is the simple canonical form of the name.
 	// It does not have ranks, hybrid signs etc.
 	CanonicalSimple string
+	// CanonicalStemmed are stemmed CanonicalSimple names where
+	// suffixes of specific and infraspecific epithets are removed.
+	CanonicalStemmed string
 	// Authorship is the authorship of the name.
 	Authorship string
 	// CombinationAuthorship is the authorship of the combination.

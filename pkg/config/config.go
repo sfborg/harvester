@@ -4,6 +4,7 @@ import (
 	"os"
 	"path/filepath"
 
+	"github.com/gnames/gnfmt"
 	"github.com/gnames/gnparser/ent/nomcode"
 )
 
@@ -12,9 +13,6 @@ var (
 )
 
 type Config struct {
-	// TempRepoDir is a temporary location to schema files downloaded from GitHub.
-	TempRepoDir string
-
 	// CacheDir is the directory where all temporary files are located.
 	CacheDir string
 
@@ -27,20 +25,36 @@ type Config struct {
 	// SfgaDir contains files of the built SFGA file.
 	SfgaDir string
 
-	// LocalFile if set to a local file path, this file will be used as a
-	// source data instead of a download from internet.
-	LocalFile string
+	// LoadFile can be a local file or URl. In cases when there is no
+	// stable link to a source's data the LoadFile is used.
+	LoadFile string
 
 	// Code provides nomenclatural code setting to use in GNparser.
+	// This flag is only important for importing data from text, csv and
+	// other ad-hoc files.
 	Code nomcode.Code
 
 	// WithVerbose indicates that more information might be shown in the
-	// output information.
+	// output information. It is only important for listing a short list of
+	// supported sources, or providing details about them.
 	WithVerbose bool
 
 	// SkipDownload disables source data download and extraction. Useful during
 	// development to save time and bandwidth.
 	SkipDownload bool
+
+	// ColSep is used when importing CSV/TSV/PSV files. By default it is empty
+	// and is determined automatically.
+	ColSep string
+
+	// WithoutQuotes can be used to parse correctly tab- or pipe-delimited
+	// files where fields never escaped by quotes.
+	WithoutQuotes bool
+
+	// BadRow sets how to process rows with wrong number of fields in CSV
+	// files. By default it is set to process such rows. Other options are
+	// to return an error, or skip them.
+	BadRow gnfmt.BadRow
 
 	// JobsNum sets the number of concurrent jobs to set, if it is
 	// needed.
@@ -71,7 +85,7 @@ func OptWithVerbose(b bool) Option {
 
 func OptLocalFile(s string) Option {
 	return func(c *Config) {
-		c.LocalFile = s
+		c.LoadFile = s
 	}
 }
 
@@ -93,6 +107,24 @@ func OptCode(code nomcode.Code) Option {
 	}
 }
 
+func OptWithoutQuotes(b bool) Option {
+	return func(c *Config) {
+		c.WithoutQuotes = b
+	}
+}
+
+func OptColSep(s string) Option {
+	return func(c *Config) {
+		c.ColSep = s
+	}
+}
+
+func OptBadRow(br gnfmt.BadRow) Option {
+	return func(c *Config) {
+		c.BadRow = br
+	}
+}
+
 func New(opts ...Option) Config {
 	tmpDir := os.TempDir()
 	cacheDir, err := os.UserCacheDir()
@@ -101,14 +133,13 @@ func New(opts ...Option) Config {
 	}
 
 	cacheDir = filepath.Join(cacheDir, "sfborg", "harvester")
-	schemaRepo := filepath.Join(tmpDir, "sfborg", "sfga")
 
 	res := Config{
-		TempRepoDir: schemaRepo,
-		CacheDir:    cacheDir,
-		JobsNum:     jobsNum,
-		Code:        nomcode.Unknown,
-		BatchSize:   50_000,
+		CacheDir:  cacheDir,
+		JobsNum:   jobsNum,
+		Code:      nomcode.Unknown,
+		BadRow:    gnfmt.ProcessBadRow,
+		BatchSize: 50_000,
 	}
 	for _, opt := range opts {
 		opt(&res)

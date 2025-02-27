@@ -41,7 +41,10 @@ var makeCmd = &cobra.Command{
 			os.Exit(0)
 		}
 
-		flags := []flagFunc{skipFlag, fileFlag, zipFlag}
+		flags := []flagFunc{
+			skipFlag, fileFlag, zipFlag, delimFlag, quotesFlag, badRowFlag,
+		}
+
 		for _, v := range flags {
 			v(cmd)
 		}
@@ -69,7 +72,6 @@ var makeCmd = &cobra.Command{
 			)
 			os.Exit(1)
 		}
-
 	},
 }
 
@@ -98,5 +100,19 @@ func init() {
 	)
 	makeCmd.Flags().BoolP(
 		"zip-output", "z", false, "compress output with zip",
+	)
+	makeCmd.Flags().BoolP(
+		"no-quotes", "Q", false,
+		"for tsv, pipe-delimited without quotes for fields",
+	)
+	rootCmd.Flags().StringP(
+		"wrong-fields-num", "w", "",
+		`how to process rows with wrong fields number
+     choices: 'stop', 'ignore', 'process'
+     default: 'process'`,
+	)
+	rootCmd.Flags().StringP(
+		"delimiter", "d", "",
+		"a delimiter for delimiter-separated files like CSV/TSV/PSV etc.",
 	)
 }

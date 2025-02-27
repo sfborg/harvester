@@ -63,11 +63,11 @@ func (c *Convertor) Download() (string, error) {
 		return "", err
 	}
 
-	if c.cfg.LocalFile != "" {
+	if c.cfg.LoadFile != "" {
 		slog.Info(
-			"Using local file", "source", c.set.Label, "file", c.cfg.LocalFile,
+			"Using local file", "source", c.set.Label, "file", c.cfg.LoadFile,
 		)
-		return c.cfg.LocalFile, nil
+		return c.cfg.LoadFile, nil
 	}
 
 	if c.set.URL == "" {
