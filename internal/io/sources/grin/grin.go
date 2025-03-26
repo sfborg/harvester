@@ -76,9 +76,6 @@ func (g *grin) Import(path string) error {
 
 	for _, v := range files {
 		file := filepath.Join(g.cfg.ExtractDir, v)
-		if !strings.HasPrefix(v, "tax") {
-			continue
-		}
 		err := createTable(db, file)
 		if err != nil {
 			return err
