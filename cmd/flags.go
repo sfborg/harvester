@@ -44,6 +44,13 @@ func fileFlag(cmd *cobra.Command) {
 	}
 }
 
+func dateFlag(cmd *cobra.Command) {
+	s, _ := cmd.Flags().GetString("issued-date")
+	if s != "" {
+		opts = append(opts, config.OptArchiveDate(s))
+	}
+}
+
 func skipFlag(cmd *cobra.Command) {
 	b, _ := cmd.Flags().GetBool("skip-download")
 	if b {

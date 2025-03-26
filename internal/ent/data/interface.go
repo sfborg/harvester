@@ -2,7 +2,7 @@ package data
 
 import (
 	"github.com/sfborg/harvester/pkg/config"
-	"github.com/sfborg/sflib/ent/sfga"
+	"github.com/sfborg/sflib/pkg/sfga"
 )
 
 // Convertor provides methods for converting data from an external source to
@@ -11,7 +11,6 @@ import (
 type Convertor interface {
 	Accessor
 	Processor
-	Parser
 }
 
 // Accessor provides methods to get data from internal fields of the
@@ -65,11 +64,4 @@ type Processor interface {
 	// should use the data previously extracted by the Extract() method.  An
 	// error is returned if the conversion fails.
 	ToSFGA(sfga.Archive) error
-}
-
-// Parser contains method to parse scientific names and
-// collect relevant data to Parsed object.
-type Parser interface {
-	// Parse converts string into Parsed result.
-	Parse(name string) Parsed
 }

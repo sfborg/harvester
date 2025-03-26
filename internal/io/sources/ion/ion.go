@@ -5,7 +5,7 @@ import (
 	"github.com/sfborg/harvester/internal/ent/data"
 	"github.com/sfborg/harvester/internal/io/base"
 	"github.com/sfborg/harvester/pkg/config"
-	"github.com/sfborg/sflib/ent/sfga"
+	"github.com/sfborg/sflib/pkg/sfga"
 )
 
 type ion struct {
@@ -18,7 +18,7 @@ func New(cfg config.Config) data.Convertor {
 	set := data.Set{
 		Label: "ion",
 		Name:  "Index to Organism Names",
-		Description: `
+		Notes: `
 Download cached version of the file from box.com. Ask Rod Page for new.
 `,
 		ManualSteps: true,

@@ -11,11 +11,11 @@ type Set struct {
 	// Name returns the official, human-readable name of the external data
 	// source. For example: "Integrated Taxonomic Information System".
 	Name string
-	// Description provides a detailed description of the data source,
+	// Notes provides a detailed description of the data source,
 	// including information about its data structure, update frequency, and
 	// any known limitations.  If the conversion process involves manual steps,
 	// those steps MUST be documented clearly in this description.
-	Description string
+	Notes string
 
 	// ManualSteps is true if the conversion process requires manual
 	// intervention or steps that cannot be fully automated.  If true, the

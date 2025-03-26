@@ -4,16 +4,14 @@ import (
 	"errors"
 	"fmt"
 	"log/slog"
-	"strings"
 
 	"github.com/gnames/gnparser"
-	"github.com/gnames/gnparser/ent/parsed"
 	"github.com/gnames/gnsys"
 	"github.com/sfborg/harvester/internal/ent/data"
 	"github.com/sfborg/harvester/internal/io/sysio"
 	"github.com/sfborg/harvester/pkg/config"
-	"github.com/sfborg/sflib/ent/sfga"
-	"github.com/sfborg/sflib/io/sfgaio"
+	"github.com/sfborg/sflib"
+	"github.com/sfborg/sflib/pkg/sfga"
 )
 
 // Convertor implements default methods of data.Convertor interface.
@@ -49,7 +47,7 @@ func (c *Convertor) Name() string {
 }
 
 func (c *Convertor) Description() string {
-	return c.set.Description
+	return c.set.Notes
 }
 func (c *Convertor) ManualSteps() bool {
 	return c.set.ManualSteps
@@ -109,7 +107,7 @@ func (c *Convertor) Import(path string) error {
 func (c *Convertor) InitSFGA() (sfga.Archive, error) {
 	sysio.EmptyDir(c.cfg.SfgaDir)
 
-	sfga := sfgaio.New()
+	sfga := sflib.NewSfga()
 	err := sfga.Create(c.cfg.SfgaDir)
 	if err != nil {
 		return nil, err
@@ -121,62 +119,7 @@ func (c *Convertor) InitSFGA() (sfga.Archive, error) {
 	return sfga, nil
 }
 
-func (c *Convertor) Parse(name string) data.Parsed {
-	parsedName := c.gnp.ParseName(name)
-
-	result := data.Parsed{NameID: parsedName.VerbatimID}
-	if !parsedName.Parsed {
-		return result
-	}
-
-	result = data.Parsed{
-		NameID:          parsedName.VerbatimID,
-		Quality:         parsedName.ParseQuality,
-		CanonicalFull:   parsedName.Canonical.Full,
-		CanonicalSimple: parsedName.Canonical.Simple,
-	}
-
-	if parsedName.Authorship != nil {
-		result.Authorship = parsedName.Authorship.Verbatim
-	}
-
-	if parsedName.Authorship != nil && parsedName.Authorship.Combination != nil {
-		result.CombinationAuthorship = formatAuthors(parsedName.Authorship.Combination.Authors)
-	}
-
-	switch detail := parsedName.Details.(type) {
-	case parsed.DetailsUninomial:
-		result.Uninomial = detail.Uninomial.Value
-	case parsed.DetailsSpecies:
-		result.Genus = detail.Species.Genus
-		result.Species = detail.Species.Species
-	case parsed.DetailsInfraspecies:
-		if len(detail.Infraspecies.Infraspecies) == 1 {
-			result.Genus = detail.Infraspecies.Genus
-			result.Species = detail.Infraspecies.Species.Species
-			result.Rank = detail.Infraspecies.Infraspecies[0].Rank
-			result.Infraspecies = detail.Infraspecies.Infraspecies[0].Value
-		}
-	}
-	return result
-}
-
 func (c *Convertor) ToSFGA(_ sfga.Archive) error {
 	slog.Info("Running a placeholder ToSFGA method")
 	return nil
-}
-
-func formatAuthors(authorship []string) string {
-	result := ""
-	switch len(authorship) {
-
-	case 1:
-		result = authorship[0]
-	case 2:
-		result = strings.Join(authorship, " & ")
-	default:
-		result = strings.Join(authorship[0:len(authorship)-1], ", ")
-		result = result + " & " + authorship[len(authorship)-1]
-	}
-	return result
 }

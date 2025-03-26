@@ -1,4 +1,4 @@
-package ion
+package grin
 
 import (
 	"log/slog"
@@ -7,18 +7,24 @@ import (
 )
 
 // ToSFGA imports the ION archive into a sfga archive.
-func (i *ion) ToSFGA(sfga sfga.Archive) error {
+func (g *grin) ToSFGA(sfga sfga.Archive) error {
 	var err error
-	i.sfga = sfga
+	g.sfga = sfga
 
 	slog.Info("Importing Meta")
-	err = i.importMeta()
+	err = g.importMeta()
 	if err != nil {
 		return err
 	}
 
 	slog.Info("Importing Names")
-	err = i.importNames()
+	err = g.importNameUsages()
+	if err != nil {
+		return err
+	}
+
+	slog.Info("Importing vernaculars")
+	err = g.importVern()
 	if err != nil {
 		return err
 	}

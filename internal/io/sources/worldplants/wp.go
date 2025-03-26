@@ -4,7 +4,7 @@ import (
 	"github.com/sfborg/harvester/internal/ent/data"
 	"github.com/sfborg/harvester/internal/io/base"
 	"github.com/sfborg/harvester/pkg/config"
-	"github.com/sfborg/sflib/ent/sfga"
+	"github.com/sfborg/sflib/pkg/sfga"
 )
 
 type worldplants struct {
@@ -17,7 +17,7 @@ var New = func(cfg config.Config) data.Convertor {
 	set := data.Set{
 		Label: "world-plants",
 		Name:  "World of Plants",
-		Description: `
+		Notes: `
     World of Plants data file has to provided either local path or remote URL.
     Use --file option.
     `,

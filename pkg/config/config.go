@@ -34,6 +34,9 @@ type Config struct {
 	// other ad-hoc files.
 	Code nomcode.Code
 
+	// ArchiveDate is used to set 'Issued' field in CoLDP/SFGA metadata.
+	ArchiveDate string
+
 	// WithVerbose indicates that more information might be shown in the
 	// output information. It is only important for listing a short list of
 	// supported sources, or providing details about them.
@@ -104,6 +107,12 @@ func OptSkipDownload(b bool) Option {
 func OptCode(code nomcode.Code) Option {
 	return func(c *Config) {
 		c.Code = code
+	}
+}
+
+func OptArchiveDate(s string) Option {
+	return func(c *Config) {
+		c.ArchiveDate = s
 	}
 }
 

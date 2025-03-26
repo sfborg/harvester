@@ -1,6 +1,6 @@
 package ion
 
-import "github.com/gnames/coldp/ent/coldp"
+import "github.com/sfborg/sflib/pkg/coldp"
 
 func (i *ion) importMeta() error {
 	meta := coldp.Meta{
@@ -18,6 +18,9 @@ func (i *ion) importMeta() error {
 			"books, and conference proceedings. They provide a powerful " +
 			"foundation for the most complete collection of organism names " +
 			"available today.",
+	}
+	if i.cfg.ArchiveDate != "" {
+		meta.Issued = i.cfg.ArchiveDate
 	}
 	i.sfga.InsertMeta(&meta)
 	return nil

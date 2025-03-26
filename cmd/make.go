@@ -43,6 +43,7 @@ var makeCmd = &cobra.Command{
 
 		flags := []flagFunc{
 			skipFlag, fileFlag, zipFlag, delimFlag, quotesFlag, badRowFlag,
+			dateFlag,
 		}
 
 		for _, v := range flags {
@@ -110,6 +111,9 @@ func init() {
 		`how to process rows with wrong fields number
      choices: 'stop', 'ignore', 'process'
      default: 'process'`,
+	)
+	makeCmd.Flags().StringP(
+		"issued-date", "d", "", "date when the archive was issued",
 	)
 	rootCmd.Flags().StringP(
 		"delimiter", "d", "",
