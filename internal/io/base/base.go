@@ -12,8 +12,8 @@ import (
 	"github.com/sfborg/harvester/internal/ent/data"
 	"github.com/sfborg/harvester/internal/io/sysio"
 	"github.com/sfborg/harvester/pkg/config"
-	"github.com/sfborg/sflib/ent/sfga"
-	"github.com/sfborg/sflib/io/sfgaio"
+	"github.com/sfborg/sflib"
+	"github.com/sfborg/sflib/pkg/sfga"
 )
 
 // Convertor implements default methods of data.Convertor interface.
@@ -109,7 +109,7 @@ func (c *Convertor) Import(path string) error {
 func (c *Convertor) InitSFGA() (sfga.Archive, error) {
 	sysio.EmptyDir(c.cfg.SfgaDir)
 
-	sfga := sfgaio.New()
+	sfga := sflib.NewSfga()
 	err := sfga.Create(c.cfg.SfgaDir)
 	if err != nil {
 		return nil, err

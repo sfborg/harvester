@@ -2,7 +2,7 @@ package data
 
 import (
 	"github.com/sfborg/harvester/pkg/config"
-	"github.com/sfborg/sflib/ent/sfga"
+	"github.com/sfborg/sflib/pkg/sfga"
 )
 
 // Convertor provides methods for converting data from an external source to

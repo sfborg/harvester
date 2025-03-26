@@ -3,7 +3,7 @@ package ion
 import (
 	"log/slog"
 
-	"github.com/sfborg/sflib/ent/sfga"
+	"github.com/sfborg/sflib/pkg/sfga"
 )
 
 // ToSFGA imports the ION archive into a sfga archive.

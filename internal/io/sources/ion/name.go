@@ -9,7 +9,7 @@ import (
 	"strings"
 
 	"github.com/dustin/go-humanize"
-	"github.com/gnames/coldp/ent/coldp"
+	"github.com/sfborg/sflib/pkg/coldp"
 )
 
 // importNames reads names from a TSV file and processes them in batches.

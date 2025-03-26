@@ -1,6 +1,6 @@
 package ion
 
-import "github.com/gnames/coldp/ent/coldp"
+import "github.com/sfborg/sflib/pkg/coldp"
 
 func (i *ion) importMeta() error {
 	meta := coldp.Meta{

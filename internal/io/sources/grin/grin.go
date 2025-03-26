@@ -1,14 +1,13 @@
-package ion
+package grin
 
 import (
-	"github.com/gnames/gnsys"
 	"github.com/sfborg/harvester/internal/ent/data"
 	"github.com/sfborg/harvester/internal/io/base"
 	"github.com/sfborg/harvester/pkg/config"
 	"github.com/sfborg/sflib/pkg/sfga"
 )
 
-type ion struct {
+type grin struct {
 	data.Convertor
 	cfg  config.Config
 	sfga sfga.Archive
@@ -16,25 +15,22 @@ type ion struct {
 
 func New(cfg config.Config) data.Convertor {
 	set := data.Set{
-		Label: "ion",
-		Name:  "Index to Organism Names",
+		Label: "grin",
+		Name:  "USDA-ARS Germplasm Resources Information Network (GRIN)",
 		Description: `
-Download cached version of the file from box.com. Ask Rod Page for new.
+The Germplasm Resources Information Network (GRIN) provides information
+about USDA national collections of plant genetic resources (germplasm).
 `,
 		ManualSteps: true,
-		URL:         "https://uofi.box.com/shared/static/tklh8i6q2kb33g6ki33k6s3is06lo9np.gz",
+		URL:         "https://uofi.box.com/v/grin-taxonomy",
 	}
-	res := ion{
+	res := grin{
 		cfg:       cfg,
 		Convertor: base.New(cfg, &set),
 	}
 	return &res
 }
 
-func (i *ion) Import(path string) error {
-	err := gnsys.ExtractTarGz(path, i.cfg.ExtractDir)
-	if err != nil {
-		return err
-	}
+func (g *grin) Import(path string) error {
 	return nil
 }
