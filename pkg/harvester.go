@@ -64,12 +64,12 @@ func (h *harvester) Convert(label, outPath string) error {
 	}
 
 	slog.Info("Creating SFG archive")
-	sfga, err = ds.InitSFGA()
+	sfga, err = ds.InitSfga()
 	if err != nil {
 		return err
 	}
 
-	err = ds.ToSFGA(sfga)
+	err = ds.ToSfga(sfga)
 	if err != nil {
 		return err
 	}

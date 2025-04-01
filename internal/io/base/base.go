@@ -16,12 +16,12 @@ import (
 
 // Convertor implements default methods of data.Convertor interface.
 type Convertor struct {
-	set *data.Set
+	set *data.DataSet
 	cfg config.Config
 	gnp gnparser.GNparser
 }
 
-func New(cfg config.Config, s *data.Set) data.Convertor {
+func New(cfg config.Config, s *data.DataSet) data.Convertor {
 	res := Convertor{
 		cfg: cfg,
 		set: s,
@@ -104,7 +104,7 @@ func (c *Convertor) Import(path string) error {
 	return nil
 }
 
-func (c *Convertor) InitSFGA() (sfga.Archive, error) {
+func (c *Convertor) InitSfga() (sfga.Archive, error) {
 	sysio.EmptyDir(c.cfg.SfgaDir)
 
 	sfga := sflib.NewSfga()
@@ -119,7 +119,7 @@ func (c *Convertor) InitSFGA() (sfga.Archive, error) {
 	return sfga, nil
 }
 
-func (c *Convertor) ToSFGA(_ sfga.Archive) error {
+func (c *Convertor) ToSfga(_ sfga.Archive) error {
 	slog.Info("Running a placeholder ToSFGA method")
 	return nil
 }

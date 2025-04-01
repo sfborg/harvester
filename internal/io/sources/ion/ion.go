@@ -15,7 +15,7 @@ type ion struct {
 }
 
 func New(cfg config.Config) data.Convertor {
-	set := data.Set{
+	set := data.DataSet{
 		Label: "ion",
 		Name:  "Index to Organism Names",
 		Notes: `

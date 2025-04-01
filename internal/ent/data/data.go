@@ -1,8 +1,8 @@
 package data
 
-// Set contains metadata required for conversion of an external
+// DataSet contains metadata required for conversion of an external
 // biodiversity data source to SFGA format.
-type Set struct {
+type DataSet struct {
 	// Label is a short, unique identifier for the external data source. This
 	// label is typically used for internal identification and file naming. For
 	// example: "itis".
@@ -28,5 +28,5 @@ type Set struct {
 
 	// New function creates the instance of Convertor interface from the
 	// data provided in the set.
-	New func(Set) Convertor
+	New func(DataSet) Convertor
 }

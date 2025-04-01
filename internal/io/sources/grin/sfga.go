@@ -6,8 +6,8 @@ import (
 	"github.com/sfborg/sflib/pkg/sfga"
 )
 
-// ToSFGA imports the ION archive into a sfga archive.
-func (g *grin) ToSFGA(sfga sfga.Archive) error {
+// ToSfga imports the ION archive into a sfga archive.
+func (g *grin) ToSfga(sfga sfga.Archive) error {
 	var err error
 	g.sfga = sfga
 

@@ -62,8 +62,8 @@ FROM taxonomy_species s
 		basionymID := basionyms[id]
 		tStatus, nStatus := getStatus(id, acceptedID, synonymCode)
 		nameString := name + " " + authority
-		family = family + " " + familyAuthority
-		genus = genus + " " + genusAuthority
+		// family = family + " " + familyAuthority
+		// genus = genus + " " + genusAuthority
 		var ord string
 		if suprafamilyType == "ORDER" {
 			ord = suprafamily

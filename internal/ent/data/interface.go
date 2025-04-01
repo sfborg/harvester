@@ -56,12 +56,12 @@ type Processor interface {
 	// if extraction fails.
 	Import(path string) error
 
-	// InitSFGA creates empty sfga.Archive and returns its instance.
+	// InitSfga creates empty sfga.Archive and returns its instance.
 	// In case of a failure it returns an error.
-	InitSFGA() (sfga.Archive, error)
+	InitSfga() (sfga.Archive, error)
 
-	// ToSFGA converts the extracted data to the SFGA file format.  This method
+	// ToSfga converts the extracted data to the SFGA file format.  This method
 	// should use the data previously extracted by the Extract() method.  An
 	// error is returned if the conversion fails.
-	ToSFGA(sfga.Archive) error
+	ToSfga(sfga.Archive) error
 }

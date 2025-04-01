@@ -14,7 +14,7 @@ type worldplants struct {
 }
 
 var New = func(cfg config.Config) data.Convertor {
-	set := data.Set{
+	set := data.DataSet{
 		Label: "world-plants",
 		Name:  "World of Plants",
 		Notes: `

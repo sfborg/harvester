@@ -27,7 +27,7 @@ type grin struct {
 }
 
 func New(cfg config.Config) data.Convertor {
-	set := data.Set{
+	set := data.DataSet{
 		Label: "grin",
 		Name:  "USDA-ARS Germplasm Resources Information Network (GRIN)",
 		Notes: `

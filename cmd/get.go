@@ -31,9 +31,9 @@ import (
 	"github.com/spf13/cobra"
 )
 
-// makeCmd represents the make command
-var makeCmd = &cobra.Command{
-	Use:   "make <label-or-id> [sfga-output-path] [flags]",
+// getCmd represents the get command
+var getCmd = &cobra.Command{
+	Use:   "get <label-or-id> [sfga-output-path] [flags]",
 	Short: "Converts registered source to SFGA file.",
 	Run: func(cmd *cobra.Command, args []string) {
 		if len(args) < 1 || len(args) > 2 {
@@ -91,18 +91,18 @@ func getLabel(hr harvester.Harvester, ds string) string {
 }
 
 func init() {
-	rootCmd.AddCommand(makeCmd)
+	rootCmd.AddCommand(getCmd)
 
-	makeCmd.Flags().StringP(
+	getCmd.Flags().StringP(
 		"file", "f", "", "get data from local file or URL",
 	)
-	makeCmd.Flags().BoolP(
+	getCmd.Flags().BoolP(
 		"skip-download", "s", false, "skip downloading and extracting source",
 	)
-	makeCmd.Flags().BoolP(
+	getCmd.Flags().BoolP(
 		"zip-output", "z", false, "compress output with zip",
 	)
-	makeCmd.Flags().BoolP(
+	getCmd.Flags().BoolP(
 		"no-quotes", "Q", false,
 		"for tsv, pipe-delimited without quotes for fields",
 	)
@@ -112,7 +112,7 @@ func init() {
      choices: 'stop', 'ignore', 'process'
      default: 'process'`,
 	)
-	makeCmd.Flags().StringP(
+	getCmd.Flags().StringP(
 		"issued-date", "d", "", "date when the archive was issued",
 	)
 	rootCmd.Flags().StringP(
