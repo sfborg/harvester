@@ -37,7 +37,7 @@ func (h *harvester) List() []string {
 	return res
 }
 
-func (h *harvester) Convert(label, outPath string) error {
+func (h *harvester) Get(label, outPath string) error {
 	var err error
 	var sfga sfga.Archive
 	var ds data.Convertor

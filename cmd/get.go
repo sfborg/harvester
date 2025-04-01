@@ -65,7 +65,7 @@ var getCmd = &cobra.Command{
 			outPath = args[1]
 		}
 
-		err := hr.Convert(l, outPath)
+		err := hr.Get(l, outPath)
 		if err != nil {
 			slog.Error(
 				"Cannot convert source to SFGA file",

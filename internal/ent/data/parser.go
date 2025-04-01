@@ -47,7 +47,6 @@ func AddParsedData(p gnparser.GNparser, nu *coldp.NameUsage) {
 			nu.CombinationAuthorshipYear,
 			prsd.CombinationAuthorshipYear,
 		)
-
 		nu.BasionymAuthorship = pick(
 			nu.BasionymAuthorship,
 			prsd.BasionymAuthorship,
