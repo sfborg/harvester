@@ -19,8 +19,7 @@ func New(cfg config.Config) data.Convertor {
 		Label: "ion",
 		Name:  "Index to Organism Names",
 		Notes: `Download cached version of the file from box.com.
-Ask Rod Page for an update.
-`,
+Ask Rod Page for an update.`,
 		ManualSteps: true,
 		URL:         "https://uofi.box.com/shared/static/tklh8i6q2kb33g6ki33k6s3is06lo9np.gz",
 	}

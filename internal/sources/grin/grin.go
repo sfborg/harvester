@@ -32,8 +32,7 @@ func New(cfg config.Config) data.Convertor {
 		Name:  "GRIN Plant Taxonomy",
 		Notes: `Create zip file from
 https://npgsweb.ars-grin.gov/gringlobal/uploads/documents/taxonomy_data.cab
-and save to the box.com.
-`,
+and save to the box.com.`,
 		ManualSteps: true,
 		URL:         "https://uofi.box.com/shared/static/xob0fp0hw26hhz5lwdo421wspw9x8qbq.zip",
 	}

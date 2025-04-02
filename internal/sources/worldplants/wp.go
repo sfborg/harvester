@@ -18,8 +18,7 @@ var New = func(cfg config.Config) data.Convertor {
 		Label: "world-plants",
 		Name:  "World of Plants",
 		Notes: `World of Plants data file has to to be provided either
-from a local path or a remote URL. Use --file option.
-`,
+from a local path or a remote URL. Use --file option.`,
 		ManualSteps: true,
 	}
 	res := worldplants{

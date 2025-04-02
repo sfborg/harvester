@@ -4,8 +4,8 @@ import (
 	"os"
 	"sort"
 
-	"github.com/jedib0t/go-pretty/table"
-	"github.com/jedib0t/go-pretty/text"
+	"github.com/jedib0t/go-pretty/v6/table"
+	"github.com/jedib0t/go-pretty/v6/text"
 	"github.com/sfborg/harvester/pkg/data"
 )
 
@@ -58,6 +58,7 @@ func (o *Output) Table() {
 			v.Notes,
 		}
 		t.AppendRow(row)
+		t.AppendSeparator()
 	}
 	t.Render()
 }
