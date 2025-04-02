@@ -7,7 +7,7 @@ import (
 	"github.com/gnames/gnparser"
 	"github.com/gnames/gnparser/ent/nomcode"
 	"github.com/gnames/gnuuid"
-	"github.com/sfborg/harvester/internal/ent/data"
+	"github.com/sfborg/harvester/pkg/data"
 	"github.com/sfborg/sflib/pkg/coldp"
 )
 

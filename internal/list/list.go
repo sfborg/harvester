@@ -1,11 +1,11 @@
 package list
 
 import (
-	"github.com/sfborg/harvester/internal/ent/data"
-	"github.com/sfborg/harvester/internal/io/sources/grin"
-	"github.com/sfborg/harvester/internal/io/sources/ion"
-	"github.com/sfborg/harvester/internal/io/sources/worldplants"
+	"github.com/sfborg/harvester/internal/sources/grin"
+	"github.com/sfborg/harvester/internal/sources/ion"
+	"github.com/sfborg/harvester/internal/sources/worldplants"
 	"github.com/sfborg/harvester/pkg/config"
+	"github.com/sfborg/harvester/pkg/data"
 )
 
 func GetDataSets(cfg config.Config) map[string]data.Convertor {

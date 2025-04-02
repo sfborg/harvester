@@ -1,9 +1,9 @@
 package worldplants
 
 import (
-	"github.com/sfborg/harvester/internal/ent/data"
-	"github.com/sfborg/harvester/internal/io/base"
+	"github.com/sfborg/harvester/internal/base"
 	"github.com/sfborg/harvester/pkg/config"
+	"github.com/sfborg/harvester/pkg/data"
 	"github.com/sfborg/sflib/pkg/sfga"
 )
 
@@ -17,10 +17,9 @@ var New = func(cfg config.Config) data.Convertor {
 	set := data.DataSet{
 		Label: "world-plants",
 		Name:  "World of Plants",
-		Notes: `
-    World of Plants data file has to provided either local path or remote URL.
-    Use --file option.
-    `,
+		Notes: `World of Plants data file has to to be provided either
+from a local path or a remote URL. Use --file option.
+`,
 		ManualSteps: true,
 	}
 	res := worldplants{

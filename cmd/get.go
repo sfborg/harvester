@@ -24,6 +24,7 @@ package cmd
 import (
 	"log/slog"
 	"os"
+	"sort"
 	"strconv"
 
 	harvester "github.com/sfborg/harvester/pkg"
@@ -77,7 +78,11 @@ var getCmd = &cobra.Command{
 }
 
 func getLabel(hr harvester.Harvester, ds string) string {
-	list := hr.List()
+	var list []string
+	for k := range hr.List() {
+		list = append(list, k)
+	}
+	sort.Strings(list)
 	idx, _ := strconv.Atoi(ds)
 	if idx > 0 && len(list) >= idx {
 		return list[idx-1]

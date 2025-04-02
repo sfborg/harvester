@@ -12,9 +12,9 @@ import (
 
 	"github.com/gnames/gnlib"
 	"github.com/gnames/gnsys"
-	"github.com/sfborg/harvester/internal/ent/data"
-	"github.com/sfborg/harvester/internal/io/base"
+	"github.com/sfborg/harvester/internal/base"
 	"github.com/sfborg/harvester/pkg/config"
+	"github.com/sfborg/harvester/pkg/data"
 	"github.com/sfborg/sflib/pkg/sfga"
 	_ "modernc.org/sqlite"
 )
@@ -29,9 +29,8 @@ type grin struct {
 func New(cfg config.Config) data.Convertor {
 	set := data.DataSet{
 		Label: "grin",
-		Name:  "USDA-ARS Germplasm Resources Information Network (GRIN)",
-		Notes: `
-Create zip file from
+		Name:  "GRIN Plant Taxonomy",
+		Notes: `Create zip file from
 https://npgsweb.ars-grin.gov/gringlobal/uploads/documents/taxonomy_data.cab
 and save to the box.com.
 `,

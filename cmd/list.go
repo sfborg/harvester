@@ -23,7 +23,9 @@ package cmd
 
 import (
 	"fmt"
+	"sort"
 
+	"github.com/sfborg/harvester/internal/output"
 	harvester "github.com/sfborg/harvester/pkg"
 	"github.com/sfborg/harvester/pkg/config"
 	"github.com/spf13/cobra"
@@ -44,9 +46,19 @@ var listCmd = &cobra.Command{
 		hr := harvester.New(cfg)
 
 		list := hr.List()
-		for i, v := range list {
-			fmt.Printf("%0.2d %s", i+1, v)
-			fmt.Println()
+		if cfg.WithVerbose {
+			out := output.New(list)
+			out.Table()
+		} else {
+			var labels []string
+			for k := range list {
+				labels = append(labels, k)
+			}
+			sort.Strings(labels)
+			for i, v := range labels {
+				fmt.Printf("%0.2d %s", i+1, v)
+				fmt.Println()
+			}
 		}
 	},
 }

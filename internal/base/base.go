@@ -7,9 +7,9 @@ import (
 
 	"github.com/gnames/gnparser"
 	"github.com/gnames/gnsys"
-	"github.com/sfborg/harvester/internal/ent/data"
-	"github.com/sfborg/harvester/internal/io/sysio"
+	"github.com/sfborg/harvester/internal/sysio"
 	"github.com/sfborg/harvester/pkg/config"
+	"github.com/sfborg/harvester/pkg/data"
 	"github.com/sfborg/sflib"
 	"github.com/sfborg/sflib/pkg/sfga"
 )

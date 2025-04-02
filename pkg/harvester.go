@@ -4,11 +4,10 @@ import (
 	"database/sql"
 	"fmt"
 	"log/slog"
-	"sort"
 
-	"github.com/sfborg/harvester/internal/ent/data"
-	"github.com/sfborg/harvester/internal/io/list"
+	"github.com/sfborg/harvester/internal/list"
 	"github.com/sfborg/harvester/pkg/config"
+	"github.com/sfborg/harvester/pkg/data"
 	"github.com/sfborg/sflib/pkg/sfga"
 )
 
@@ -28,13 +27,8 @@ func New(cfg config.Config) Harvester {
 	return &res
 }
 
-func (h *harvester) List() []string {
-	var res []string
-	for k := range h.ds {
-		res = append(res, k)
-	}
-	sort.Strings(res)
-	return res
+func (h *harvester) List() map[string]data.Convertor {
+	return h.ds
 }
 
 func (h *harvester) Get(label, outPath string) error {
