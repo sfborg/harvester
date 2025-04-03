@@ -2,6 +2,8 @@ package paleodb
 
 import (
 	"database/sql"
+	"net/http"
+	"time"
 
 	"github.com/sfborg/harvester/internal/base"
 	"github.com/sfborg/harvester/pkg/config"
@@ -15,6 +17,7 @@ type paleodb struct {
 	set  data.DataSet
 	sfga sfga.Archive
 	db   *sql.DB
+	http *http.Client
 }
 
 func New(cfg config.Config) data.Convertor {
@@ -29,6 +32,16 @@ func New(cfg config.Config) data.Convertor {
 		cfg:       cfg,
 		Convertor: base.New(cfg, &set),
 		set:       set,
+		http:      httpClient(),
 	}
 	return &res
+}
+
+func httpClient() *http.Client {
+	tr := &http.Transport{
+		MaxIdleConns:      10,
+		IdleConnTimeout:   600 * time.Second,
+		ForceAttemptHTTP2: false,
+	}
+	return &http.Client{Timeout: 5 * time.Minute, Transport: tr}
 }
