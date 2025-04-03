@@ -51,7 +51,7 @@ func (h *harvester) Get(label, outPath string) error {
 		}
 
 		slog.Info("Extracting files", "source", ds.Label())
-		err = ds.Import(dlPath)
+		err = ds.Extract(dlPath)
 		if err != nil {
 			return err
 		}

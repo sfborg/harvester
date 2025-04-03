@@ -2,12 +2,14 @@ package sysio
 
 import (
 	"fmt"
+	"log/slog"
 
 	"github.com/gnames/gnsys"
 	"github.com/sfborg/harvester/pkg/config"
 )
 
 func ResetCache(cfg config.Config) error {
+	slog.Info("Reseting cache")
 	err := EmptyDir(cfg.CacheDir)
 	if err != nil {
 		return err

@@ -3,6 +3,7 @@ package config
 import (
 	"os"
 	"path/filepath"
+	"time"
 
 	"github.com/gnames/gnfmt"
 	"github.com/gnames/gnparser/ent/nomcode"
@@ -36,6 +37,9 @@ type Config struct {
 
 	// ArchiveDate is used to set 'Issued' field in CoLDP/SFGA metadata.
 	ArchiveDate string
+
+	// ArchiveDate is used to set 'Version' firle for CoLDP/SFGA metadata.
+	ArchiveVersion string
 
 	// WithVerbose indicates that more information might be shown in the
 	// output information. It is only important for listing a short list of
@@ -116,6 +120,12 @@ func OptArchiveDate(s string) Option {
 	}
 }
 
+func OptArchiveVersion(s string) Option {
+	return func(c *Config) {
+		c.ArchiveVersion = s
+	}
+}
+
 func OptWithoutQuotes(b bool) Option {
 	return func(c *Config) {
 		c.WithoutQuotes = b
@@ -140,15 +150,18 @@ func New(opts ...Option) Config {
 	if err != nil {
 		cacheDir = tmpDir
 	}
-
 	cacheDir = filepath.Join(cacheDir, "sfborg", "harvester")
 
+	currentTime := time.Now()
+	today := currentTime.Format("2006-01-02")
+
 	res := Config{
-		CacheDir:  cacheDir,
-		JobsNum:   jobsNum,
-		Code:      nomcode.Unknown,
-		BadRow:    gnfmt.ProcessBadRow,
-		BatchSize: 50_000,
+		CacheDir:    cacheDir,
+		JobsNum:     jobsNum,
+		Code:        nomcode.Unknown,
+		BadRow:      gnfmt.ProcessBadRow,
+		BatchSize:   50_000,
+		ArchiveDate: today,
 	}
 	for _, opt := range opts {
 		opt(&res)

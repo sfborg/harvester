@@ -44,7 +44,7 @@ var getCmd = &cobra.Command{
 
 		flags := []flagFunc{
 			skipFlag, fileFlag, zipFlag, delimFlag, quotesFlag, badRowFlag,
-			dateFlag,
+			dateFlag, dataVersionFlag,
 		}
 
 		for _, v := range flags {
@@ -119,6 +119,9 @@ func init() {
 	)
 	getCmd.Flags().StringP(
 		"issued-date", "d", "", "date when the archive was issued",
+	)
+	getCmd.Flags().StringP(
+		"data-version", "v", "", "sets the version of the dataset",
 	)
 	rootCmd.Flags().StringP(
 		"delimiter", "d", "",

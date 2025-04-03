@@ -51,6 +51,13 @@ func dateFlag(cmd *cobra.Command) {
 	}
 }
 
+func dataVersionFlag(cmd *cobra.Command) {
+	s, _ := cmd.Flags().GetString("data-version")
+	if s != "" {
+		opts = append(opts, config.OptArchiveVersion(s))
+	}
+}
+
 func skipFlag(cmd *cobra.Command) {
 	b, _ := cmd.Flags().GetBool("skip-download")
 	if b {
