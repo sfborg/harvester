@@ -17,8 +17,14 @@ func (p *paleodb) ToSfga(sfga sfga.Archive) error {
 		return err
 	}
 
-	slog.Info("Importing Names")
+	slog.Info("Importing Names Usages")
 	err = p.importNameUsages()
+	if err != nil {
+		return err
+	}
+
+	slog.Info("Importing Refernces")
+	err = p.importReferences()
 	if err != nil {
 		return err
 	}

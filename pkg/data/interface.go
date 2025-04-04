@@ -50,11 +50,11 @@ type Processor interface {
 	// checking if the file already exists before downloading).
 	Download() (string, error)
 
-	// Import extracts the relevant data from the downloaded file.  The 'path'
+	// Extract extracts the relevant data from the downloaded file.  The 'path'
 	// argument is the path returned by the Download() method.  The extracted
 	// data should be placed in a separate cache directory.  An error is returned
 	// if extraction fails.
-	Import(path string) error
+	Extract(path string) error
 
 	// InitSfga creates empty sfga.Archive and returns its instance.
 	// In case of a failure it returns an error.

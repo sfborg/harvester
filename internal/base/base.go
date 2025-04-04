@@ -81,7 +81,7 @@ func (c *Convertor) Download() (string, error) {
 	return path, nil
 }
 
-func (c *Convertor) Import(path string) error {
+func (c *Convertor) Extract(path string) error {
 	var f gnsys.Extractor
 	switch gnsys.GetFileType(path) {
 	case gnsys.ZipFT:

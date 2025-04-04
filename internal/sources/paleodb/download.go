@@ -58,7 +58,7 @@ func (p *paleodb) Download() (string, error) {
 	return "", nil
 }
 
-func (p *paleodb) Import(_ string) error {
+func (p *paleodb) Extract(_ string) error {
 	return nil
 }
 

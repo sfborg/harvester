@@ -43,7 +43,7 @@ and save to the box.com.`,
 	return &res
 }
 
-func (g *grin) Import(path string) error {
+func (g *grin) Extract(path string) error {
 	slog.Info("Importing GRIN data to a temporary SQLite database")
 	err := gnsys.ExtractZip(path, g.cfg.ExtractDir)
 	if err != nil {

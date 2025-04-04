@@ -4,6 +4,7 @@ import (
 	"context"
 	"path/filepath"
 	"strings"
+	"sync"
 
 	"github.com/gnames/gnfmt/gncsv"
 	"github.com/gnames/gnfmt/gncsv/config"
@@ -17,11 +18,14 @@ func (p *paleodb) importNameUsages() error {
 	if err != nil {
 		return err
 	}
-
 	csv := gncsv.New(cfg)
+
 	ch := make(chan [][]string)
+	var wg sync.WaitGroup
+	wg.Add(1)
 
 	go func() {
+		defer wg.Done()
 		for rows := range ch {
 
 			nus := make([]coldp.NameUsage, 0, len(rows[0]))
@@ -97,5 +101,8 @@ func (p *paleodb) importNameUsages() error {
 	if err != nil {
 		return err
 	}
+	close(ch)
+
+	wg.Wait()
 	return nil
 }

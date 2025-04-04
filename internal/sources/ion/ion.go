@@ -30,7 +30,7 @@ Ask Rod Page for an update.`,
 	return &res
 }
 
-func (i *ion) Import(path string) error {
+func (i *ion) Extract(path string) error {
 	err := gnsys.ExtractTarGz(path, i.cfg.ExtractDir)
 	if err != nil {
 		return err
