@@ -5,6 +5,8 @@ import (
 	"net/http"
 	"time"
 
+	"github.com/gnames/gnparser"
+	"github.com/gnames/gnparser/ent/nomcode"
 	"github.com/sfborg/harvester/internal/base"
 	"github.com/sfborg/harvester/pkg/config"
 	"github.com/sfborg/harvester/pkg/data"
@@ -18,6 +20,7 @@ type paleodb struct {
 	sfga sfga.Archive
 	db   *sql.DB
 	http *http.Client
+	p    gnparser.GNparser
 }
 
 func New(cfg config.Config) data.Convertor {
@@ -33,6 +36,12 @@ func New(cfg config.Config) data.Convertor {
 		Convertor: base.New(cfg, &set),
 		set:       set,
 		http:      httpClient(),
+		p: gnparser.New(
+			gnparser.NewConfig(
+				gnparser.OptWithDetails(true),
+				gnparser.OptCode(nomcode.Botanical),
+			),
+		),
 	}
 	return &res
 }

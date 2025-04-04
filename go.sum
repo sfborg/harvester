@@ -120,8 +120,8 @@ github.com/fsnotify/fsnotify v1.5.1 h1:mZcQUHVQUQWoPXXtuf9yuEXKudkV2sx1E06UadKWp
 github.com/fsnotify/fsnotify v1.5.1/go.mod h1:T3375wBYaZdLLcVNkcVbzGHY7f1l/uK5T5Ai1i3InKU=
 github.com/ghodss/yaml v1.0.0/go.mod h1:4dBDuWmgqj2HViK6kFavaiC9ZROes6MMH2rRYeMEF04=
 github.com/gnames/gnfmt v0.1.0/go.mod h1:WG9c3CoiVrGc1SDsxLk7zjmv2B4UIzI00m4K5Khc/d0=
-github.com/gnames/gnfmt v0.5.7 h1:RPS5vU4fjXrV5BzWOLJfzlD5Jrmn7M0hvhXotiLSBj8=
-github.com/gnames/gnfmt v0.5.7/go.mod h1:tA38UNZPP/Pm+V3D+20Kob0dnQeLR6BdwD4p+LIG9/c=
+github.com/gnames/gnfmt v0.6.0 h1:u+OjRyD8cVywB00IGKf24xTovz9y807E1fAa22+HInc=
+github.com/gnames/gnfmt v0.6.0/go.mod h1:zNOde0Wjti0bq6TFgIoBsScZO8ZO0dNNfMB1CclRyYk=
 github.com/gnames/gnlib v0.47.0 h1:cuhYHwA/9+R9kA3/st94yh9bo8p8xkeaSKxLXuuglrs=
 github.com/gnames/gnlib v0.47.0/go.mod h1:b6xRhWgaoWpK0tpotqO/iVsw5w+IVBMwrRPR9XBglL8=
 github.com/gnames/gnparser v1.11.6 h1:Q2YOmO4WDqbmvP2wRiKkOrb+a/MSJBoavKofdyH4Cx4=
@@ -370,8 +370,6 @@ github.com/ryanuber/columnize v0.0.0-20160712163229-9b3edd62028f/go.mod h1:sm1tb
 github.com/sagikazarmark/crypt v0.3.0/go.mod h1:uD/D+6UF4SrIR1uGEv7bBNkNqLGqUr43MRiaGWX1Nig=
 github.com/sagikazarmark/crypt v0.4.0/go.mod h1:ALv2SRj7GxYV4HO9elxH9nS6M9gW+xDNxqmyJ6RfDFM=
 github.com/sean-/seed v0.0.0-20170313163322-e2103e2c3529/go.mod h1:DxrIzT+xaE7yg65j358z/aeFdxmN0P9QXhEzd20vsDc=
-github.com/sfborg/sflib v0.3.2 h1:k8lZnwW6etctVKngsEO0Y3Fgj0OlFY/gqel8ZHXWfY4=
-github.com/sfborg/sflib v0.3.2/go.mod h1:5Z9Kyy8UDXEm01SSm2qbBbg2RQ7xM801Oon+yERRh90=
 github.com/sirupsen/logrus v1.2.0/go.mod h1:LxeOpSwHxABJmUn/MG1IvRgCAasNZTLOkJPxbbu5VWo=
 github.com/sirupsen/logrus v1.4.2/go.mod h1:tLMulIdttU9McNUspp0xgXVQah82FyeX6MwdIuYE2rE=
 github.com/spaolacci/murmur3 v0.0.0-20180118202830-f09979ecbc72/go.mod h1:JwIasOWyU6f++ZhiEuf87xNszmSA2myDM2Kzu9HwQUA=
