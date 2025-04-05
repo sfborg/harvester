@@ -23,11 +23,11 @@ func (p *paleodb) ToSfga(sfga sfga.Archive) error {
 		return err
 	}
 
-	slog.Info("Importing Refernces")
-	err = p.importReferences()
-	if err != nil {
-		return err
-	}
+	// slog.Info("Importing Refernces")
+	// err = p.importReferences()
+	// if err != nil {
+	// 	return err
+	// }
 
 	return nil
 }

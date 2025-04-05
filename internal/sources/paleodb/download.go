@@ -40,8 +40,8 @@ func (p *paleodb) Download() (string, error) {
 	}
 
 	slog.Info("Readilng reference data")
-	refURL := p.set.URL + "/refs/list.txt?vocab=bibjson&all_records=true"
-	refFile := filepath.Join(p.cfg.ExtractDir, "ref.csv")
+	refURL := p.set.URL + "/refs/list.json?vocab=bibjson&all_records=true"
+	refFile := filepath.Join(p.cfg.ExtractDir, "ref.json")
 	err = p.httpRequest(ctx, refURL, refFile)
 	if err != nil {
 		return "", err
