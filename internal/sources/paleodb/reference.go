@@ -17,11 +17,11 @@ func (p *paleodb) importReferences(citations map[string]string) error {
 	if err != nil {
 		return err
 	}
-	res := make([]coldp.Reference, len(refs.Records))
-	for i, v := range refs.Records {
+	res := make([]coldp.Reference, 0, len(refs.Records))
+	for _, v := range refs.Records {
 		if cit, ok := citations[v.ID]; ok {
 			ref := coldp.Reference{
-				ID:        v.ID,
+				ID:        v.ID[4:],
 				Type:      coldp.NewReferenceType(v.Type),
 				Author:    authors(v.Author),
 				Citation:  cit,
@@ -33,11 +33,11 @@ func (p *paleodb) importReferences(citations map[string]string) error {
 				Publisher: v.Publisher,
 				DOI:       doi(v.Identifier),
 			}
+			res = append(res, ref)
 		} else {
 			continue
 		}
 
-		res[i] = ref
 	}
 
 	p.sfga.InsertReferences(res)
