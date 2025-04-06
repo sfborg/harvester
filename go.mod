@@ -2,8 +2,6 @@ module github.com/sfborg/harvester
 
 go 1.24.1
 
-replace github.com/sfborg/sflib => ../sflib
-
 require (
 	github.com/dustin/go-humanize v1.0.1
 	github.com/gnames/gnfmt v0.6.0
@@ -13,7 +11,7 @@ require (
 	github.com/gnames/gnuuid v0.2.0
 	github.com/jedib0t/go-pretty/v6 v6.6.7
 	github.com/lmittmann/tint v1.0.7
-	github.com/sfborg/sflib v0.3.2
+	github.com/sfborg/sflib v0.3.3
 	github.com/spf13/cobra v1.9.1
 	modernc.org/sqlite v1.37.0
 )
@@ -55,9 +53,9 @@ require (
 	golang.org/x/exp v0.0.0-20250305212735-054e65f0b394 // indirect
 	golang.org/x/mod v0.24.0 // indirect
 	golang.org/x/net v0.38.0 // indirect
-	golang.org/x/sync v0.12.0 // indirect
-	golang.org/x/sys v0.31.0 // indirect
-	golang.org/x/text v0.23.0 // indirect
+	golang.org/x/sync v0.13.0 // indirect
+	golang.org/x/sys v0.32.0 // indirect
+	golang.org/x/text v0.24.0 // indirect
 	golang.org/x/tools v0.31.0 // indirect
 	gopkg.in/check.v1 v1.0.0-20200227125254-8fa46927fb4f // indirect
 	gopkg.in/ini.v1 v1.66.2 // indirect
