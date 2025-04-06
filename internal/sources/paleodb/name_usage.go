@@ -12,11 +12,12 @@ import (
 	"github.com/sfborg/sflib/pkg/coldp"
 )
 
-func (p *paleodb) importNameUsages() error {
+func (p *paleodb) importNameUsages() (map[string]string, error) {
+	cit := make(map[string]string)
 	taxonPath := filepath.Join(p.cfg.ExtractDir, "taxon.csv")
 	cfg, err := config.New(config.OptPath(taxonPath))
 	if err != nil {
-		return err
+		return nil, err
 	}
 	csv := gncsv.New(cfg)
 
@@ -50,6 +51,11 @@ func (p *paleodb) importNameUsages() error {
 
 				rank := coldp.NewRank(csv.F(r, "accepted_rank"))
 				remark := csv.F(r, "difference")
+
+				refID := csv.F(r, "reference_no")
+				if refID != "" {
+					cit["ref:"+refID] = csv.F(r, "primary_reference")
+				}
 
 				vern := csv.F(r, "common_name")
 				if vern != "" && taxStatus != coldp.SynonymTS {
@@ -99,10 +105,10 @@ func (p *paleodb) importNameUsages() error {
 
 	_, err = csv.ReadChunks(context.Background(), ch, p.cfg.BatchSize)
 	if err != nil {
-		return err
+		return nil, err
 	}
 	close(ch)
 
 	wg.Wait()
-	return nil
+	return cit, nil
 }

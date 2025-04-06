@@ -9,6 +9,7 @@ import (
 // ToSfga imports the ION archive into a sfga archive.
 func (p *paleodb) ToSfga(sfga sfga.Archive) error {
 	var err error
+	var citations map[string]string
 	p.sfga = sfga
 
 	slog.Info("Importing Meta")
@@ -18,16 +19,16 @@ func (p *paleodb) ToSfga(sfga sfga.Archive) error {
 	}
 
 	slog.Info("Importing Names Usages")
-	err = p.importNameUsages()
+	citations, err = p.importNameUsages()
 	if err != nil {
 		return err
 	}
 
-	// slog.Info("Importing Refernces")
-	// err = p.importReferences()
-	// if err != nil {
-	// 	return err
-	// }
+	slog.Info("Importing Refernces")
+	err = p.importReferences(citations)
+	if err != nil {
+		return err
+	}
 
 	return nil
 }

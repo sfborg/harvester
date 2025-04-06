@@ -15,7 +15,7 @@ func GetDataSets(cfg config.Config) map[string]data.Convertor {
 	res := map[string]data.Convertor{
 		"grin":         grin.New(cfg),
 		"ion":          ion.New(cfg),
-		"pbdb":         paleodb.New(cfg),
+		"paleodb":      paleodb.New(cfg),
 		"world-plants": worldplants.New(cfg),
 	}
 	return res
