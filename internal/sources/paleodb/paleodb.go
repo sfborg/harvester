@@ -5,8 +5,8 @@ import (
 	"net/http"
 	"time"
 
+	"github.com/gnames/gnlib/ent/nomcode"
 	"github.com/gnames/gnparser"
-	"github.com/gnames/gnparser/ent/nomcode"
 	"github.com/sfborg/harvester/internal/base"
 	"github.com/sfborg/harvester/pkg/config"
 	"github.com/sfborg/harvester/pkg/data"

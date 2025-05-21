@@ -90,10 +90,15 @@ func (p *paleodb) importNameUsages() (
 					TemporalRangeStart:   start,
 					TemporalRangeEnd:     end,
 					Genus:                csv.F(r, "genus"),
+					GenusID:              csv.F(r, "genus_no"),
 					Family:               csv.F(r, "family"),
+					FamilyID:             csv.F(r, "family_no"),
 					Order:                csv.F(r, "order"),
+					OrderID:              csv.F(r, "order_no"),
 					Class:                csv.F(r, "class"),
+					ClassID:              csv.F(r, "class_no"),
 					Phylum:               csv.F(r, "phylum"),
+					PhylumID:             csv.F(r, "phylum_no"),
 				}
 
 				switch csv.F(r, "is_extant") {

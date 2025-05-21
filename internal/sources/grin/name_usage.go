@@ -4,8 +4,8 @@ import (
 	"log/slog"
 	"strings"
 
+	"github.com/gnames/gnlib/ent/nomcode"
 	"github.com/gnames/gnparser"
-	"github.com/gnames/gnparser/ent/nomcode"
 	"github.com/gnames/gnuuid"
 	"github.com/sfborg/harvester/pkg/data"
 	"github.com/sfborg/sflib/pkg/coldp"
@@ -13,17 +13,17 @@ import (
 
 func (g *grin) importNameUsages() error {
 	q := `
-SELECT 
+SELECT
   s.taxonomy_species_id AS id, s.current_taxonomy_species_id AS accepted_id,
 	s.name, s.name_authority, s.synonym_code, s.protologue,
-	s.protologue_virtual_path, s.modified_date, 
+	s.protologue_virtual_path, s.modified_date,
 	f.suprafamily_rank_code, f.suprafamily_rank_name, f.family_name, f.family_authority,
 	f.subfamily_name, f.tribe_name, f.subtribe_name,
 	g.genus_name, g.genus_authority, g.subgenus_name, g.section_name
-FROM taxonomy_species s 
-	JOIN taxonomy_genus g 
+FROM taxonomy_species s
+	JOIN taxonomy_genus g
 	  ON g.taxonomy_genus_id = s.taxonomy_genus_id
-	JOIN taxonomy_family f 
+	JOIN taxonomy_family f
 	  ON f.taxonomy_family_id = g.taxonomy_family_id
 `
 
@@ -91,7 +91,7 @@ FROM taxonomy_species s
 			BasionymID:           basionymID,
 			TaxonomicStatus:      tStatus,
 			NameStatus:           nStatus,
-			Code:                 coldp.Botanical,
+			Code:                 nomcode.Botanical,
 			ReferenceID:          refID,
 			Order:                ord,
 			Superfamily:          suprafamily,

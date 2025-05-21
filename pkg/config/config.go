@@ -6,7 +6,7 @@ import (
 	"time"
 
 	"github.com/gnames/gnfmt"
-	"github.com/gnames/gnparser/ent/nomcode"
+	"github.com/gnames/gnlib/ent/nomcode"
 )
 
 var (

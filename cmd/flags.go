@@ -6,7 +6,7 @@ import (
 	"os"
 
 	"github.com/gnames/gnfmt"
-	"github.com/gnames/gnparser/ent/nomcode"
+	"github.com/gnames/gnlib/ent/nomcode"
 	harvester "github.com/sfborg/harvester/pkg"
 	"github.com/sfborg/harvester/pkg/config"
 	"github.com/spf13/cobra"
