@@ -2,9 +2,8 @@ package ioc
 
 import (
 	"bufio"
-	"fmt"
-	"log"
 	"os"
+	"regexp"
 
 	"github.com/gnames/coldp/ent/coldp"
 )
@@ -31,6 +30,7 @@ func (i *ioc) importMeta() error {
 }
 
 func (i *ioc) metaFromFile() (*coldp.Meta, error) {
+	res := coldp.Meta{}
 	f, err := os.Open(i.path)
 	if err != nil {
 		return nil, err
@@ -40,16 +40,21 @@ func (i *ioc) metaFromFile() (*coldp.Meta, error) {
 	scanner := bufio.NewScanner(f)
 	linesRead := 0
 
-	for scanner.Scan() { // Scan returns false when the end of the file is reached or an error occurs
-		fmt.Printf("Read line %d: %s\n", linesRead+1, scanner.Text())
-		linesRead++
-
-		if linesRead >= 3 {
-			break
-		}
-	}
+	scanner.Scan()
+	scanner.Scan()
+	line := scanner.Text()
 
 	if err := scanner.Err(); err != nil {
-		log.Fatalf("Error reading file: %v", err)
+		return nil, err
 	}
+	re := regexp.MustCompile(`\s+(.*)IOC World Bird List\s\(([^)]+)\)\. Doi\s(.*)\.\s`)
+	match := re.FindStringSubmatch(line)
+
+	if len(match) > 0 {
+		res.Citation = match[1]
+		res.Version = match[2]
+		res.DOI = match[3]
+	}
+
+	return &res, nil
 }
