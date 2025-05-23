@@ -7,12 +7,13 @@ require (
 	github.com/gnames/gnfmt v0.6.1
 	github.com/gnames/gnlib v0.49.0
 	github.com/gnames/gnparser v1.11.7
-	github.com/gnames/gnsys v0.3.8
+	github.com/gnames/gnsys v0.3.9
 	github.com/gnames/gnuuid v0.2.0
 	github.com/jedib0t/go-pretty/v6 v6.6.7
 	github.com/lmittmann/tint v1.1.0
-	github.com/sfborg/sflib v0.4.2
+	github.com/sfborg/sflib v0.4.3
 	github.com/spf13/cobra v1.9.1
+	github.com/stretchr/testify v1.10.0
 	modernc.org/sqlite v1.37.1
 )
 
@@ -61,7 +62,8 @@ require (
 	gopkg.in/check.v1 v1.0.0-20200227125254-8fa46927fb4f // indirect
 	gopkg.in/ini.v1 v1.66.2 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
-	modernc.org/libc v1.65.7 // indirect
+	gopkg.in/yaml.v3 v3.0.1 // indirect
+	modernc.org/libc v1.65.8 // indirect
 	modernc.org/mathutil v1.7.1 // indirect
 	modernc.org/memory v1.11.0 // indirect
 )
