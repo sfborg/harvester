@@ -18,7 +18,7 @@ func versionFlag(cmd *cobra.Command) {
 	b, _ := cmd.Flags().GetBool("version")
 	if b {
 		version := harvester.GetVersion()
-		fmt.Print(version)
+		fmt.Printf("\nversion: %s\nbuild:   %s\n", version.Version, version.Build)
 		os.Exit(0)
 	}
 }

@@ -36,7 +36,7 @@ var rootCmd = &cobra.Command{
 	Short: "Converts datasets to SFGA format.",
 	Run: func(cmd *cobra.Command, args []string) {
 		versionFlag(cmd)
-		_ = cmd.Help()
+		// _ = cmd.Help()
 	},
 }
 

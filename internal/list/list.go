@@ -14,11 +14,11 @@ func GetDataSets(cfg config.Config) map[string]data.Convertor {
 	// The keys of the map are the names of the data sources, and the
 	//  values are the corresponding data converters.
 	res := map[string]data.Convertor{
-		"grin":         grin.New(cfg),
-		"ion":          ion.New(cfg),
-		"ioc birds":    ioc.New(cfg),
-		"paleodb":      paleodb.New(cfg),
-		"world-plants": worldplants.New(cfg),
+		"grin":      grin.New(cfg),
+		"ion":       ion.New(cfg),
+		"ioc birds": ioc.New(cfg),
+		"paleodb":   paleodb.New(cfg),
+		"wfwp":      worldplants.New(cfg),
 	}
 	return res
 }
