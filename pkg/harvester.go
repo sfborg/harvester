@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"log/slog"
 
+	"github.com/gnames/gn"
 	"github.com/sfborg/harvester/internal/list"
 	"github.com/sfborg/harvester/pkg/config"
 	"github.com/sfborg/harvester/pkg/data"
@@ -43,21 +44,24 @@ func (h *harvester) Get(label, outPath string) error {
 	}
 
 	if h.cfg.SkipDownload {
-		slog.Info("Skipping download step", "source", ds.Label())
+		slog.Info("skip download step", "source", ds.Label())
+		gn.Message("Skipping download for <em>%s</em>", ds.Label())
 	} else {
 		dlPath, err = ds.Download()
 		if err != nil {
 			return err
 		}
 
-		slog.Info("Extracting files", "source", ds.Label())
+		slog.Info("extracting files", "source", ds.Label())
+		gn.Message("Extracting files of <em>%s</em>", ds.Label())
 		err = ds.Extract(dlPath)
 		if err != nil {
 			return err
 		}
 	}
 
-	slog.Info("Creating SFG archive")
+	slog.Info("creating SFG archive")
+	gn.Message("Creating empty SFGA file")
 	sfga, err = ds.InitSfga()
 	if err != nil {
 		return err

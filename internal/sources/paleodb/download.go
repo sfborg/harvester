@@ -8,6 +8,7 @@ import (
 	"os"
 	"path/filepath"
 
+	"github.com/gnames/gn"
 	"github.com/sfborg/harvester/internal/sysio"
 )
 
@@ -23,7 +24,8 @@ func (p *paleodb) Download() (string, error) {
 	}
 	ctx := context.Background()
 
-	slog.Info("Readilng taxonomy data")
+	slog.Info("readilng taxonomy data")
+	gn.Info("Readilng taxonomy data")
 	taxaURL := p.set.URL + "/taxa/list.txt?all_taxa=true&show=attr,app,common,parent,immparent,classext,ecospace,ttaph,img,ref,refattr,ent,entname,crmod"
 	taxonFile := filepath.Join(p.cfg.ExtractDir, "taxon.csv")
 	err = p.httpRequest(ctx, taxaURL, taxonFile)
@@ -31,7 +33,8 @@ func (p *paleodb) Download() (string, error) {
 		return "", err
 	}
 
-	slog.Info("Readilng specimen data")
+	slog.Info("readilng specimen data")
+	gn.Info("Readilng specimen data")
 	specURL := p.set.URL + "/specs/list.txt?all_records=true&show=attr,abund,plant,ecospace,taphonomy,coll,coords,loc,strat,lith,methods,env,geo,rem,resgroup,ent,entname,crmod"
 	specFile := filepath.Join(p.cfg.ExtractDir, "spec.csv")
 	err = p.httpRequest(ctx, specURL, specFile)
@@ -39,7 +42,8 @@ func (p *paleodb) Download() (string, error) {
 		return "", err
 	}
 
-	slog.Info("Readilng reference data")
+	slog.Info("readilng reference data")
+	gn.Info("Readilng reference data")
 	refURL := p.set.URL + "/refs/list.json?vocab=bibjson&all_records=true"
 	refFile := filepath.Join(p.cfg.ExtractDir, "ref.json")
 	err = p.httpRequest(ctx, refURL, refFile)
@@ -47,7 +51,8 @@ func (p *paleodb) Download() (string, error) {
 		return "", err
 	}
 
-	slog.Info("Readilng ranks")
+	slog.Info("readilng ranks")
+	gn.Info("Readilng ranks")
 	ranksURL := p.set.URL + "/config.txt?show=ranks"
 	ranksFile := filepath.Join(p.cfg.ExtractDir, "ranks.csv")
 	err = p.httpRequest(ctx, ranksURL, ranksFile)

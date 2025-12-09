@@ -3,8 +3,8 @@ package cmd
 import (
 	"fmt"
 	"log/slog"
-	"os"
 
+	"github.com/gnames/gn"
 	"github.com/gnames/gnfmt"
 	"github.com/gnames/gnlib/ent/nomcode"
 	harvester "github.com/sfborg/harvester/pkg"
@@ -14,13 +14,13 @@ import (
 
 type flagFunc func(cmd *cobra.Command)
 
-func versionFlag(cmd *cobra.Command) {
+func versionFlag(cmd *cobra.Command) bool {
 	b, _ := cmd.Flags().GetBool("version")
 	if b {
 		version := harvester.GetVersion()
-		fmt.Printf("\nversion: %s\nbuild:   %s\n", version.Version, version.Build)
-		os.Exit(0)
+		fmt.Printf("\nVersion: %s\nBuild:   %s\n", version.Version, version.Build)
 	}
+	return b
 }
 
 func verboseFlag(cmd *cobra.Command) {
@@ -85,9 +85,10 @@ func badRowFlag(cmd *cobra.Command) {
 	case "process":
 		opts = append(opts, config.OptBadRow(gnfmt.ProcessBadRow))
 	default:
-		slog.Warn("Unknown setting for wrong-fields-num, keeping default",
+		slog.Warn("unknown setting for wrong-fields-num, keeping default",
 			"setting", s)
-		slog.Info("Supported values are: 'stop', 'ignore', 'process' (default)")
+		gn.Warn("unknown <em>wrong-fields-num</em> setting <em>%s</em>", s)
+		gn.Info("Supported values are: 'stop', 'ignore', 'process' (default)")
 	}
 }
 
@@ -101,11 +102,13 @@ func quotesFlag(cmd *cobra.Command) {
 func delimFlag(cmd *cobra.Command) {
 	s, _ := cmd.Flags().GetString("delimiter")
 	switch s {
+	case "":
+		return
 	case "\t", ",", "|":
 		opts = append(opts, config.OptColSep(s))
 	default:
 		slog.Warn(
-			"Unknown delimiter, using automatic detection.", "delimiter", s,
+			"unknown delimiter, using automatic detection.", "delimiter", s,
 		)
 	}
 }

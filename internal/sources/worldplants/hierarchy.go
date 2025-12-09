@@ -8,6 +8,7 @@ import (
 	"os"
 	"strings"
 
+	"github.com/gnames/gn"
 	"github.com/google/uuid"
 	"github.com/sfborg/sflib/pkg/coldp"
 )
@@ -105,7 +106,8 @@ func validateName(name string) error {
 func (wp *worldplants) buildHierarchy(
 	csvPath string,
 ) ([]hNode, map[string]hNode, error) {
-	slog.Info("Building hierarchy", "file", csvPath)
+	slog.Info("building hierarchy", "file", csvPath)
+	gn.Info("Building hierarchy <em>%s</em>", csvPath)
 
 	file, err := os.Open(csvPath)
 	if err != nil {
@@ -132,7 +134,7 @@ func (wp *worldplants) buildHierarchy(
 		line, err := reader.ReadString('\n')
 		if err != nil {
 			if err.Error() != "EOF" {
-				slog.Warn("Error reading line", "line", lineNum, "error", err)
+				slog.Error("error reading line", "line", lineNum, "error", err)
 			}
 			break
 		}
@@ -142,7 +144,7 @@ func (wp *worldplants) buildHierarchy(
 
 		node, err := wp.getNode(line)
 		if err != nil {
-			slog.Debug("Skipping node", "line", lineNum, "error", err)
+			slog.Debug("skipping node", "line", lineNum, "error", err)
 			continue
 		}
 
@@ -166,11 +168,12 @@ func (wp *worldplants) buildHierarchy(
 		nodeMap[node.id] = node
 
 		if lineNum%1000 == 0 {
-			slog.Info("Processed rows", "count", lineNum)
+			slog.Info("processed rows", "count", lineNum)
 		}
 	}
 
-	slog.Info("Hierarchy built", "nodes", len(nodes))
+	slog.Info("hierarchy built", "nodes", len(nodes))
+	gn.Info("Finished building hierarchy: <em>%d nodes</em>", len(nodes))
 
 	return nodes, nodeMap, nil
 }

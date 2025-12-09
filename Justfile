@@ -22,24 +22,24 @@ test:
     go test -count=1 ./...
 
 # Build the binary (development build with timestamp and git version)
-build:
+build: peg
     @mkdir -p bin
     {{NO_C}} go build {{FLAGS_LD}} -o bin/{{APP}}
     @echo "✅ {{APP}} built to bin/{{APP}}"
 
 # Build release binary (uses version.go for Version, timestamp for Build)
-build-release:
+build-release: peg 
     @mkdir -p bin
     {{NO_C}} go build {{FLAGS_REL}} -o bin/{{APP}}
     @echo "✅ {{APP}} release binary built to bin/{{APP}}"
 
 # Install to ~/go/bin (development build with timestamp and git version)
-install:
+install: peg
     {{NO_C}} go install {{FLAGS_LD}}
     @echo "✅ {{APP}} installed to ~/go/bin/{{APP}}"
 
 # Build releases for multiple platforms
-release:
+release: peg
     @echo "Building releases for Linux, Mac (Intel), Mac (ARM), Windows"
 
     @mkdir -p bin/releases
@@ -79,6 +79,11 @@ lint:
 # Tidy dependencies
 tidy:
     go mod tidy
+
+# Generate PEG parser from grammar
+peg:
+    cd internal/sources/wikisp/wsparser && go run github.com/pointlander/peg name.peg
+    @echo "✅ PEG parser generated for wikisp"
 
 # Verify project builds and all tests pass
 verify: fmt tidy test build

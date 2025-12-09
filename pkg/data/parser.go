@@ -59,7 +59,10 @@ func AddParsedData(p gnparser.GNparser, nu *coldp.NameUsage) {
 			nu.BasionymAuthorshipYear,
 			prsd.BasionymAuthorshipYear,
 		)
+	} else {
+		nu.Virus = coldp.ToBool(prsd.Virus)
 	}
+
 }
 
 func pick(a, b string) string {

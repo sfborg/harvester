@@ -3,6 +3,7 @@ package ioc
 import (
 	"log/slog"
 
+	"github.com/gnames/gn"
 	"github.com/sfborg/sflib/pkg/sfga"
 )
 
@@ -11,13 +12,15 @@ func (l *ioc) ToSfga(sfga sfga.Archive) error {
 	var err error
 	l.sfga = sfga
 
-	slog.Info("Importing Meta")
+	slog.Info("importing Meta")
+	gn.Info("Importing Meta")
 	err = l.importMeta()
 	if err != nil {
 		return err
 	}
 
-	slog.Info("Importing Names")
+	slog.Info("importing Names")
+	gn.Info("Importing Names")
 	err = l.importNameUsages()
 	if err != nil {
 		return err

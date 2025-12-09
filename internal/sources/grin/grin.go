@@ -10,6 +10,7 @@ import (
 	"strings"
 	"sync"
 
+	"github.com/gnames/gn"
 	"github.com/gnames/gnlib"
 	"github.com/gnames/gnsys"
 	"github.com/sfborg/harvester/internal/base"
@@ -44,7 +45,8 @@ and save to the box.com.`,
 }
 
 func (g *grin) Extract(path string) error {
-	slog.Info("Importing GRIN data to a temporary SQLite database")
+	slog.Info("importing GRIN data to a temporary SQLite database")
+	gn.Info("Importing GRIN data to a temporary SQLite database")
 	err := gnsys.ExtractZip(path, g.cfg.ExtractDir)
 	if err != nil {
 		return err
@@ -218,6 +220,7 @@ INSERT INTO %s (%s)
 	}
 
 	fmt.Fprintf(os.Stderr, "\r%s\r", strings.Repeat(" ", 60))
-	slog.Info("Imported data", "table", table, "rows", num)
+	slog.Info("imported data", "table", table, "rows", num)
+	gn.Info("Imported %s with %d rows", table, num)
 	return nil
 }

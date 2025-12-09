@@ -1,0 +1,10 @@
+{"in":"''Homo sapiens'' {{a|Carolus Linnaeus|Linnaeus}}, 1758: {{BHL|page/6981790|20}}","out":{"canonical":"Homo sapiens","author":"Carolus Linnaeus","shortAuthor":"Linnaeus","year":"1758","reference":": {{BHL|page/6981790|20}}","quality":3}}
+{"in":"Anthozoa {{a|Christian Gottfried Ehrenberg|Ehrenberg}}, 1834: {{BHL|page/29725892|255}}","out":{"quality":0,"error":"parse failed"}}
+{"in":"Parazoa","out":{"quality":0,"error":"parse failed"}}
+{"in":"Chirodropidae [[Haeckel]], 1877","out":{"quality":0,"error":"parse failed"}}
+{"in":"''Chiropsalmus'' {{aut|[[L. Agassiz|Agassiz]]}}, 1862: ''Contr. nat. Hist. Amer.'', 4: 174.","out":{"canonical":"Chiropsalmus","tail":" {{aut|[[L. Agassiz|Agassiz]]}}, 1862: ''Contr. nat. Hist. Amer.'', 4: 174.","quality":1}}
+{"in":"''Carybdea'' {{a|François Auguste Péron|Péron}} \u0026 {{a|Charles Alexandre Lesueur|Lesueur}}, 1809","out":{"canonical":"Carybdea","tail":" {{a|François Auguste Péron|Péron}} \u0026 {{a|Charles Alexandre Lesueur|Lesueur}}, 1809","quality":1}}
+{"in":"''Gephyromantis hintelmannae'' {{a|Katharina C. Wollenberg Valero|Wollenberg}}, {{a|Frank Glaw|Glaw}} \u0026 {{a|Miguel Vences|Vences}}, 2012: 52","out":{"canonical":"Gephyromantis hintelmannae","tail":" {{a|Katharina C. Wollenberg Valero|Wollenberg}}, {{a|Frank Glaw|Glaw}} \u0026 {{a|Miguel Vences|Vences}}, 2012: 52","quality":1}}
+{"in":"'''Zabelia densipila'' {{aut|M.-P. Hong}}, {{aut|Y.-C. Kim}} \u0026 {{aut|B.Y. Lee}}, , J. Sp. Res. 1(1): 1. (2012)'{{BASEPAGENAME}}'' [[César L. Barrio Amorós|Barrio-Amorós]] \u0026 [[Juan Carlos Santos|Santos]], 2012","out":{"canonical":"'Zabelia densipila","tail":" {{aut|M.-P. Hong}}, {{aut|Y.-C. Kim}} \u0026 {{aut|B.Y. Lee}}, , J. Sp. Res. 1(1): 1. (2012)'{{BASEPAGENAME}}'' [[César L. Barrio Amorós|Barrio-Amorós]] \u0026 [[Juan Carlos Santos|Santos]], 2012","quality":1}}
+{"in":"''Charaxes eurialus'' ([[Cramer]], 1775)","out":{"canonical":"Charaxes eurialus","tail":" ([[Cramer]], 1775)","quality":1}}
+{"in":"''Exodeconus'' [[Raf.]]","out":{"canonical":"Exodeconus","author":"Raf.","quality":2}}

@@ -22,22 +22,62 @@ THE SOFTWARE.
 package cmd
 
 import (
+	"fmt"
+	"log/slog"
 	"os"
 
+	"github.com/gnames/gn"
+	"github.com/sfborg/harvester/internal/sysio"
 	"github.com/sfborg/harvester/pkg/config"
 	"github.com/spf13/cobra"
 )
 
+var homeDir string
 var opts []config.Option
 
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
-	Use:   "harvester",
-	Short: "Converts datasets to SFGA format.",
-	Run: func(cmd *cobra.Command, args []string) {
-		versionFlag(cmd)
-		// _ = cmd.Help()
+	Use:           "harvester",
+	Short:         "Converts datasets to SFGA format.",
+	SilenceUsage:  true,
+	SilenceErrors: true,
+	PersistentPreRunE: func(cmd *cobra.Command, args []string) error {
+		var err error
+
+		homeDir, err = os.UserHomeDir()
+		if err != nil {
+			return err
+		}
+		err = bootstrap()
+		if err != nil {
+			gn.PrintErrorMessage(err)
+			return err
+		}
+
+		return nil
 	},
+	RunE: func(cmd *cobra.Command, args []string) error {
+		called := versionFlag(cmd)
+		if called {
+			return nil
+		}
+
+		return nil
+	},
+}
+
+func bootstrap() error {
+	file, err := sysio.LogFile(homeDir)
+	if err != nil {
+		return err
+	}
+
+	handler := slog.New(slog.NewJSONHandler(file, nil))
+	slog.SetDefault(handler)
+	slog.Info("log created", "log_path", file.Name())
+	gn.Info("Logs located at %s", file.Name())
+	fmt.Println()
+	return nil
 }
 
 // Execute adds all child commands to the root command and sets flags appropriately.

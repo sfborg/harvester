@@ -11,6 +11,7 @@ import (
 	"strconv"
 	"strings"
 
+	"github.com/gnames/gn"
 	"github.com/gnames/gnsys"
 )
 
@@ -91,7 +92,8 @@ func (wp *worldplants) prepareSourceDir(
 func (wp *worldplants) extractZipFile(
 	zipPath string,
 ) (string, func(), error) {
-	slog.Info("Extracting zip file", "path", zipPath)
+	slog.Info("extracting zip file", "path", zipPath)
+	gn.Info("Extracting <em>%s</em>", zipPath)
 
 	// Create temp directory in download dir for extraction
 	tempDir := filepath.Join(wp.cfg.DownloadDir, "wfwp-extracted")
@@ -110,12 +112,14 @@ func (wp *worldplants) extractZipFile(
 		return "", nil, fmt.Errorf("cannot extract zip file: %w", err)
 	}
 
-	slog.Info("Zip file extracted", "to", tempDir)
+	slog.Info("zip file extracted", "to", tempDir)
+	gn.Info("Zip extracted to <em>%s</em>", tempDir)
 
 	// Cleanup function to remove temp directory
 	cleanup := func() {
 		if err := os.RemoveAll(tempDir); err != nil {
-			slog.Warn("Failed to clean up temp directory", "error", err)
+			slog.Warn("failed to clean up temp directory", "error", err)
+			gn.Warn("Unable to clean temp directory")
 		}
 	}
 
@@ -185,7 +189,8 @@ func (wp *worldplants) prepareFerns(inputDir, extractDir string) error {
 	fernsInput := filepath.Join(inputDir, "ferns.csv")
 	fernsOutput := filepath.Join(extractDir, "ferns.csv")
 
-	slog.Info("Copying ferns.csv", "from", fernsInput, "to", fernsOutput)
+	slog.Info("copying ferns.csv", "from", fernsInput, "to", fernsOutput)
+	gn.Info("Copy ferns.csv from %s to %s", fernsInput, fernsOutput)
 
 	data, err := os.ReadFile(fernsInput)
 	if err != nil {
@@ -205,10 +210,11 @@ func (wp *worldplants) preparePlants(inputDir, extractDir string) error {
 	outputPath := filepath.Join(extractDir, "plants.csv")
 
 	slog.Info(
-		"Concatenating plant CSV files",
+		"concatenating plant CSV files",
 		"input", inputDir,
 		"output", outputPath,
 	)
+	gn.Info("Concatenating plant CSV files to %s", outputPath)
 
 	if err := wp.removeExistingPlants(outputPath); err != nil {
 		return err
@@ -224,10 +230,11 @@ func (wp *worldplants) preparePlants(inputDir, extractDir string) error {
 	}
 
 	slog.Info(
-		"Concatenated plant files",
+		"concatenated plant files",
 		"count", len(files),
 		"output", outputPath,
 	)
+	gn.Info("Concatenated plant files into <em>%s</em>", outputPath)
 
 	return nil
 }
@@ -324,7 +331,7 @@ func (wp *worldplants) appendFile(
 ) error {
 	if (index+1)%10 == 0 || index == 0 {
 		slog.Info(
-			"Processing plant file",
+			"processing plant file",
 			"file", file.name,
 			"progress", fmt.Sprintf("%d/%d", index+1, total),
 		)
@@ -364,7 +371,7 @@ func (wp *worldplants) processFileContent(
 	// Skip header line for subsequent files
 	newlineIdx := bytes.IndexByte(data, '\n')
 	if newlineIdx == -1 {
-		slog.Warn("File has no newline, skipping", "file", fileName)
+		slog.Warn("file has no newline, skipping", "file", fileName)
 		return nil
 	}
 
@@ -379,18 +386,20 @@ func (wp *worldplants) logFileSizes(extractDir string) {
 	if info, err := os.Stat(plantsPath); err == nil {
 		sizeMB := float64(info.Size()) / 1024 / 1024
 		slog.Info(
-			"Created plants.csv",
+			"created plants.csv",
 			"path", plantsPath,
 			"size_mb", fmt.Sprintf("%.2f", sizeMB),
 		)
+		gn.Info("Created <em>%s</em>", plantsPath)
 	}
 
 	if info, err := os.Stat(fernsPath); err == nil {
 		sizeMB := float64(info.Size()) / 1024 / 1024
 		slog.Info(
-			"Copied ferns.csv",
+			"copied ferns.csv",
 			"path", fernsPath,
 			"size_mb", fmt.Sprintf("%.2f", sizeMB),
 		)
+		gn.Info("Copied <em>%s</em>", fernsPath)
 	}
 }

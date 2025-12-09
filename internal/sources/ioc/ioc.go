@@ -4,6 +4,7 @@ import (
 	"log/slog"
 	"path/filepath"
 
+	"github.com/gnames/gn"
 	"github.com/gnames/gnsys"
 	"github.com/sfborg/harvester/internal/base"
 	"github.com/sfborg/harvester/pkg/config"
@@ -36,7 +37,8 @@ and save to the box.com, generate new URL and update it here.`,
 }
 
 func (l *ioc) Extract(path string) error {
-	slog.Info("Copying IOC World Birds List")
+	slog.Info("copying IOC World Birds List")
+	gn.Info("Copying IOC World Birds List")
 	file := filepath.Base(path)
 	l.path = filepath.Join(l.cfg.ExtractDir, file)
 	_, err := gnsys.CopyFile(path, l.path)

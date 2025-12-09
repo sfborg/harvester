@@ -1,0 +1,104 @@
+package wsparser
+
+type Parser Peg {}
+
+# Main entry point: parse a complete Wikispecies name string
+# Supports: (OriginalAuthor) CurrentAuthor (Year) for approximate dates
+String <- _? Marker? _? NamePart (ParenthesizedAuthorPart AuthorPart? ParenthesizedYear? / AuthorPart? (ParenthesizedYear / Year)?) (Reference / Tail)? END
+
+# Marker: hybrid (×) or extinct (†) symbols
+Marker <- '×' / '†'
+
+# Name part: italic markup or bare names
+NamePart <- ItalicInfraspeciesWithAuthors / ItalicInfraspecies / ItalicName / BareName
+
+# Italic infraspecies with species authors (autonym case)
+# ''Genus species'' {{authors}} rank ''infraspecies''
+# The authors belong to the species and should be ignored for autonyms
+ItalicInfraspeciesWithAuthors <-
+  "''" ItalicContent "''" _ Authors _ InfraRank _ "''" ItalicContent "''"
+
+# Italic infraspecies: ''Genus species'' rank ''infraspecies''
+ItalicInfraspecies <- "''" ItalicContent "''" _ InfraRank _ "''" ItalicContent "''"
+
+InfraRank <- [a-z]+ '.'?
+
+# Italic name: ''Genus species'' or '''Bold Italic Name'''
+ItalicName <- BoldItalicName / SimpleItalicName
+
+BoldItalicName <- "'''" [^']+ "'''"
+
+SimpleItalicName <- "''" ItalicContent "''"
+
+# Content inside italic markup (may contain templates like {{BASEPAGENAME}})
+ItalicContent <- (!("''" / "{{") .)* 
+
+
+# Bare name: supports uninomial, binomial, and trinomial (subspecies)
+BareName <- BareNameContent
+
+BareNameContent <- Uninomial (_ Species (_ Subspecies)?)? &(ParenthesizedAuthorPart / AuthorPart / !.)
+
+Uninomial <- NameUpperChar NameLowerChar+
+
+Species <- NameLowerChar+
+
+Subspecies <- NameLowerChar+
+
+NameUpperChar <- UpperChar / UpperCharExtended
+
+UpperCharExtended <- [ÆŒÖ]
+
+UpperChar <- UpperASCII
+
+NameLowerChar <- LowerChar / LowerCharExtended / MiscodedChar
+
+MiscodedChar <- '�'
+
+LowerCharExtended <- [æœàâåãäáçčéèëíìïňññóòôøõöúûùüŕřŗſššşßž]
+
+LowerChar <- LowerASCII
+
+UpperASCII <- [A-Z]
+
+LowerASCII <- [a-z]
+
+# Parenthesized author part: (Authors, Year) for original authorship
+ParenthesizedAuthorPart <- _? '(' _? Authors _? (',' _?)? Year? _? ')'
+
+# Author part: can be templates, brackets, or plain text
+AuthorPart <- _? Authors
+
+Authors <- Author (_ AuthorSep _ Author)* (_ ItalicAuthorText)?
+
+Author <- AuthorTemplate / BracketAuthor / ItalicAuthorText
+
+ItalicAuthorText <- "''" (!"''" .)+ "''" '.'?
+
+AuthorSep <- '&' / 'and' / ','
+
+# Author in template: {{a|...}} or {{a|...|...}} etc.
+# We just recognize the structure, content is extracted from raw text
+AuthorTemplate <- "{{" TemplateType "|" (!("}}" ) .)+ "}}"
+
+TemplateType <- "aut" / "au" / "a"
+
+# Author in double brackets: [[Name]] or [[Target|Display]]
+BracketAuthor <- "[[" (!("]" / "|") .)+ ("|" (!"]" .)+)? "]]"
+
+# Year: comma followed by 4 digits
+Year <- _? (',' _?)? [0-9] [0-9] [0-9] [0-9]
+
+# Parenthesized year: (YYYY) for approximate dates
+ParenthesizedYear <- _? '(' _? [0-9] [0-9] [0-9] [0-9] _? ')'
+
+# Reference: everything after ':' separator (bibliographic info)
+Reference <- _? ':' .*
+
+# Tail: unparsed text after last component (when there's no ':')
+Tail <- _? !'END' .+
+
+# Whitespace
+_ <- [ \t\r\n]+
+
+END <- !.

@@ -22,11 +22,11 @@ THE SOFTWARE.
 package cmd
 
 import (
-	"log/slog"
-	"os"
+	"fmt"
 	"sort"
 	"strconv"
 
+	"github.com/gnames/gn"
 	harvester "github.com/sfborg/harvester/pkg"
 	"github.com/sfborg/harvester/pkg/config"
 	"github.com/spf13/cobra"
@@ -34,12 +34,14 @@ import (
 
 // getCmd represents the get command
 var getCmd = &cobra.Command{
-	Use:   "get <label-or-id> [sfga-output-path] [flags]",
-	Short: "Converts registered source to SFGA file.",
-	Run: func(cmd *cobra.Command, args []string) {
+	Use:           "get <label-or-id> [sfga-output-path] [flags]",
+	Short:         "Converts registered source to SFGA file.",
+	SilenceErrors: true,
+	SilenceUsage:  true,
+	RunE: func(cmd *cobra.Command, args []string) error {
 		if len(args) < 1 || len(args) > 2 {
 			cmd.Help()
-			os.Exit(0)
+			return nil
 		}
 
 		flags := []flagFunc{
@@ -56,9 +58,10 @@ var getCmd = &cobra.Command{
 
 		l := getLabel(hr, args[0])
 		if l == "" {
-			slog.Error("Cannot find given source label", "input", args[0])
-			slog.Info("Use `list` command to find registered sources")
-			os.Exit(1)
+			err := fmt.Errorf("cannot find given source label for %s", args[0])
+			gn.PrintErrorMessage(err)
+			gn.Info("use `list` command to find registered sources")
+			return err
 		}
 
 		outPath := l
@@ -68,12 +71,10 @@ var getCmd = &cobra.Command{
 
 		err := hr.Get(l, outPath)
 		if err != nil {
-			slog.Error(
-				"Cannot convert source to SFGA file",
-				"source", l, "path", outPath, "error", err,
-			)
-			os.Exit(1)
+			gn.PrintErrorMessage(err)
+			return err
 		}
+		return nil
 	},
 }
 

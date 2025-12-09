@@ -8,6 +8,7 @@ import (
 	"strconv"
 	"strings"
 
+	"github.com/gnames/gn"
 	"github.com/sfborg/sflib/pkg/coldp"
 	"gopkg.in/yaml.v3"
 )
@@ -21,7 +22,8 @@ func (wp *worldplants) fetchMetadata(
 	version string,
 	suffix string,
 ) (*coldp.Meta, error) {
-	slog.Info("Fetching metadata", "datasetID", datasetID)
+	slog.Info("fetching metadata", "datasetID", datasetID)
+	gn.Info("Fetching metadata")
 
 	url := fmt.Sprintf(
 		"https://api.checklistbank.org/dataset/%s.yaml",

@@ -4,6 +4,7 @@ import (
 	"log/slog"
 	"strings"
 
+	"github.com/gnames/gn"
 	"github.com/gnames/gnlib/ent/nomcode"
 	"github.com/gnames/gnparser"
 	"github.com/gnames/gnuuid"
@@ -41,7 +42,8 @@ FROM taxonomy_species s
 		return err
 	}
 	defer rows.Close()
-	slog.Info("Collecting name usages")
+	slog.Info("collecting name usages")
+	gn.Info("Collecting name usages")
 	var res []coldp.NameUsage
 	refs := make(map[string]string)
 
@@ -156,7 +158,8 @@ func getParentID(id, acceptedID string) string {
 }
 
 func (g *grin) getBasionyms() (map[string]string, error) {
-	slog.Info("Getting basionyms")
+	slog.Info("getting basionyms")
+	gn.Info("Getting basionyms")
 	q := `
 SELECT taxonomy_species_id, current_taxonomy_species_id
 	FROM taxonomy_species

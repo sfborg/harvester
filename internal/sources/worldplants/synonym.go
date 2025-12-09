@@ -49,7 +49,7 @@ func (wp *worldplants) processSynonyms(
 	for _, synString := range synonymList {
 		// Skip problematic synonyms
 		if shouldSkipSynonym(synString) {
-			slog.Debug("Skipping synonym", "reason", "obsolete rank or empty")
+			slog.Debug("skipping synonym", "reason", "obsolete rank or empty")
 			continue
 		}
 
@@ -61,7 +61,7 @@ func (wp *worldplants) processSynonyms(
 		// Parse synonym
 		synParsed, err := wfwpParse(wp.parser, synName, synRef)
 		if err != nil {
-			slog.Warn("Failed to parse synonym", "name", synName, "error", err)
+			slog.Warn("failed to parse synonym", "name", synName, "error", err)
 			continue
 		}
 
@@ -77,13 +77,13 @@ func (wp *worldplants) processSynonyms(
 			referenceLookup,
 		)
 		if err != nil {
-			slog.Warn("Failed to create synonym", "name", synName, "error", err)
+			slog.Warn("failed to create synonym", "name", synName, "error", err)
 			continue
 		}
 
 		// Check for duplicates
 		if _, exists := seenSynonyms[synUsage.ID]; exists {
-			slog.Debug("Duplicate synonym excluded", "id", synUsage.ID)
+			slog.Warn("duplicate synonym excluded", "id", synUsage.ID)
 			continue
 		}
 		seenSynonyms[synUsage.ID] = struct{}{}
@@ -154,7 +154,7 @@ func fixHybridNotation(name string) string {
 	fixed := hybridRegex.ReplaceAllString(name, "× $1")
 
 	if fixed != name {
-		slog.Debug("Fixed hybrid notation", "original", name, "fixed", fixed)
+		slog.Warn("fixed hybrid notation", "original", name, "fixed", fixed)
 	}
 
 	return fixed
@@ -164,14 +164,14 @@ func fixHybridNotation(name string) string {
 func isValidSynonym(parsed gnparsed, originalName string) bool {
 	// Exclude quadrinomials
 	if parsed.cardinality > 3 {
-		slog.Debug("Skipping quadrinomial synonym", "name", originalName)
+		slog.Warn("skipping quadrinomial synonym", "name", originalName)
 		return false
 	}
 
 	// Exclude low quality parses
 	if parsed.quality == 0 || parsed.quality > 2 {
-		slog.Debug(
-			"Skipping low quality synonym",
+		slog.Warn(
+			"skipping low quality synonym",
 			"quality", parsed.quality,
 			"name", originalName,
 		)
@@ -246,14 +246,14 @@ func updateBasionymLookup(
 
 	// Check if already blacklisted
 	if _, blacklisted := blacklist[basionymID]; blacklisted {
-		slog.Debug("Not adding blacklisted basionym", "id", basionymID)
+		slog.Warn("not adding blacklisted basionym", "id", basionymID)
 		return
 	}
 
 	// Check for duplicates (ambiguous basionyms)
 	if existing, exists := lookup[basionymID]; exists {
 		slog.Warn(
-			"Ambiguous basionym found",
+			"ambiguous basionym found",
 			"id", basionymID,
 			"existing", existing.ScientificName,
 			"new", usage.ScientificName,
@@ -287,7 +287,7 @@ func linkBasionyms(
 		fullName := usage.ScientificName + " " + usage.Authorship
 		parsed, err := wfwpParse(parser.parser, fullName, "")
 		if err != nil {
-			slog.Debug("Failed to parse name for basionym linking", "name", fullName)
+			slog.Warn("failed to parse name for basionym linking", "name", fullName)
 			continue
 		}
 

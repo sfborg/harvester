@@ -23,8 +23,10 @@ package cmd
 
 import (
 	"fmt"
+	"log/slog"
 	"sort"
 
+	"github.com/fatih/color"
 	"github.com/sfborg/harvester/internal/output"
 	harvester "github.com/sfborg/harvester/pkg"
 	"github.com/sfborg/harvester/pkg/config"
@@ -33,9 +35,11 @@ import (
 
 // listCmd represents the list command
 var listCmd = &cobra.Command{
-	Use:   "list",
-	Short: "Shows list of supported datasets.",
-	Run: func(cmd *cobra.Command, args []string) {
+	Use:           "list",
+	Short:         "Shows list of supported datasets.",
+	SilenceErrors: true,
+	SilenceUsage:  true,
+	RunE: func(cmd *cobra.Command, args []string) error {
 		flags := []flagFunc{verboseFlag}
 		for _, v := range flags {
 			v(cmd)
@@ -46,9 +50,14 @@ var listCmd = &cobra.Command{
 		hr := harvester.New(cfg)
 
 		list := hr.List()
+		slog.Info("show list of data sources")
 		if cfg.WithVerbose {
 			out := output.New(list)
 			out.Table()
+			fmt.Printf(
+				"\n%s - require manual steps.\n",
+				color.RedString("*"),
+			)
 		} else {
 			var labels []string
 			for k := range list {
@@ -59,7 +68,12 @@ var listCmd = &cobra.Command{
 				fmt.Printf("%0.2d %s", i+1, v)
 				fmt.Println()
 			}
+			fmt.Printf(
+				"\n%s - require manual steps. Use --verbose for details\n",
+				color.RedString("*"),
+			)
 		}
+		return nil
 	},
 }
 

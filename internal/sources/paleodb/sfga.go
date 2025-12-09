@@ -3,6 +3,7 @@ package paleodb
 import (
 	"log/slog"
 
+	"github.com/gnames/gn"
 	"github.com/sfborg/sflib/pkg/sfga"
 )
 
@@ -13,25 +14,29 @@ func (p *paleodb) ToSfga(sfga sfga.Archive) error {
 	var types map[string][]string
 	p.sfga = sfga
 
-	slog.Info("Importing Meta")
+	slog.Info("importing Meta")
+	gn.Info("Importing Meta")
 	err = p.importMeta()
 	if err != nil {
 		return err
 	}
 
-	slog.Info("Importing Names Usages")
+	slog.Info("importing Names Usages")
+	gn.Info("Importing Names Usages")
 	citations, types, err = p.importNameUsages()
 	if err != nil {
 		return err
 	}
 
-	slog.Info("Importing Refernces")
+	slog.Info("importing Refernces")
+	gn.Info("Importing Refernces")
 	err = p.importReferences(citations)
 	if err != nil {
 		return err
 	}
 
-	slog.Info("Importing Type Materials")
+	slog.Info("importing Type Materials")
+	gn.Info("Importing Type Materials")
 	err = p.importTypeMaterials(types)
 	if err != nil {
 		return err

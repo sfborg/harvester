@@ -1,0 +1,1931 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.11/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.11/ http://www.mediawiki.org/xml/export-0.11.xsd" version="0.11" xml:lang="en">
+  <siteinfo>
+    <sitename>Wikispecies</sitename>
+    <dbname>specieswiki</dbname>
+    <base>https://species.wikimedia.org/wiki/Main_Page</base>
+    <generator>MediaWiki 1.45.0-wmf.25</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Wikispecies</namespace>
+      <namespace key="5" case="first-letter">Wikispecies talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+      <namespace key="710" case="first-letter">TimedText</namespace>
+      <namespace key="711" case="first-letter">TimedText talk</namespace>
+      <namespace key="828" case="first-letter">Module</namespace>
+      <namespace key="829" case="first-letter">Module talk</namespace>
+      <namespace key="1198" case="first-letter">Translations</namespace>
+      <namespace key="1199" case="first-letter">Translations talk</namespace>
+      <namespace key="2600" case="first-letter">Topic</namespace>
+    </namespaces>
+  </siteinfo>
+
+  <page>
+    <title>Wikispecies:About</title>
+    <ns>4</ns>
+    <id>6</id>
+    <revision>
+      <id>10753662</id>
+      <parentid>9307815</parentid>
+      <timestamp>2025-07-25T18:52:46Z</timestamp>
+      <contributor>
+        <username>Bytekast</username>
+        <id>2919343</id>
+      </contributor>
+      <comment>Grammar &amp; style.</comment>
+      <origin>10753662</origin>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text bytes="2373" sha1="94yy5lapmh2g2r5qxy3wzvzgl4vz44p" xml:space="preserve">&lt;languages/&gt;
+{{Shortcut|WS:A|WS:About}}
+
+:''&lt;translate&gt;&lt;!--T:1--&gt; See also [[:en:Wikispecies|Wikispecies]] on [[w:|Wikipedia]]&lt;/translate&gt;''
+
+&lt;translate&gt;
+== Motivation == &lt;!--T:2--&gt;
+
+&lt;!--T:3--&gt;
+Biologists who classify new species normally publish in specialized journals, which has led to an overwhelming amount of information with nobody keeping an overview. Even experts in very specialized fields often don't notice if a species has been formally recorded twice, thrice or even more.
+
+&lt;!--T:4--&gt;
+Therefore, the number of known species is unknown – and this is just as ridiculous as it sounds. We are not talking about all species that '''exist''' on earth, but simply about the total number of species that have already been '''recorded''' in scientific publications.
+
+&lt;!--T:5--&gt;
+Nobody knows how many there are. Expert 'A' might think that there be 17&amp;nbsp;000 known annelids, but expert 'B' believes the number to be 20&amp;nbsp;000; that happens due to the inexistence of a central registration-process and of a database or reference directory whereby to browse information about the current state of knowledge on a particular species.
+
+== Vision == &lt;!--T:11--&gt;
+
+&lt;!--T:6--&gt;
+'''A central, extensive database for taxonomy''' is what Wikispecies should become: an open, extensive database for scientists and the public (including citizen scientists) to reflect upon the diversity of life on our planet Earth; because life is public domain.
+
+&lt;!--T:7--&gt;
+There are an increasing number of large-scale, science-funded projects, all of which aim to achieve more or less the same thing. Examples include the Catalogue of Life (CoL) and the Encyclopedia of Life (EoL), among others. The main problem with most of those projects is that they are not open to editing, and so the inevitably many errors are &quot;locked in&quot; and difficult to fix.
+
+== Collaboration == &lt;!--T:8--&gt;
+
+&lt;!--T:9--&gt;
+If you want to add contents to Wikispecies, but don't know how, have a look at our [[&lt;tvar name=&quot;1&quot;&gt;Special:MyLanguage/Help:Contents&lt;/tvar&gt;|Help:Contents]] section where we explain how simple it is to add data to Wikispecies.
+
+&lt;!--T:10--&gt;
+Questions about our policy regarding Wikispecies? See the [[&lt;tvar name=&quot;1&quot;&gt;Special:MyLanguage/Wikispecies:Charter&lt;/tvar&gt;|Wikispecies:Charter]], which explains a bit more what this is about.&lt;/translate&gt;
+
+[[Category:Wikispecies{{#translation:}}|{{PAGENAME}}]]</text>
+      <sha1>94yy5lapmh2g2r5qxy3wzvzgl4vz44p</sha1>
+    </revision>
+  </page>
+
+
+  <page>
+    <title>Wikispecies:General disclaimer</title>
+    <ns>4</ns>
+    <id>7</id>
+    <revision>
+      <id>10692258</id>
+      <parentid>3944185</parentid>
+      <timestamp>2025-06-04T21:03:48Z</timestamp>
+      <contributor>
+        <username>Zinnober9</username>
+        <id>2915562</id>
+      </contributor>
+      <minor />
+      <comment>Replaced obsolete tags with HTML5 compliant equivalents (tracked syntax errors)</comment>
+      <origin>10692258</origin>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text bytes="4846" sha1="j46fmasbxl5gxanwsr8bddwkl9g7kh2" xml:space="preserve">{{center|1=&lt;big&gt;'''''Wikispecies makes no guarantee of validity'''''&lt;/big&gt;}}
+
+Wikispecies is an online open-content species directory and reference, that is, a voluntary association of individuals and groups who are developing a common resource of human knowledge on biological species and supplementing information. Its structure allows any individual with an Internet connection and World Wide Web browser to alter the content found here. Therefore, please be advised that nothing found here has necessarily been reviewed by professionals who are knowledgeable in the particular areas of expertise necessary to provide you with complete, accurate or reliable information about any subject in Wikispecies.
+
+That's not to say that you won't find much valuable and accurate information at Wikispecies, however please be advised that Wikispecies CANNOT guarantee, in any way whatsoever, the validity of the information found here. It may recently have been changed, vandalized or altered by someone whose opinion does not correspond with the state of knowledge in the particular area you are interested in learning about. We are working on ways to select and approve more trustable versions of articles, but still without warranty.
+
+None of the authors, contributors, sponsors, administrators, sysops, or anyone else connected with Wikispecies in any way whatsoever can be responsible for the appearance of any inaccurate or libelous information or your use of the information contained in or linked from these web pages.
+Please make sure that you understand that the information provided here is being provided free and gratuitously, and that no kind of agreement or contract is created between you and the owners or users of this site, the owners of the servers upon which it is housed, the individual Wikispecies contributors, any project administrators, sysops or anyone else who is in any way connected with this project or sister projects subject to your claims against them directly. You are being granted a limited license to copy anything from this site; it does not create or imply any contractual or extracontractual liability on the part of Wikispecies or any of its agents, members, organizers or other users.
+
+Any of the trademarks, service marks, collective marks, design rights, personality rights or similar rights that are mentioned, used or cited in the articles of the Wikispecies are the property of their respective owners. Their use here does not imply that you may use them for any other purpose other than for the same or a similar informational use as contemplated by the original authors of these Wikispecies articles under the CC-BY-SA and GFDL licensing scheme. Unless otherwise stated Wikispecies and Wikimedia sites are neither endorsed nor affiliated with any of the holders of any such rights and as such Wikispecies can not grant any rights to use any otherwise protected materials. Your use of any such or similar incorporeal property is at your own risk.
+
+Please note that the information found here may be in violation of the laws of the country or jurisdiction from where you are viewing this information. Wikispecies does not encourage the violation of any laws, but as this information is stored on servers in the United States of America, it is being maintained in reference to the protections afforded to all under the United States Constitution's First Amendment and under the principles of the Universal Declaration of Human Rights of the United Nations. The laws in your country may not recognize as broad a protection of free speech as the laws of the United States or the principles under the UN Charter, and as such, Wikispecies cannot be responsible for any potential violations of such laws should you link to this domain or use any of the information contained herein in anyway whatsoever.
+
+Wikispecies is not uniformly peer reviewed; while readers may correct errors or remove erroneous suggestions they have no legal duty to do so and thus all information read here is without any implied warranty of fitness for any purpose or use whatsoever.
+No consequential damages can be sought against Wikispecies, as it is a voluntary association of individuals developed freely to create various open source online educational, cultural and informational resources. This information is being given to you gratuitously and there is no agreement or understanding between you and Wikispecies regarding your use or modification of this information beyond the GNU Free Documentation License; neither is anyone at Wikispecies responsible should someone change, edit, modify or remove any information that you may post on Wikispecies or any of its associated projects.
+
+Thank you for spending the time to read this page, and please enjoy your experience at Wikispecies.
+
+[[Category:Wikispecies|{{PAGENAME}}]]</text>
+      <sha1>j46fmasbxl5gxanwsr8bddwkl9g7kh2</sha1>
+    </revision>
+  </page>
+
+
+  <page>
+    <title>Classification</title>
+    <ns>0</ns>
+    <id>8</id>
+    <redirect title="en:Scientific classification" />
+    <revision>
+      <id>9456</id>
+      <parentid>28</parentid>
+      <timestamp>2004-09-15T01:30:32Z</timestamp>
+      <contributor>
+        <username>Angela</username>
+        <id>3</id>
+      </contributor>
+      <comment>#redirect [[en:Scientific classification]]</comment>
+      <origin>9456</origin>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text bytes="42" sha1="6e3ke2t1z091l4n1is4t1vvvprjpmi0" xml:space="preserve">#redirect [[en:Scientific classification]]</text>
+      <sha1>6e3ke2t1z091l4n1is4t1vvvprjpmi0</sha1>
+    </revision>
+  </page>
+
+  <page>
+    <title>Anthozoa</title>
+    <ns>0</ns>
+    <id>53</id>
+    <revision>
+      <id>10730077</id>
+      <parentid>10725474</parentid>
+      <timestamp>2025-07-11T20:11:19Z</timestamp>
+      <contributor>
+        <username>Monster Iestyn</username>
+        <id>2812984</id>
+      </contributor>
+      <comment>/* {{int:References}} */ remov refs specific to Scleractinia</comment>
+      <origin>10730077</origin>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text bytes="1086" sha1="icu4d376oyykgrsle4clwlraq428uuw" xml:space="preserve">{{Image|Scheibenanemonen (Actinodiscus spec).jpg|''[[Actinodiscus (Blainville)|Actinodiscus]]'' sp.}}
+=={{int:Taxonavigation}}==
+{{Anthozoa}}
+Subclasses:
+{{subclass|Hexacorallia}}
+{{subclass|Octocorallia}}
+†{{subclasslast|Heliolitoidea}}
+
+=={{int:Name}}==
+Anthozoa {{a|Christian Gottfried Ehrenberg|Ehrenberg}}, 1834: {{BHL|page/29725892|255}}
+
+=={{int:References}}==
+==={{int:Primary references}}===
+{{Ehrenberg, 1834}}
+==={{int:Additional references}}===
+{{Crowther, 2011}}
+
+=={{int:Vernacular names}}==
+{{VN
+|be=Каралавыя паліпы
+|cs=Korálnatci
+|de=Blumentiere
+|el=Ανθόζωα
+|en=sea anemones and corals
+|es=Antozoos
+|fi=Korallieläimet
+|fr=Anthozoaires
+|frr=Bluumendiarten
+|he=אלמוגים
+|hu=Virágállatok, korallok
+|ja=花虫綱
+|mk=Цветни животни (анемонии и корали)
+|pl=Koralowce
+|ru=Коралловые полипы
+|pt=antozoários
+|sk=Koraly ''or'' Koralovce
+|sv=Koralldjur
+|tr=Mercanlar
+|zh=珊瑚纲
+|ta=கடல் அனிமோன்
+}}
+
+{{Commonscat}}
+{{taxonbar}}
+
+[[Category:Christian Gottfried Ehrenberg taxa]]</text>
+      <sha1>icu4d376oyykgrsle4clwlraq428uuw</sha1>
+    </revision>
+  </page>
+
+  <page>
+    <title>Octocorallia</title>
+    <ns>0</ns>
+    <id>54</id>
+    <revision>
+      <id>10782260</id>
+      <parentid>10730321</parentid>
+      <timestamp>2025-08-18T05:55:23Z</timestamp>
+      <contributor>
+        <ip>76.89.247.13</ip>
+      </contributor>
+      <origin>10782260</origin>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text bytes="1625" sha1="s33bzc85puvvu3wxhaws7ch8mccnufe" xml:space="preserve">{{image}}
+=={{int:Taxonavigation}}==
+{{Octocorallia}}
+Ordines: {{ordo|Malacalcyonacea}}
+{{ordolast|Scleralcyonacea}}
+
+Genera ''incertae sedis'':
+{{g|Aspera}}, {{g|Speirogorgia}}
+
+=={{int:Name}}==
+Octocorallia
+
+==={{int:Synonyms}}===
+* Alcyonaria
+* [[Alcyonacea]]
+* [[Gorgonacea]]
+names in synonymy:
+* [[Helioporacea]]
+* [[Pennatulacea]]
+
+=={{int:References}}==
+{{McFadden, van Ofwegen &amp; Quattrini, 2022}}
+{{Alderslade et al., 2014}}
+{{Breedy, McFadden &amp; Cortés, 2023}}
+* {{aut|Devictor, S.T.}}; {{aut|Morton, S.L.}} 2010: Identification guide to the shallow water (0–200 m) octocorals of the South Atlantic Bight. [http://www.mapress.com/zootaxa/index.html ''Zootaxa'',] 2599: 1–62. [http://www.mapress.com/zootaxa/2010/f/z02599p062f.pdf Preview] [http://www.mapress.com/zootaxa/2010/f/zt02599p062.pdf PDF]
+{{McFadden, Benayahu &amp; Samimi-Namin, 2024}}
+{{Morín et al., 2019}}
+* {{aut|Ofwegen, van L.P. &amp; C.S. McFadden}} 2010: A new family of octocorals (Anthozoa: Octocorallia) from Cameroon waters. ''Journal of natural history'', 44: 23–29. {{doi|10.1080/00222930903359669}}
+{{Sampaio et al., 2019a}}
+{{Williams, 2019}}
+* {{aut|Williams, G.C. &amp; S.D. Cairns}} 2006 (rev.) Systematic List of valid Octocoral Genera.[https://web.archive.org/web/20060615052936/http://www.calacademy.org/research/izg/OCTOCLASS.htm]
+
+=={{int:Vernacular names}}==
+{{VN
+|be=Васьміпрамянёвыя каралы
+|de=Lederkorallen
+|el=Οκτωκοράλλια
+|es=Octocorales
+|fr=Octocorallia
+|ja=八放珊瑚亜綱
+|mk=Осумзрачни корали
+|pl=Koralowce ośmiopromienne
+|fi=Sulkakorallit
+}}
+
+{{Taxonbar}}
+{{Commonscat}}</text>
+      <sha1>s33bzc85puvvu3wxhaws7ch8mccnufe</sha1>
+    </revision>
+  </page>
+
+  <page>
+    <title>Brachypodium sylvaticum</title>
+    <ns>0</ns>
+    <id>143197</id>
+    <revision>
+      <id>10853943</id>
+      <parentid>9046281</parentid>
+      <timestamp>2025-10-26T08:47:33Z</timestamp>
+      <contributor>
+        <username>MILEPRI</username>
+        <id>924668</id>
+      </contributor>
+      <comment>/* {{int:Additional references}} */</comment>
+      <origin>10853943</origin>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text bytes="3088" sha1="01v0f1fea6de7bz8b3vrz815hqg94c4" xml:space="preserve">{{Image}}
+=={{int:Taxonavigation}}==
+{{Brachypodium}}
+Species: ''[[Brachypodium sylvaticum]]''
+&lt;br&gt;
+Subspecies: {{subspplant|B|rachypodium|s|ylvaticum|creticum}}
+{{subspplantlast|B|rachypodium|s|ylvaticum|sylvaticum}}
+
+=={{int:Name}}==
+''Brachypodium sylvaticum'' ({{a|Huds.}}) {{a|Ambroise Marie François Joseph Palisot de Beauvois|P.Beauv.}}, 1812
+==={{int:Synonyms}}===
+{{HOT}}
+**''Agropyron sylvaticum'' (Huds.) Chevall. in Fl. Gén. Env. Paris 2: 196 (1827)
+**''Brachypodium pinnatum var. sylvaticum'' (Huds.) St.-Yves in Candollea 5: 431 (1934)
+**''Brachypodium pinnatum var. sylvaticum'' (Huds.) Knoche in Fl. Baléar. 1: 321 (1921)
+**''Brevipodium sylvaticum'' (Huds.) Á.Löve &amp; D.Löve in Bot. Not. 114: 37 (1961)
+**''Bromus pinnatus var. sylvaticus'' (Huds.) Wahlenb. in Kongl. Vetensk. Acad. Nya Handl. 1805: 116 (1805)
+**''Bromus sylvaticus'' (Huds.) Lyons in Fasc. Pl. Cantabr.: 15 (1763)
+**''Festuca pinnata var. sylvatica'' (Huds.) Huds. in Fl. Angl., ed. 2: 48 (1778)
+**''Festuca sylvatica'' Huds. in Fl. Angl.: 38 (1762)
+**''Triticum sylvaticum'' (Huds.) Moench in Enum. Pl. Hass.: 54 (1777)
+
+{{nadi|
+* '''Continental: Eurasia'''
+***   Albania, Altay, Assam, Austria, Azores, Baleares, Baltic States, Belarus, Belgium, Bulgaria, Buryatiya, Central European Rus, China North-Central, China South-Central, China Southeast, Corse, Cyprus, Czechoslovakia, Denmark, East Aegean Is., East European Russia, East Himalaya, France, Germany, Great Britain, Greece, Gulf of Guinea Is., Hungary, India, Iran, Iraq, Ireland, Italy, Japan, Jawa, Kazakhstan, Kirgizstan, Korea, Krasnoyarsk, Kriti, Krym, Kuril Is., Lebanon-Syria, Lesser Sunda Is., Finland, Maluku, Manchuria, Nepal, Netherlands, New Guinea, North Caucasus, Northwest European R, Norway, Pakistan, Palestine, Philippines, Poland, Portugal, Qinghai, Romania, Sakhalin, Sardegna, Saudi Arabia, Sicilia, South European Russi, Spain, Sri Lanka, Sudan, Sulawesi, Sumatera, Sweden, Switzerland, Tadzhikistan, Taiwan, Tibet, Transcaucasus, Turkey, Turkey-in-Europe, Turkmenistan, Ukraine, Uzbekistan, West Himalaya, West Siberia, Xinjiang, Yugoslavia
+* '''Continental: Africa'''
+** '''Regional: Northern Africa'''
+***   Algeria, Morocco, Tunisia
+** '''Regional: Macaronesia'''
+***  Canary Is., Cape Verde, Madeira
+** '''Regional: Eastern Africa'''
+***  Eritrea
+**'''Introduced into:'''
+*** Argentina Northeast, Michigan, New York, New Zealand North, New Zealand South, Ontario, Oregon, Uruguay, Virginia
+}}
+
+=={{int:References}}==
+==={{int:Primary references}}===
+* {{Palisot de Beauvois, 1812}}: 101, 155, 156, 181.
+==={{int:Additional references}}===
+* {{Clayton, Harman &amp; Williamson, 2006}}
+
+==={{int:Links}}===
+* {{PWO|2022|December|14}}
+* {{MBG|2022|December|14}}
+* {{Catol-Hassler|2022|December|14}}
+* {{IPNI||2022|December 14}}
+* {{GRIN|sp|7606|07-Oct-06}}
+
+=={{int:Vernacular names}}==
+{{VN
+|fi=Varjoluste, varjolehtoluste
+|nl=Boskortsteel
+|pl=Kłosownica leśna
+}}
+{{taxonbar}}
+{{Commons|Brachypodium sylvaticum|''Brachypodium sylvaticum''}}
+
+[[Category:Ambroise Marie François Joseph Palisot de Beauvois taxa]]</text>
+      <sha1>01v0f1fea6de7bz8b3vrz815hqg94c4</sha1>
+    </revision>
+  </page>
+
+  <page>
+    <title>Template:Cottea</title>
+    <ns>10</ns>
+    <id>143198</id>
+    <revision>
+      <id>2923062</id>
+      <parentid>1827228</parentid>
+      <timestamp>2017-01-17T10:19:04Z</timestamp>
+      <contributor>
+        <username>Koavf</username>
+        <id>1673</id>
+      </contributor>
+      <minor />
+      <comment>/* top */cats using [[Project:AWB|AWB]]</comment>
+      <origin>2923062</origin>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text bytes="178" sha1="azhi7dizlvqj4i3znu8jzwoq1bw3r92" xml:space="preserve">{{Cotteinae}}
+Genus: ''[[Cottea]]'' &lt;br/&gt;
+&lt;noinclude&gt;[[Category:Taxonavigation templates]]&lt;/noinclude&gt;
+&lt;includeonly&gt;[[Category:Pages with taxonavigation templates]]&lt;/includeonly&gt;</text>
+      <sha1>azhi7dizlvqj4i3znu8jzwoq1bw3r92</sha1>
+    </revision>
+  </page>
+
+
+  <page>
+    <title>Cottea</title>
+    <ns>0</ns>
+    <id>143199</id>
+    <revision>
+      <id>8914292</id>
+      <parentid>7795805</parentid>
+      <timestamp>2022-09-09T17:18:22Z</timestamp>
+      <contributor>
+        <username>MILEPRI</username>
+        <id>924668</id>
+      </contributor>
+      <origin>8914292</origin>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text bytes="1147" sha1="h1yr72nfl7m0cm8redku6gtmk8xlqeh" xml:space="preserve">{{image|Cottea pappophoroides imported from iNaturalist photo 25764630 on 28 March 2020.jpg|''Cottea pappophoroides''}}
+=={{int:Taxonavigation}}==
+{{Cottea}}
+Species: {{splast|C|ottea|pappophoroides}}
+
+=={{int:Name}}==
+*''Cottea'' [[Kunth]], Révis. Gramin. 1: 84 (1829)
+*{{moty}}
+{{nadi|
+* '''Continental: Southern America'''
+** '''Regional: Southern South America'''
+***  Argentina Northeast, Argentina Northwest
+** '''Regional: Western South America'''
+***  Bolivia, Ecuador, Peru
+* '''Continental: Northern America'''
+** '''Regional: Mexico'''
+***  Mexico Central, Mexico Northeast, Mexico Northwest, Mexico Southwest
+** '''Regional: Southern Central USA'''
+***  Arizona, New Mexico, Texas
+}}
+=={{int:References}}==
+==={{int:Primary references}}===
+* {{aut|Kunth, K.S.}} (1829) ''[[Révision des Graminées]]'' 1: 84.
+==={{int:Additional references}}===
+{{Govaerts, 2011}}
+==={{int:Links}}===
+* {{WCSP|2013|Nov.|13}}
+* {{GWSP|2013|Nov.|13}}
+* {{MBG|2013|Nov.|13}}
+* {{IPNI||2013|13 Nov.}}
+=={{int:Vernacular names}}==
+{{VN
+|en= cotta grass
+|ml= കോട്ടിയ
+}}
+{{taxonbar}}
+{{Commonscat}}
+[[category:Carl Sigismund Kunth taxa]]</text>
+      <sha1>h1yr72nfl7m0cm8redku6gtmk8xlqeh</sha1>
+    </revision>
+  </page>
+
+
+  <page>
+    <title>Cottea pappophoroides</title>
+    <ns>0</ns>
+    <id>143200</id>
+    <revision>
+      <id>10821537</id>
+      <parentid>8914317</parentid>
+      <timestamp>2025-09-23T08:33:10Z</timestamp>
+      <contributor>
+        <username>MILEPRI</username>
+        <id>924668</id>
+      </contributor>
+      <comment>/* {{int:Additional references}} */</comment>
+      <origin>10821537</origin>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text bytes="1067" sha1="5z2idwl3dlhrve9s3g8qjhgwvef3g48" xml:space="preserve">{{image}}
+=={{int:Taxonavigation}}==
+{{Cottea}}
+Species: ''[[Cottea pappophoroides]]''
+
+=={{int:Name}}==
+''Cottea pappophoroides'' {{a|Kunth}}, 1829
+
+{{nadi|
+* '''Continental: Southern America'''
+** '''Regional: Southern South America'''
+***  Argentina Northeast, Argentina Northwest
+** '''Regional: Western South America'''
+***  Bolivia, Ecuador, Peru
+* '''Continental: Northern America'''
+** '''Regional: Mexico'''
+***  Mexico Central, Mexico Northeast, Mexico Northwest, Mexico Southwest
+** '''Regional: Southern Central USA'''
+***  Arizona, New Mexico, Texas
+}}
+=={{int:References}}==
+==={{int:Primary references}}===
+* {{aut|Kunth, K.S.}} (1829) ''[[Révision des Graminées]]'' 1: 84.
+==={{int:Additional references}}===
+* {{Clayton, Harman &amp; Williamson, 2006}}
+
+==={{int:Links}}===
+* {{WCSP|2013|Nov.|13}}
+* {{GWSP|2013|Nov.|13}}
+* {{MBG|2013|Nov.|13}}
+* {{IPNI||2013|13 Nov.}}
+{{GRIN|sp|11823|07-Oct-06}}
+=={{int:Vernacular names}}==
+{{VN
+|en= cotta grass
+|ml= കോട്ടിയ
+}}
+{{taxonbar}}
+{{Commonscat}}
+[[category:Carl Sigismund Kunth taxa]]</text>
+      <sha1>5z2idwl3dlhrve9s3g8qjhgwvef3g48</sha1>
+    </revision>
+  </page>
+
+  <page>
+    <title>Atrichobrunettia (Polibrunettia)</title>
+    <ns>0</ns>
+    <id>310924</id>
+    <revision>
+      <id>8213556</id>
+      <parentid>7707999</parentid>
+      <timestamp>2021-01-19T11:52:17Z</timestamp>
+      <contributor>
+        <username>1234qwer1234qwer4</username>
+        <id>1119027</id>
+      </contributor>
+      <minor />
+      <comment>internationalise, replaced: ==Gender== → =={{int:Gender}}== using [[Project:AWB|AWB]]</comment>
+      <origin>8213556</origin>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text bytes="982" sha1="ktp8n9dn8xljd3af0kosq4n3yzm7fl4" xml:space="preserve">{{image}}
+=={{int:Taxonavigation}}==
+{{Atrichobrunettia (Polibrunettia)}}
+=={{int:Name}}==
+''Atrichobrunettia'' (''Polibrunettia'') Bravo, 2006
+==={{int:Gender}}===
+(feminine)
+==={{int:Type species}}===
+* ''[[Atrichobrunettia ampla]]'' Bravo, 2006, by original designation
+
+=={{int:References}}==
+* {{aut|Bravo, F.}} 2006: The taxonomy of Neotropical Brunettiina (Diptera, Psychodidae, Psychodinae, Mormiini), with descriptions of ten new species from Brazil and comments on the generic classification of the subtribe. [http://mapress.com/zootaxa/index.html ''Zootaxa''], 1134: 1–28. [http://mapress.com/zootaxa/2006f/z01134p028f.pdf Abstract &amp; excerpt]
+* {{aut|Ibáñez-Bernal, S.}} 2009: First record of the genus ''Atrichobrunettia'' Satchell in Mexico, with the description of a new species (Diptera, Psychodidae, Psychodinae). [http://www.mapress.com./zootaxa/index.html ''Zootaxa''], 2306: 59–65. [http://www.mapress.com./zootaxa/2009/f/z02306p065f.pdf Abstract &amp; excerpt]</text>
+      <sha1>ktp8n9dn8xljd3af0kosq4n3yzm7fl4</sha1>
+    </revision>
+  </page>
+
+
+  <page>
+    <title>Template:Atrichobrunettia (Polibrunettia)</title>
+    <ns>10</ns>
+    <id>310925</id>
+    <revision>
+      <id>2900247</id>
+      <parentid>826017</parentid>
+      <timestamp>2017-01-17T05:41:08Z</timestamp>
+      <contributor>
+        <username>Koavf</username>
+        <id>1673</id>
+      </contributor>
+      <minor />
+      <comment>/* top */cats using [[Project:AWB|AWB]]</comment>
+      <origin>2900247</origin>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text bytes="214" sha1="cwcjbotfa8tb7n3lkipj1hx57wvs501" xml:space="preserve">{{Atrichobrunettia}}
+Subgenus: ''[[Atrichobrunettia (Polibrunettia)]]''&lt;br /&gt;
+&lt;noinclude&gt;[[Category:Taxonavigation templates]]&lt;/noinclude&gt;
+&lt;includeonly&gt;[[Category:Pages with taxonavigation templates]]&lt;/includeonly&gt;</text>
+      <sha1>cwcjbotfa8tb7n3lkipj1hx57wvs501</sha1>
+    </revision>
+  </page>
+
+  <page>
+    <title>Anacamptis morio ssp. caucasica</title>
+    <ns>0</ns>
+    <id>483995</id>
+    <redirect title="Anacamptis morio subsp. caucasica" />
+    <revision>
+      <id>1361157</id>
+      <timestamp>2012-01-06T23:38:04Z</timestamp>
+      <contributor>
+        <username>Orchi</username>
+        <id>999</id>
+      </contributor>
+      <comment>Redirected page to [[Anacamptis morio subsp. caucasica]]</comment>
+      <origin>1361157</origin>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text bytes="47" sha1="ms7z1wbgt5ectv4dar2vg6ifxrn2siz" xml:space="preserve">#REDIRECT [[Anacamptis morio subsp. caucasica]]</text>
+      <sha1>ms7z1wbgt5ectv4dar2vg6ifxrn2siz</sha1>
+    </revision>
+  </page>
+
+
+  <page>
+    <title>Anacamptis morio caucasica</title>
+    <ns>0</ns>
+    <id>483996</id>
+    <redirect title="Anacamptis morio subsp. caucasica" />
+    <revision>
+      <id>1361158</id>
+      <timestamp>2012-01-06T23:38:26Z</timestamp>
+      <contributor>
+        <username>Orchi</username>
+        <id>999</id>
+      </contributor>
+      <comment>Redirected page to [[Anacamptis morio subsp. caucasica]]</comment>
+      <origin>1361158</origin>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text bytes="47" sha1="ms7z1wbgt5ectv4dar2vg6ifxrn2siz" xml:space="preserve">#REDIRECT [[Anacamptis morio subsp. caucasica]]</text>
+      <sha1>ms7z1wbgt5ectv4dar2vg6ifxrn2siz</sha1>
+    </revision>
+  </page>
+
+
+  <page>
+    <title>Orchis morio var. caucasica</title>
+    <ns>0</ns>
+    <id>483997</id>
+    <redirect title="Anacamptis morio subsp. caucasica" />
+    <revision>
+      <id>1361159</id>
+      <timestamp>2012-01-06T23:38:37Z</timestamp>
+      <contributor>
+        <username>Orchi</username>
+        <id>999</id>
+      </contributor>
+      <comment>Redirected page to [[Anacamptis morio subsp. caucasica]]</comment>
+      <origin>1361159</origin>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text bytes="47" sha1="ms7z1wbgt5ectv4dar2vg6ifxrn2siz" xml:space="preserve">#REDIRECT [[Anacamptis morio subsp. caucasica]]</text>
+      <sha1>ms7z1wbgt5ectv4dar2vg6ifxrn2siz</sha1>
+    </revision>
+  </page>
+
+
+  <page>
+    <title>Orchis graeca</title>
+    <ns>0</ns>
+    <id>483998</id>
+    <redirect title="Anacamptis morio subsp. caucasica" />
+    <revision>
+      <id>1361160</id>
+      <timestamp>2012-01-06T23:38:47Z</timestamp>
+      <contributor>
+        <username>Orchi</username>
+        <id>999</id>
+      </contributor>
+      <comment>Redirected page to [[Anacamptis morio subsp. caucasica]]</comment>
+      <origin>1361160</origin>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text bytes="47" sha1="ms7z1wbgt5ectv4dar2vg6ifxrn2siz" xml:space="preserve">#REDIRECT [[Anacamptis morio subsp. caucasica]]</text>
+      <sha1>ms7z1wbgt5ectv4dar2vg6ifxrn2siz</sha1>
+    </revision>
+  </page>
+
+
+  <page>
+    <title>Orchis albanica</title>
+    <ns>0</ns>
+    <id>483999</id>
+    <redirect title="Anacamptis morio subsp. caucasica" />
+    <revision>
+      <id>5733913</id>
+      <parentid>1361161</parentid>
+      <timestamp>2019-06-18T15:10:23Z</timestamp>
+      <contributor>
+        <username>Orchi</username>
+        <id>999</id>
+      </contributor>
+      <minor />
+      <origin>5733913</origin>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text bytes="113" sha1="7vxzzxvzurrcxt2dwhrwrymjjhtosmy" xml:space="preserve">#REDIRECT [[Anacamptis morio subsp. caucasica]]
+
+[[Category:Peter Gölz taxa]]
+[[Category:Hans R. Reinhard taxa]]</text>
+      <sha1>7vxzzxvzurrcxt2dwhrwrymjjhtosmy</sha1>
+    </revision>
+  </page>
+
+  <page>
+    <title>Template:Eriothymus</title>
+    <ns>10</ns>
+    <id>687915</id>
+    <revision>
+      <id>2936840</id>
+      <parentid>1985539</parentid>
+      <timestamp>2017-01-17T12:34:46Z</timestamp>
+      <contributor>
+        <username>Koavf</username>
+        <id>1673</id>
+      </contributor>
+      <minor />
+      <comment>/* top */cats using [[Project:AWB|AWB]]</comment>
+      <origin>2936840</origin>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text bytes="181" sha1="le2fh8u8hzcjwsx3bvj8sfba3vniqew" xml:space="preserve">{{Menthinae}}
+Genus: ''[[Eriothymus]]'' &lt;br&gt;
+&lt;noinclude&gt;[[Category:Taxonavigation templates]]&lt;/noinclude&gt;
+&lt;includeonly&gt;[[Category:Pages with taxonavigation templates]]&lt;/includeonly&gt;</text>
+      <sha1>le2fh8u8hzcjwsx3bvj8sfba3vniqew</sha1>
+    </revision>
+  </page>
+
+
+  <page>
+    <title>Eriothymus</title>
+    <ns>0</ns>
+    <id>687916</id>
+    <revision>
+      <id>10152472</id>
+      <parentid>7857920</parentid>
+      <timestamp>2024-12-17T05:42:34Z</timestamp>
+      <contributor>
+        <username>Tom.Bot</username>
+        <id>2916947</id>
+      </contributor>
+      <minor />
+      <comment>/* {{int:References}} */ +{{[[Template:Taxonbar|Taxonbar]]|from=[[d:Special:EntityPage/Q3759526|Q3759526]]}} ([[Module:Taxonbar/conf|8]] significant taxon IDs) ([[Wikispecies:Bots/Requests for approval/Tom.Bot|BRFA]])</comment>
+      <origin>10152472</origin>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text bytes="440" sha1="ck150k2go6wmv15fhqodztmt57i7hot" xml:space="preserve">{{image}}
+=={{int:Taxonavigation}}==
+{{Eriothymus}}
+Species: {{splast|E|riothymus|rubiaceus}}
+
+=={{int:Name}}==
+*''Eriothymus'' ([[Benth.]]) {{a|Heinrich Gottlieb Ludwig Reichenbach|Rchb.}}, Handb. Nat. Pfl.-Syst.: 189 (1837)
+*{{moty}}
+
+=={{int:References}}==
+{{Reichenbach, 1837}}: 189.
+*{{WCSP|2014|June|26}}
+*{{MBG|2014|June|26}}
+*{{IPNI||2014|June 26}}
+
+{{Taxonbar|from=Q3759526}}
+
+[[Category:Heinrich Gottlieb Ludwig Reichenbach taxa]]</text>
+      <sha1>ck150k2go6wmv15fhqodztmt57i7hot</sha1>
+    </revision>
+  </page>
+
+
+  <page>
+    <title>Catasetum roseum</title>
+    <ns>0</ns>
+    <id>687917</id>
+    <redirect title="Clowesia rosea" />
+    <revision>
+      <id>1985541</id>
+      <timestamp>2014-07-01T12:49:28Z</timestamp>
+      <contributor>
+        <username>Orchi</username>
+        <id>999</id>
+      </contributor>
+      <comment>Redirected page to [[Clowesia rosea]]</comment>
+      <origin>1985541</origin>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text bytes="28" sha1="t3mmgrkqi7au3g86l0klo4too951lyx" xml:space="preserve">#REDIRECT [[Clowesia rosea]]</text>
+      <sha1>t3mmgrkqi7au3g86l0klo4too951lyx</sha1>
+    </revision>
+  </page>
+
+
+  <page>
+    <title>Clowesia rosea</title>
+    <ns>0</ns>
+    <id>687918</id>
+    <revision>
+      <id>10817888</id>
+      <parentid>8351367</parentid>
+      <timestamp>2025-09-18T10:23:25Z</timestamp>
+      <contributor>
+        <username>PicTrans</username>
+        <id>362786</id>
+      </contributor>
+      <minor />
+      <origin>10817888</origin>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text bytes="1033" sha1="p8e4nohlkes6ycc2hods1iok8fgbn4q" xml:space="preserve">{{image|Clowesia rosea Orchi 082.jpg|310}}
+
+=={{int:Taxonavigation}}==
+{{Clowesia}}
+Species: ''[[Clowesia rosea]]''
+
+=={{int:Name}}==
+''Clowesia rosea'' {{a|John Lindley|Lindl.}}, Edwards's Bot. Reg. 29 (Misc.): 25 (1843).
+* {{typsp}}
+
+==={{int:Synonymy}}===
+{{HOT}}
+** ''Catasetum roseum'' ({{aut|Lindl.}}) {{a|Heinrich Gustav Reichenbach|Rchb.f.}}, Gard. Chron. 1872: 1003 (1872).
+
+{{nadi|
+* '''[[:File:WGSRPD Northern America.svg|Northern America]]'''
+** '''Regional: [[:File:WGSRPD Mexico.jpg|Mexico]]'''
+*** Mexico Southwest.
+}}
+
+== {{int:References}} ==
+=== {{int:Primary references}} ===
+* {{Lindl.}} 1843. ''Edwards's Botanical Register'' 29: Misc. 25-26.
+
+==={{int:Additional references}}===
+* {{Genorch 5|18}}
+
+==={{int:Links}}===
+{{GBIF|{{#property:P846}}|2025|Sep|18}}
+{{PWO|2025|Sep|18}}
+{{Catol-Hassler|2025|Sep|18}}
+{{World Plants|2025|Sep|18}}
+{{IPNI|{{#property:P961}}|2025|18 Sep}}
+{{MBG|2025|Sep|18}}
+
+=={{int:Vernacular names}}==
+{{#invoke:VN|main}}{{VN}}
+
+{{Commons}}
+{{Taxonbar}}
+[[Category:John Lindley taxa]]</text>
+      <sha1>p8e4nohlkes6ycc2hods1iok8fgbn4q</sha1>
+    </revision>
+  </page>
+
+
+  <page>
+    <title>Template:Glechon</title>
+    <ns>10</ns>
+    <id>687919</id>
+    <revision>
+      <id>7488217</id>
+      <parentid>2942345</parentid>
+      <timestamp>2020-04-04T23:42:38Z</timestamp>
+      <contributor>
+        <username>Fagus</username>
+        <id>136052</id>
+      </contributor>
+      <origin>7488217</origin>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text bytes="84" sha1="okal0fm9bbcnqh4vp7jgwpb0az7g3ng" xml:space="preserve">{{DISPLAYTITLE:''{{FULLPAGENAME}}''|noreplace}}
+{{Menthinae}}
+Genus: {{gbr|Glechon}}</text>
+      <sha1>okal0fm9bbcnqh4vp7jgwpb0az7g3ng</sha1>
+    </revision>
+  </page>
+
+
+  <page>
+    <title>Glechon</title>
+    <ns>0</ns>
+    <id>687920</id>
+    <revision>
+      <id>10152471</id>
+      <parentid>7887678</parentid>
+      <timestamp>2024-12-17T05:42:32Z</timestamp>
+      <contributor>
+        <username>Tom.Bot</username>
+        <id>2916947</id>
+      </contributor>
+      <minor />
+      <comment>/* {{int:Links}} */ +{{[[Template:Taxonbar|Taxonbar]]|from=[[d:Special:EntityPage/Q3759517|Q3759517]]}} ([[Module:Taxonbar/conf|11]] significant taxon IDs) ([[Wikispecies:Bots/Requests for approval/Tom.Bot|BRFA]])</comment>
+      <origin>10152471</origin>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text bytes="559" sha1="13j2ddgax0oxrnvfpf21co197698lbf" xml:space="preserve">{{image}}
+=={{int:Taxonavigation}}==
+{{Glechon}}
+=== {{int:Overview of species}} ===
+{{sp|G|lechon|ciliata}} {{sp|G|lechon|discolor}} {{sp|G|lechon|elliptica}} {{sp|G|lechon|hoehneana}} {{sp|G|lechon|marifolia}}  {{splast|G|lechon|thymoides}}
+
+=={{int:Name}}==
+*''Glechon'' [[Spreng.]], Syst. Veg. 4(2): 227 (1827)
+*{{tysp|Glechon thymoides| Spreng., Syst. Veg. 4(2): 227 (1827)}}
+
+=={{int:References}}==
+==={{int:Links}}===
+{{WCSP|2020|April|4}}
+{{IPNI|30002788-2|2020|4 April}}
+
+{{Taxonbar|from=Q3759517}}
+
+[[Category:Kurt Polycarp Joachim Sprengel taxa]]</text>
+      <sha1>13j2ddgax0oxrnvfpf21co197698lbf</sha1>
+    </revision>
+  </page>
+
+
+  <page>
+    <title>Template:Gontscharovia</title>
+    <ns>10</ns>
+    <id>687921</id>
+    <revision>
+      <id>7488208</id>
+      <parentid>1985545</parentid>
+      <timestamp>2020-04-04T23:25:26Z</timestamp>
+      <contributor>
+        <username>Fagus</username>
+        <id>136052</id>
+      </contributor>
+      <origin>7488208</origin>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text bytes="90" sha1="dmiucijxra4nafrtn3dzlbfuz2vomvl" xml:space="preserve">{{DISPLAYTITLE:''{{FULLPAGENAME}}''|noreplace}}
+{{Menthinae}}
+Genus: {{gbr|Gontscharovia}}</text>
+      <sha1>dmiucijxra4nafrtn3dzlbfuz2vomvl</sha1>
+    </revision>
+  </page>
+
+
+  <page>
+    <title>Gontscharovia</title>
+    <ns>0</ns>
+    <id>687922</id>
+    <revision>
+      <id>9140216</id>
+      <parentid>8358988</parentid>
+      <timestamp>2023-03-04T11:30:38Z</timestamp>
+      <contributor>
+        <username>IFPNI Staff</username>
+        <id>2864680</id>
+      </contributor>
+      <comment>corrections</comment>
+      <origin>9140216</origin>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text bytes="392" sha1="f7p3oxd01b03fjs0mzzhk7qjubskxz6" xml:space="preserve">{{image}}
+=={{int:Taxonavigation}}==
+{{Gontscharovia}}
+Species: {{splast|G|ontscharovia|popovii}}
+
+=={{int:Name}}==
+*''Gontscharovia'' [[Boriss.]], Bot. Mater. Gerb. Bot. Inst. Komarova Akad. Nauk S.S.S.R. 15: 321 (1953)
+*{{moty}}
+
+=={{int:References}}==
+{{Borissova, 1953}}
+
+{{taxonbar}}
+
+[[Category:Eponyms of Nikolai Fedorovich Gontscharow]]
+[[Category:Antonina Georgievna Borissova taxa]]</text>
+      <sha1>f7p3oxd01b03fjs0mzzhk7qjubskxz6</sha1>
+    </revision>
+  </page>
+
+  <page>
+    <title>Odontocarya scabra</title>
+    <ns>0</ns>
+    <id>889821</id>
+    <redirect title="Odontocarya tamoides var. canescens" />
+    <revision>
+      <id>2712694</id>
+      <parentid>2695801</parentid>
+      <timestamp>2016-09-12T08:32:08Z</timestamp>
+      <contributor>
+        <username>Franz Xaver</username>
+        <id>224294</id>
+      </contributor>
+      <origin>2712694</origin>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text bytes="79" sha1="2jrmhv01dsmvjwj9y1jjvi4i6duij3n" xml:space="preserve">#REDIRECT [[Odontocarya tamoides var. canescens]]
+
+[[Category:John Miers taxa]]</text>
+      <sha1>2jrmhv01dsmvjwj9y1jjvi4i6duij3n</sha1>
+    </revision>
+  </page>
+
+
+  <page>
+    <title>Odontocarya paupera</title>
+    <ns>0</ns>
+    <id>889822</id>
+    <redirect title="Odontocarya tamoides var. canescens" />
+    <revision>
+      <id>2716001</id>
+      <parentid>2695802</parentid>
+      <timestamp>2016-09-17T10:39:18Z</timestamp>
+      <contributor>
+        <username>Franz Xaver</username>
+        <id>224294</id>
+      </contributor>
+      <origin>2716001</origin>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text bytes="91" sha1="hfgsk80styhieqb7hcs22gl9171if09" xml:space="preserve">#REDIRECT [[Odontocarya tamoides var. canescens]]
+
+[[Category:Friedrich Ludwig Diels taxa]]</text>
+      <sha1>hfgsk80styhieqb7hcs22gl9171if09</sha1>
+    </revision>
+  </page>
+
+
+  <page>
+    <title>Odontocarya tamoides var. paupera</title>
+    <ns>0</ns>
+    <id>889823</id>
+    <redirect title="Odontocarya tamoides var. canescens" />
+    <revision>
+      <id>2724681</id>
+      <parentid>2695803</parentid>
+      <timestamp>2016-09-30T16:53:49Z</timestamp>
+      <contributor>
+        <username>Franz Xaver</username>
+        <id>224294</id>
+      </contributor>
+      <origin>2724681</origin>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text bytes="81" sha1="7ikpw2x9z59jnix22ofbrumoy1jaro8" xml:space="preserve">#REDIRECT [[Odontocarya tamoides var. canescens]]
+
+[[Category:Emil Hassler taxa]]</text>
+      <sha1>7ikpw2x9z59jnix22ofbrumoy1jaro8</sha1>
+    </revision>
+  </page>
+
+
+  <page>
+    <title>Odontocarya tamoides var. canescens</title>
+    <ns>0</ns>
+    <id>889824</id>
+    <revision>
+      <id>10125794</id>
+      <parentid>6283472</parentid>
+      <timestamp>2024-12-16T14:23:32Z</timestamp>
+      <contributor>
+        <username>Tom.Bot</username>
+        <id>2916947</id>
+      </contributor>
+      <minor />
+      <comment>/* {{int:Links}} */ +{{[[Template:Taxonbar|Taxonbar]]|from=[[d:Special:EntityPage/Q26432940|Q26432940]]}} ([[Module:Taxonbar/conf|8]] significant taxon IDs) ([[Wikispecies:Bots/Requests for approval/Tom.Bot|BRFA]])</comment>
+      <origin>10125794</origin>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text bytes="3398" sha1="odw2crq3efdc9ntd1e8plpzqwvl7pba" xml:space="preserve">{{DISPLAYTITLE:''Odontocarya tamoides'' var. ''canescens''}}
+== {{int:Taxonavigation}} ==
+{{Odontocarya}}
+Species: ''[[Odontocarya tamoides]]''&lt;br&gt;
+Varietas: '''''Odontocarya tamoides'' var. ''canescens'''''
+
+== {{int:Name}} ==
+''Odontocarya tamoides'' var. ''canescens'' ({{a|John Miers|Miers}}) {{a|Rupert Charles Barneby|Barneby}}, Mem. New York Bot. Gard. 20(2): 91(–92). 1970.
+
+=== {{int:Synonymy}} ===
+{{BAS}}
+**''Odontocarya hederifolia'' var. ''canescens'' {{aut|Miers}}, Contr. Bot. 3: [http://archive.org/stream/cu31924085779951#page/n73/mode/1up 64]. 1871. (as ''Odontocarya hederæfolia'' var. ''canescens'')
+
+{{HOT}}
+**''Odontocarya paupera'' var. ''canescens'' ({{aut|Miers}}) {{a|Friedrich Ludwig Diels|Diels}}, Pflanzenr. (Engler) IV. 94 (Heft 46): [http://biodiversitylibrary.org/page/20830787 172]. 1910.
+
+{{HET}}
+**''Chondrodendron hederifolium'' {{aut|Miers}}, Ann. Mag. Nat. Hist., ser. 2, 7(37): [http://biodiversitylibrary.org/page/13787622 44]. 1851, [[nom. nud.]] (as ''Chondodendron'')
+**''Chondrodendron scabrum'' {{aut|Miers}}, Ann. Mag. Nat. Hist., ser. 2, 7(37): [http://biodiversitylibrary.org/page/13787622 44]. 1851, nom. nud. (as ''Chondodendron'')
+**''Cocculus pauper'' {{a|August Heinrich Rudolf Grisebach|Griseb.}}, Abh. Königl. Ges. Wiss. Göttingen 7(Phys. Cl.): [http://biodiversitylibrary.org/page/35297988 162](–163). 1857.
+**''Odontocarya hederifolia'' {{aut|Miers}}, Ann. Mag. Nat. Hist., ser. 3, 14(80): [http://biodiversitylibrary.org/page/22249550 100]. 1864, nom. nud. – Contr. Bot. 3: [http://archive.org/stream/cu31924085779951#page/n73/mode/1up 64](–65), t. [http://archive.org/stream/cu31924085779951#page/n466/mode/1up 100], figs. 1–12. 1871. (as ''Odontocarya hederæfolia'')
+**''Odontocarya scabra'' {{aut|Miers}}, Ann. Mag. Nat. Hist., ser. 3, 14(80): [http://biodiversitylibrary.org/page/22249550 100]. 1864, nom. nud. – Contr. Bot. 3: [http://archive.org/stream/cu31924085779951#page/n74/mode/1up 65]. 1871.
+**''Odontocarya paupera'' {{aut|(Griseb.) Diels}}, Pflanzenr. (Engler) IV. 94 (Heft 46): [http://biodiversitylibrary.org/page/20830787 172]. 1910.
+**''Odontocarya tamoides'' var. ''paupera'' ({{aut|Griseb.}}) {{a|Emil Hassler|Hassl.}}, Addenda Pl. Hassl.: 4. 1917.
+
+{{MIS}}
+**''Chondodendron tomentosum'' sensu {{a|George Bentham|Benth.}}, J. Proc. Linn. Soc., Bot. 5(Suppl. 2): [http://biodiversitylibrary.org/page/176468 47]. 1861, [[p.p.]] – non ''[[Chondrodendron tomentosum]]'' {{a|Hipólito Ruiz López|Ruiz}} &amp; {{a|José Antonio Pavón|Pav.}}, Syst. Veg. Fl. Peruv. Chil.: 261. 1798.
+
+== {{int:References}} ==
+=== {{int:Primary references}} ===
+{{Grisebach, 1857}}
+=== {{int:Additional references}} ===
+{{Barneby, 2001}}
+{{Barneby &amp; Hiepko, 2007}}
+{{Rhodes, 1962|26842830}} (as ''Odontocarya paupera'')
+=== {{int:Links}} ===
+{{IPNI|172193-2|2019|15 August|Odontocarya tamoides'' var. ''canescens}}
+{{GBIF|3830588}}
+{{TROPICOS|20600141|2019|August|15|Odontocarya tamoides'' var. ''canescens}}
+{{MBG-FM|20600141|15 August|2019|Odontocarya tamoides'' var. ''canescens}}
+{{MBGBolivia|20600141|15 August|2019|Odontocarya tamoides'' var. ''canescens}}
+{{FlBrasil|FB19759|15 August|2019|''Odontocarya tamoides'' var. ''canescens''}}
+{{FlConosur|sp|Odontocarya|tamoides|122719|date=15 August 2019|name=''Odontocarya tamoides'' var. ''canescens''}}
+
+{{Taxonbar|from=Q26432940}}
+
+[[Category:Rupert Charles Barneby taxa]]</text>
+      <sha1>odw2crq3efdc9ntd1e8plpzqwvl7pba</sha1>
+    </revision>
+  </page>
+  <page>
+    <title>Anacamptis morio subsp. caucasica</title>
+    <ns>0</ns>
+    <id>483994</id>
+    <revision>
+      <id>8269761</id>
+      <parentid>6245411</parentid>
+      <timestamp>2021-03-05T19:53:36Z</timestamp>
+      <contributor>
+        <username>Orchi</username>
+        <id>999</id>
+      </contributor>
+      <minor />
+      <origin>8269761</origin>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text bytes="2528" sha1="8uo0h8160f6rm92nhlfkvz2m9wwu3x9" xml:space="preserve">{{Image|Anacamptis morio subsp. caucasica kz16.jpg|''Anacamptis morio'' subsp. ''caucasica''}}
+
+=={{int:Taxonavigation}}==
+{{Anacamptis morio}}
+Subspecies: [[Anacamptis morio subsp. caucasica|''Anacamptis morio'' subsp. ''caucasica'']]
+
+=={{int:Name}}==
+''Anacamptis morio'' subsp. ''caucasica'' ({{a|K.Koch}}) {{a|H.Kretzschmar}}, {{a|Eccarius}} &amp; {{a|H.Dietr.}}, Orchid Gen. Anacamptis Orchis Neotinea, ed. 2: 125 (2007)
+
+=== {{int:Synonymy}} ===
+{{BAS}}
+** ''Orchis morio'' var. ''caucasica'' {{aut|K.Koch}}, Linnaea 22: 280 (1849)
+{{HOT}}
+** ''Orchis morio'' subsp. ''caucasica'' ({{aut|K.Koch}}) {{a|E.G.Camus}}, {{a|Bergon}} &amp; {{a|A.Camus}}, Monogr. Orchid.: 106 (1908)
+** ''Orchis picta'' var. ''caucasica'' ({{aut|K.Koch}}) {{a|P.Delforge}}, Naturalistes Belges 87(Orchid. 19): 261 (2006)
+** ''Herorchis picta'' var. ''caucasica'' ({{aut|K.Koch}}) {{aut|P.Delforge}}, Naturalistes Belges 90: 28 (2009)
+{{HET}}
+** ''Orchis graeca'' {{a|Orph.}} ex {{a|Soó}}, Bot. Arch. 23: 27 (1928)
+** ''Orchis albanica'' {{a|Gölz}} &amp; {{a|H.R.Reinhard}}, Mitt. Arbeitskreis Heimische Orchid. Baden-Württemberg 16: 223 (1984)
+** ''Orchis morio'' subsp. ''albanica'' ({{aut|Gölz &amp; H.R.Reinhard}}) {{a|Buttler}}, Willdenowia 16: 116 (1986)
+** ''Orchis picta'' var. ''albanica'' ({{aut|Gölz}} &amp; {{aut|H.R.Reinhard}}) {{aut|P.Delforge}}, Naturalistes Belges 87(Orchid. 19): 261 (2006)
+** ''Anacamptis morio'' subsp. ''albanica'' ({{aut|Gölz &amp; H.R.Reinhard}}) {{a|Kreutz}}, Ber. Arbeitskreis. Heimische Orchid. 24(1): 144 (2007)
+** ''Herorchis albanica'' ({{aut|Gölz &amp; H.R.Reinhard}}) {{a|D.Tyteca}} &amp; {{a|E.Klein}}, J. Eur. Orch. 40: 541 (2008)
+** ''Herorchis picta'' var. ''albanica'' ({{aut|Gölz &amp; H.R.Reinhard}}) {{aut|P.Delforge}}, Naturalistes Belges 90: 28 (2009)
+
+{{nadi|
+*'''Europe'''
+**'''Southeastern Europe'''
+*** Albania, Bulgaria, Greece, Kriti, Romania, Turkey-in-Europe, Yugoslavia.
+**'''Eastern Europe'''
+*** Krym, South European Russia, Ukraine.
+*'''Asia-Temperate'''
+**'''Caucasus'''
+*** North Caucasus, Transcaucasus.
+**'''Western Asia'''
+*** East Aegean Islands, Iran, Iraq, Turkey.
+}}
+
+== {{int:References}} ==
+=== {{int:Primary references}} ===
+* {{Kretzschmar, Eccarius &amp; Dietrich, 2007}}
+
+=== {{int:Links}} ===
+* {{PWO|2019|July|7}}
+* {{WCSP|2019|July|7}}
+* {{IPNI||2019|7 July}}
+* {{TPLF|2019|July|7}}
+* {{MBG|2019|July|7}}
+
+== {{int:Vernacular names}} ==
+{{#invoke:VN|main}}{{VN}}&lt;br&gt;
+
+{{Commons}}
+
+[[Category:Horst Kretzschmar taxa]]
+[[Category:Wolfgang Eccarius taxa]]
+[[Category:Helga Dietrich taxa]]</text>
+      <sha1>8uo0h8160f6rm92nhlfkvz2m9wwu3x9</sha1>
+    </revision>
+  </page>
+
+  <page>
+    <title>Template:Brachypodium</title>
+    <ns>10</ns>
+    <id>120717</id>
+    <revision>
+      <id>2907024</id>
+      <parentid>286361</parentid>
+      <timestamp>2017-01-17T07:15:10Z</timestamp>
+      <contributor>
+        <username>Koavf</username>
+        <id>1673</id>
+      </contributor>
+      <minor />
+      <comment>/* top */cats using [[Project:AWB|AWB]]</comment>
+      <origin>2907024</origin>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text bytes="188" sha1="puxga3lqp194atww5r8ms3faikfvs5o" xml:space="preserve">{{Brachypodieae}}
+Genus: ''[[Brachypodium]]'' &lt;br/&gt;
+&lt;noinclude&gt;[[Category:Taxonavigation templates]]&lt;/noinclude&gt;
+&lt;includeonly&gt;[[Category:Pages with taxonavigation templates]]&lt;/includeonly&gt;</text>
+      <sha1>puxga3lqp194atww5r8ms3faikfvs5o</sha1>
+    </revision>
+  </page>
+
+  <page>
+    <title>Brachypodium holcoides</title>
+    <ns>0</ns>
+    <id>753714</id>
+    <redirect title="Arundinella holcoides" />
+    <revision>
+      <id>2218201</id>
+      <timestamp>2015-04-30T08:08:24Z</timestamp>
+      <contributor>
+        <username>Andyboorman</username>
+        <id>251907</id>
+      </contributor>
+      <comment>Redirected page to [[Arundinella holcoides]]</comment>
+      <origin>2218201</origin>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text bytes="35" sha1="akxfzvquafxsk6qhjm92hn7j4axnftq" xml:space="preserve">#REDIRECT [[Arundinella holcoides]]</text>
+      <sha1>akxfzvquafxsk6qhjm92hn7j4axnftq</sha1>
+    </revision>
+  </page>
+
+  <page>
+    <title>Clowesia</title>
+    <ns>0</ns>
+    <id>569097</id>
+    <revision>
+      <id>8351361</id>
+      <parentid>8100165</parentid>
+      <timestamp>2021-05-14T19:27:00Z</timestamp>
+      <contributor>
+        <username>Orchi</username>
+        <id>999</id>
+      </contributor>
+      <minor />
+      <origin>8351361</origin>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text bytes="2055" sha1="l3ipcxaw9yikupbquo3dj0istaycx75" xml:space="preserve">{{image|Clowesia rosea Orchi 014.jpg|''[[Clowesia rosea]]'' (Typus)}}
+
+== {{int:Taxonavigation}} ==
+{{Clowesia}}
+=== {{int:Overview of species}} (7) ===
+{{sp|C|lowesia|amazonica}}
+{{sp|C|lowesia|dodsoniana}}
+{{sp|C|lowesia|glaucoglossa}}
+{{sp|C|lowesia|rosea}}
+{{sp|C|lowesia|russelliana}}
+{{sp|C|lowesia|thylaciochila}}
+{{splast|C|lowesia|warczewitzii}}
+
+== {{int:Name}} ==
+''Clowesia'' {{a|John Lindley|Lindl.}}, Edwards's Bot. Reg. 29(Misc.): 25 (1843)
+* {{tysp|Clowesia rosea| {{aut|Lindl.}}, Edwards's Bot. Reg. 29(Misc.): 25 (1843)}}
+
+=== {{int:Synonymy}} ===
+{{HET}}
+** ''Warczewitzia'' {{a|George Ure Skinner|Skinner}} ex {{aut|Lindl.}}, Paxton's Fl. Gard. 1: 45 (1850), {{NN}}
+
+{{nadi|
+* '''[[:File:WGSRPD Northern America.svg|Northern America]]'''
+** '''[[:File:WGSRPD Mexico.jpg|Mexico]]'''
+*** Mexico Central, Mexico Southwest, Mexico Southeast.
+* '''[[:File:WGSRPD Southern America with regions.svg|Southern America]]'''
+** '''[[:File:WGSRPD Central America.svg|Central America]]'''
+*** Belize, Costa Rica, El Salvador, Guatemala, Honduras, Nicaragua, Panama.
+** '''[[:File:WGSRPD Northern South America.svg|Northern South America]]'''
+*** Guyana, Suriname (doubtful), Venezuela.
+** '''[[:File:WGSRPD Western South America.svg|Western South America]]'''
+*** Colombia, Ecuador.
+** '''[[:File:WGSRPD Brazil.svg|Brazil]]'''
+*** Brazil North.
+}}
+
+== {{int:References}} ==
+=== {{int:Primary references}} ===
+* {{Lindl.}} 1843. ''Edwards's Botanical Register'' 29: Misc. 25–26.
+* {{Genorch 5|18}}
+
+=== {{int:Links}} ===
+* {{GBIF|{{#property:P846}}|2021|May|14}}
+* {{PWO|2021|May|14}}
+* {{WCSP|2021|May|14}}
+* {{Catol-Hassler|2021|May|14}}
+* {{IPNI|{{#property:P961}}|2021|14 May}}
+* [http://www.orchidsrepbiol.de/cgi-bin/img_db/img_display.pl?db=_vwcatasetinae&amp;bstep=0&amp;page=0&amp;t=usr_gg1&amp;genus={{PAGENAME}}&amp;sp=all&amp;country=all&amp;search=&amp;cols=10&amp;rows=20 Photo collections of ''{{PAGENAME}}'' from Botanical Garden Munich]
+* {{MBG|2021|May|14}}
+
+== {{int:Vernacular names}} ==
+{{#invoke:VN|main}}{{VN}}
+
+{{Commons}}
+
+[[Category:John Lindley taxa]]</text>
+      <sha1>l3ipcxaw9yikupbquo3dj0istaycx75</sha1>
+    </revision>
+  </page>
+  <page>
+    <title>Fernando Álvarez-Padilla</title>
+    <ns>0</ns>
+    <id>569098</id>
+    <revision>
+      <id>10710724</id>
+      <parentid>10635848</parentid>
+      <timestamp>2025-06-25T06:11:42Z</timestamp>
+      <contributor>
+        <username>PeterR</username>
+        <id>7354</id>
+      </contributor>
+      <origin>10710724</origin>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text bytes="4950" sha1="ap00h1hvx6rul72psnbat6jp72es661" xml:space="preserve">'''Fernando Álvarez-Padilla''', Mexican arachnologist.
+* Professor: Universidad Nacional Autónoma de México.
+* Laboratorio de Aracnología, Departamento de Biología Comparada, Facultad de Ciencias, Universidad Nacional Autónoma de México, Circuito Exterior s/n, Colonia Copilco el Bajo. C. P. 04510. Del. Coyoacán, Ciudad de México, México.
+* E-mail: fap@ciencias.unam.mx
+{{Taxa authored}}
+=={{int:Publications}}==
+{{Inc}}
+===2007===
+{{Álvarez-Padilla, 2007}}
+{{Hormiga, Alvarez-Padilla &amp; Benjamin, 2007}}
+===2012===
+{{Álvarez-Padilla, Ubick &amp; Griswold, 2012}}
+* {{aut|Platnick NI; Abrahim N, Alvarez-Padilla F, Andriamalala D, Baehr B, Baert L, Bonaldo, AB; Brescovit AD, Chousou-Polydouri N, Dupérré N; Eichenberger B; Fannes W; Gaublomme E; Gillespie RG., Grismado CJ; Griswold CE.; Harvey MS.; Henrard, A, Hormiga G, Izquierdo MA, Jocqué R; Kranz-Baltensperger Y, Kropf C, Ott R, Ramírez MJ, Raven RJ; Rheims CA, Ruiz GRS, Santos AJ, Saucedo A, Sierwald P, Szűts T; Ubick D, Wang, X-P.}} 2012. Tarsal organ morphology and the phylogeny of goblin spiders (Araneae, Oonopidae), with notes on basal genera. American Museum Novitates. 3736: 1–52.
+* {{aut|Dimitar D. Lopardo L. Giribet G. Arnedo MA. Álvarez-Padilla F. Hormiga G.}} 2012. Tangled in a sparse spider web: single origin of orb weavers and their spinning work unravelled by denser taxonomic sampling. Proceedings of the Royal Society Series B Biological Sciences. 279 (1732): 1341–1350.
+* {{aut|Álvarez-Padilla, F. and G. Hormiga.}} 2011. Case 3541- Metinae Simon, 1894 (Arachnida, Araneae, Tetragnathidae): proposed emendation of the current spelling to Metainae to remove homonymy with Metidae Boeck, 1872 (Crustacea, Copepoda). Bulletin of Zoological Nomenclature. 68(4) 262-266.
+* {{aut|Álvarez-Padilla F. and Benjamín S.}} 2011. Phylogenetic placement and redescription of the spider genus Atelidea Simon, 1895 (Araneae, Tetragnathidae). Zootaxa. 2761: 51–63.
+* {{aut|Álvarez-Padilla F. and Hormiga G. 2011. Morphological and Phylogenetic Atlas of the orbweaving spider family Tetragnathidae (Araneae: Araneoidea). Zoological Journal of the Linnean Society. 162: 713 – 879.
+* {{aut|Dimitrov D., Álvarez-Padilla F., Hormiga G.}} 2010. On the phylogenetic placement of the spider genus Atimiosa Simon, 1895 (Tetragnathidae, Araneae) and the circumscription of the genus Dolichognatha O.P.- Cambridge, 1869. American Museum Novitates. American Museum Novitates 3683:1-19.
+* {{aut|Álvarez-Padilla F., Dimitrov D., Giribet G., and Hormiga G.}} 2009. Phylogenetic relationships of the spider family Tetragnathidae (Araneae, Araneoidea) based on morphological and DNA sequence data. Cladistics. 25: 109–146.
+{{Rivera-Quiroz &amp; Alvarez-Padilla, 2015}}
+* {{aut|Spagna J. C. and Álvarez-Padilla F.}} 2008. Finding an upper limit for gap costs in direct optimization parsimony. Cladistics. 25: 787–801.
+* {{aut|Dimitrov D., Álvarez-Padilla F., and Hormiga G.}} 2008. Until dirt do us apart: on the unremarkable palp morphology of the spider Sternospina concretipalpis Schmidt &amp; Krause, 1993, with comments on the genus Prionolaema Simon, 1894 (Araneae, Tetragnathidae). Zootaxa, 1698: 49–56.
+* {{aut|Álvarez-Padilla, F. and Hormiga G.}} 2007. A protocol for digesting internal soft tissues and mounting spiders for scanning electron microscopy. Journal of Arachnology 35: 538–542.
+* {{aut|Dimitrov D., Álvarez-Padilla F., and Hormiga, G.}} 2007. The female genitalic morphology of the orb weaving spider genus Agriognatha (Araneae, Tetragnathidae). Journal of Morphology 268(9): 758–770.
+* {{aut|Álvarez-Padilla, F.}} 2007. Systematics of the spider genus Metabus O. P.-Cambridge, 1899 (Araneoidea: Tetragnathidae) with additions to the tetragnathid fauna of Chile and comments on the phylogeny of Tetragnathidae. Zoological Journal of the Linnean Society 151: 285–335.
+{{Garcilazo-Cruz &amp; Alvarez-Padilla, 2015}}
+* {{aut|Hormiga, G., Álvarez-Padilla F., and Benjamín S.P.}} 2007. First records of extant Hispaniolan spiders of the families Mysmenidae, Symphytognathidae and Ochyroceratidae (Araneae), including a new species of Ochyrocera. American Museum Novitates 3577: 1–21.
+* {{aut|Kuntner, M. and Álvarez-Padilla, F.}} 2006a. Systematics of the Afro-Macaronesian spider genus Sancus (Araneae, Tetragnathidae). Journal of Arachnology 34(1):113-125.
+===2017===
+{{Galán-Sánchez &amp; Álvarez-Padilla, 2017}}
+===2018===
+{{Salgueiro-Sepúlveda &amp; Alvarez-Padilla, 2018}}
+===2019===
+{{Piedra-Jiménez, Alvarez-Padilla &amp; González-Santillán, 2019}}
+{{Rivera-Quiroz &amp; Alvarez-Padilla, 2019}}
+===2020===
+{{Álvarez-Padilla, Galán-Sánchez &amp; Salgueiro-Sepúlveda, 2020}}
+{{Alvarez-Padilla, Kallal &amp; Hormiga, 2020}}
+===2022===
+{{Galán-Sánchez &amp; Álvarez-Padilla, 2022}}
+===2023===
+{{Rivera-Quiroz &amp; Alvarez-Padilla, 2023}}
+
+{{Authority control}}
+{{DEFAULTSORT:Alvarez-Padilla, Fernando}}
+[[Category:Taxon authorities]]
+[[Category:Arachnologists]]</text>
+      <sha1>ap00h1hvx6rul72psnbat6jp72es661</sha1>
+    </revision>
+  </page>
+
+  <page>
+    <title>Template:Clowesia</title>
+    <ns>10</ns>
+    <id>569095</id>
+    <revision>
+      <id>8351354</id>
+      <parentid>8100163</parentid>
+      <timestamp>2021-05-14T19:24:31Z</timestamp>
+      <contributor>
+        <username>Orchi</username>
+        <id>999</id>
+      </contributor>
+      <minor />
+      <origin>8351354</origin>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text bytes="230" sha1="p7z24hs4illo8r62zws84jjyfh72soj" xml:space="preserve">{{DISPLAYTITLE:{{Taxit|{{BASEPAGENAME}}}}|noreplace}}
+{{Catasetinae}}
+Genus: {{gbr|Clowesia}}
+&lt;noinclude&gt;[[Category:Taxonavigation templates]]&lt;/noinclude&gt;
+&lt;includeonly&gt;[[Category:Pages with taxonavigation templates]]&lt;/includeonly&gt;</text>
+      <sha1>p7z24hs4illo8r62zws84jjyfh72soj</sha1>
+    </revision>
+  </page>
+
+  <page>
+    <title>Template:Odontocarya</title>
+    <ns>10</ns>
+    <id>873367</id>
+    <revision>
+      <id>4754683</id>
+      <parentid>3043527</parentid>
+      <timestamp>2019-03-02T12:40:11Z</timestamp>
+      <contributor>
+        <username>Andyboorman</username>
+        <id>251907</id>
+      </contributor>
+      <origin>4754683</origin>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text bytes="45" sha1="bgbnhb943q8qmnkz0d98tko7m0y53ki" xml:space="preserve">{{Burasaieae}}
+Genus: ''[[Odontocarya]]''&lt;br&gt;</text>
+      <sha1>bgbnhb943q8qmnkz0d98tko7m0y53ki</sha1>
+    </revision>
+  </page>
+  <page>
+    <title>Odontocarya</title>
+    <ns>0</ns>
+    <id>873368</id>
+    <revision>
+      <id>9509080</id>
+      <parentid>6788533</parentid>
+      <timestamp>2024-01-31T11:37:53Z</timestamp>
+      <contributor>
+        <username>MILEPRI</username>
+        <id>924668</id>
+      </contributor>
+      <origin>9509080</origin>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text bytes="4141" sha1="d2qvly339n9qqyhws033uaj2kgasamz" xml:space="preserve">{{DISPLAYTITLE:''{{FULLPAGENAME}}''}}
+{{image|Odontocarya vitis (Vell.) J.M.A.Braga (19299501204).jpg|''Odontocarya vitis''}}
+== {{int:Taxonavigation}} ==
+{{Odontocarya}}
+Species:
+{{sp|O|dontocarya|acuparata}}
+{{sp|O|dontocarya|amazonum}}
+{{sp|O|dontocarya|asarifolia}}
+{{sp|O|dontocarya|deminuta}}
+{{sp|O|dontocarya|dielsiana}}
+{{sp|O|dontocarya|diplobotrya}}
+{{sp|O|dontocarya|duckei}}
+{{sp|O|dontocarya|echinus}}
+{{sp|O|dontocarya|emarginata}}
+{{sp|O|dontocarya|floribunda}}
+{{sp|O|dontocarya|froesii}}
+{{sp|O|dontocarya|hastata}}
+{{sp|O|dontocarya|klugii}}
+{{sp|O|dontocarya|krukoviana}}
+{{sp|O|dontocarya|macarenae}}
+{{sp|O|dontocarya|magnifolia}}
+{{sp|O|dontocarya|mallosperma}}
+{{sp|O|dontocarya|membranacea}}
+{{sp|O|dontocarya|mexicana}}
+{{sp|O|dontocarya|micrantha}}
+{{sp|O|dontocarya|miersiana}}
+{{sp|O|dontocarya|monandra}}
+{{sp|O|dontocarya|perforata}}
+{{sp|O|dontocarya|petiolaris}}
+{{sp|O|dontocarya|rusbyi}}
+{{sp|O|dontocarya|schimpffii}}
+{{sp|O|dontocarya|septemfida}}
+{{sp|O|dontocarya|smithiorum}}
+{{sp|O|dontocarya|steyermarkii}}
+{{sp|O|dontocarya|syncretica}}
+{{sp|O|dontocarya|tamoides}}
+{{sp|O|dontocarya|tenacissima}}
+{{sp|O|dontocarya|tripetala}}
+{{sp|O|dontocarya|truncata}}
+{{sp|O|dontocarya|ulei}}
+{{sp|O|dontocarya|vitis}}
+{{sp|O|dontocarya|wullschlaegelii}}
+{{sp|O|dontocarya|zuliana}}
+{{just|{{PWO|2024|January|31}}}}
+== {{int:Name}} ==
+''Odontocarya'' {{a|John Miers|Miers}}, Ann. Mag. Nat. Hist., ser. 2, 7(37): [http://biodiversitylibrary.org/page/13787590 35], [http://biodiversitylibrary.org/page/13787593 38]. 1851.
+*{{tysp|Odontocarya acuparata|{{aut|Miers}}, Contr. Bot. 3: 61. 1871.}}
+
+=== {{int:Synonymy}} ===
+{{HET}}
+**''Somphoxylon'' {{a|August Wilhelm Eichler|Eichler}}, Flora 47(25): [http://biodiversitylibrary.org/page/55862 396]. (Jul) 1864. – Fl. Bras. (Martius) 13(1): [http://biodiversitylibrary.org/page/143182 205](–206). (Dec) 1864.
+***{{tysp|Somphoxylon wullschlaegelii|{{aut|Eichler}}, Flora 47(25): 396. 1864.}}
+**''Synandropus'' {{a|Albert Charles Smith|A.C.Sm.}}, Bull. Torrey Bot. Club 58(2): 93. 1931.
+***{{tysp|Synandropus membranaceus|{{aut|A.C.Sm.}}, Bull. Torrey Bot. Club 58(2): 94. 1931.}}
+
+{{MIS}}
+**''Chondodendron'' sensu {{a|George Bentham|Benth.}} &amp; {{a|Joseph Dalton Hooker|Hook.f.}}, Gen. Pl. 1(1): [http://biodiversitylibrary.org/page/654788 34]. 1862, [[p.p.]] – non ''[[Chondrodendron]]'' {{a|Hipólito Ruiz López|Ruiz}} &amp; {{a|José Antonio Pavón|Pav.}}, Fl. Peruv. Prodr.: 132. 1794.
+{{Nadi|
+* '''Continental: Tropical America'''
+***  Argentina Northeast, Argentina Northwest, Belize, Bolivia, Brazil North, Brazil Northeast, Brazil South, Brazil Southeast, Brazil West-Central, Colombia, Costa Rica, Ecuador, El Salvador, French Guiana, Guyana, Honduras, Leeward Is., Mexico Central, Mexico Gulf, Mexico Southeast, Mexico Southwest, Panamá, Paraguay, Peru, Suriname, Venezuela, Windward Is.
+}}
+=={{int:References}}==
+==={{int:Primary references}}===
+* {{a|John Miers|Miers}}, 1851. ''[[Ann. Mag. Nat. Hist.]]'', ser. 2, 7(37): [http://biodiversitylibrary.org/page/13787590 35], [http://biodiversitylibrary.org/page/13787593 38].
+==={{int:Additional references}}===
+{{Acevedo-Rodríguez &amp; Strong, 2012|Menispermaceae|565–566|BHL=47020903}}
+{{Barneby, 2001}}
+{{Barneby &amp; Hiepko, 2007}}
+{{Bentham &amp; Hooker, 1862}}
+{{Fournet, 2002|21. Menispermaceae|157–160}} (as introduced taxon)
+{{Jiménez, 2007}}
+{{Ortiz, 2011}}
+{{Pérez Cueto, 1995}}
+{{Rhodes, 1962|26842829}}
+==={{int:Links}}===
+{{IPNI|26976-1|2019|11 August}}
+{{ING|2017|January|09}}
+{{ING|2017|January|09|Somphoxylon}}
+{{ING|2017|January|09|Synandropus}}
+{{GBIF|7268633}}
+{{GRIN|gen|8380|2019-08-11}}
+{{Catol-Hassler|2019|August|11}}
+{{MBG|40030458|2019|August|11}}
+{{MBG-FM|40030458|11 August|2019}}
+{{CatColombia|gen|11 August 2019|Odontocarya}}
+{{MBGAntioquia|40030458|11 August|2019}}
+{{MBGEcuador|40030458|11 August|2019}}
+{{MBGPeru|40030458|11 August|2019}}
+{{MBGBolivia|40030458|11 August|2019}}
+{{FlBrasil|FB10043|11 August|2019}}
+{{FlConosur|gen|Odontocarya|date=11 August 2019}}
+
+=={{int:Vernacular names}}==
+{{VN
+|en=
+}}
+{{taxonbar}}
+{{Commonscat}}
+[[Category:John Miers taxa]]</text>
+      <sha1>d2qvly339n9qqyhws033uaj2kgasamz</sha1>
+    </revision>
+  </page>
+
+  <page>
+    <title>Anacamptis morio</title>
+    <ns>0</ns>
+    <id>481780</id>
+    <revision>
+      <id>9892059</id>
+      <parentid>8361266</parentid>
+      <timestamp>2024-12-10T07:29:25Z</timestamp>
+      <contributor>
+        <username>Tom.Bot</username>
+        <id>2916947</id>
+      </contributor>
+      <minor />
+      <comment>/* {{int:Vernacular names}} */ +{{[[Template:Taxonbar|Taxonbar]]|from=[[d:Special:EntityPage/Q161153|Q161153]]}} ([[Module:Taxonbar/conf|17]] significant taxon IDs) ([[Wikispecies:Bots/Requests for approval/Tom.Bot|BRFA]])</comment>
+      <origin>9892059</origin>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text bytes="2856" sha1="8nb2vktlq6bgflp48te5xob8m8xptuv" xml:space="preserve">{{Image|Orchis morio 270408a.jpg|''Anacamptis morio'', Tauberland, Germany}}
+
+== {{int:Taxonavigation}} ==
+{{Anacamptis morio}}
+Subspecies: (6)&lt;br&gt;
+{{subspplant|A|nacamptis|m|orio|caucasica}}
+{{subspplant|A|nacamptis|m|orio|champagneuxii}}
+{{subspplant|A|nacamptis|m|orio|longicornu}}
+{{subspplant|A|nacamptis|m|orio|morio}}
+{{subspplant|A|nacamptis|m|orio|picta}}
+{{subspplantlast|A|nacamptis|m|orio|syriaca}}&lt;br&gt;
+Nothosubspecies: (2)&lt;br&gt;
+{{nothosubsp|A|nacamptis|× m|orio|cortesii}} {{nothosubsplast|A|nacamptis|× m|orio|litardierei}}
+
+== {{int:Name}} ==
+''Anacamptis morio'' {{aut|([[L.]]) [[R.M.Bateman]], [[Pridgeon]] &amp; [[M.W.Chase]]}}, Lindleyana 12: 120 (1997)
+
+=== {{int:Synonymy}} ===
+{{BAS}}
+** ''Orchis morio'' {{aut|L.}}, Sp. Pl.: 940 (1753)
+{{HOT}}
+** ''Herorchis morio'' ({{aut|L.}}) {{a|D.Tyteca}} &amp; {{a|E.Klein}}, J. Eur. Orch. 40: 541 (2008)
+
+{{nadi|
+*'''Europe'''
+**'''Northern Europe'''
+*** Denmark, Great Britain, Ireland, Norway, Sweden.
+**'''Middle Europe'''
+*** Austria, Belgium, Czechoslovakia, Germany, Hungary, Netherlands, Poland, Switzerland.
+**'''Southwestern Europe'''
+*** Baleares, Corse, France, Portugal, Sardegna, Spain.
+**'''Southeastern Europe'''
+*** Albania, Bulgaria, Greece, Italy, Kriti, Romania, Sicilia, Turkey-in-Europe, Yugoslavia.
+**'''Eastern Europe'''
+*** Belarus, Baltic States, Krym, South European Russia, Ukraine.
+*'''Africa'''
+**'''Northern Africa'''
+*** Algeria, Morocco, Tunisia.
+*'''Asia-Temperate'''
+**'''Caucasus'''
+*** North Caucasus, Transcaucasus.
+**'''Western Asia'''
+*** Cyprus, East Aegean Islands, Iran, Iraq, Lebanon-Syria, Palestine, Turkey.
+}}
+
+== {{int:References}} ==
+=== {{int:Primary references}} ===
+* {{Kretzschmar, Eccarius &amp; Dietrich, 2007}}
+* {{Genorch 2|249}}
+
+=== {{int:Links}} ===
+* {{PWO|2018|December|1}}
+* {{WCSP|2018|December|1}}
+* {{IPNI||2018|1 December}}
+* {{TPLF|2018|December|1}}
+* {{MBG|2018|December|1}}
+
+== {{int:Vernacular names}} ==
+{{VN |az=Mürgü səhləbi |be=Ятрышнік дрэмлік |ca=Abellera de muntanya grossa |cs=Vstavač kukačka |sr=Обични каћун - Obični kaćun |cy=Tegeirian y waun |da=Salep-Gøgeurt |de=Kleines Knabenkraut |en=Green-winged Orchid |es=Amor de dama |et=Arukäpp |fi=Ruusukekalkkikämmekkä |fr=Orchis bouffon |hsb=Mała pihawka |hu=Agárkosbor, agár kosbor, agár sisakoskosbor, agármony |it=Orchide minore |ja=アナカンプティス・モリオ |lt=Mažoji gegužraibė |lv=Zalkšu dzegužpuķe |nb=Narrmarihand |nds=Adam-en-eva |nds-nl=Adam-en-eva |nl=Harlekijn |no=Narrmarihand |pl=Storczyk samiczy |ru=Ятрышник дремлик |sk=Vstavač obyčajný |sv=Göknycklar |uk=Зозулинець салеповий |zh=齿缘红门兰 }}
+
+{{Commons}}
+{{Taxonbar|from=Q161153}}
+
+[[Category:Richard M. Bateman taxa]]
+[[Category:Alec Melton Pridgeon taxa]]
+[[Category:Mark Wayne Chase taxa]]</text>
+      <sha1>8nb2vktlq6bgflp48te5xob8m8xptuv</sha1>
+    </revision>
+  </page>
+
+  <page>
+    <title>Template:Anacamptis morio</title>
+    <ns>10</ns>
+    <id>579408</id>
+    <revision>
+      <id>5027798</id>
+      <parentid>2891891</parentid>
+      <timestamp>2019-04-01T17:52:01Z</timestamp>
+      <contributor>
+        <username>Orchi</username>
+        <id>999</id>
+      </contributor>
+      <minor />
+      <origin>5027798</origin>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text bytes="63" sha1="8u6rx10pld0gefbj3gypmqsjvev08d1" xml:space="preserve">{{Anacamptis sect. Moriones}}
+Species: {{gbr|Anacamptis morio}}</text>
+      <sha1>8u6rx10pld0gefbj3gypmqsjvev08d1</sha1>
+    </revision>
+  </page>
+
+  <page>
+    <title>Template:Anacamptis</title>
+    <ns>10</ns>
+    <id>136879</id>
+    <revision>
+      <id>8269749</id>
+      <parentid>8233883</parentid>
+      <timestamp>2021-03-05T19:47:45Z</timestamp>
+      <contributor>
+        <username>Orchi</username>
+        <id>999</id>
+      </contributor>
+      <minor />
+      <origin>8269749</origin>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text bytes="231" sha1="ap3g3g16yk7p6jq7gvrjncy5yioapeg" xml:space="preserve">{{DISPLAYTITLE:{{Taxit|{{BASEPAGENAME}}}}|noreplace}}
+{{Orchidinae}}
+Genus: {{gbr|Anacamptis}}
+&lt;noinclude&gt;[[Category:Taxonavigation templates]]&lt;/noinclude&gt;
+&lt;includeonly&gt;[[Category:Pages with taxonavigation templates]]&lt;/includeonly&gt;</text>
+      <sha1>ap3g3g16yk7p6jq7gvrjncy5yioapeg</sha1>
+    </revision>
+  </page>
+
+  <page>
+    <title>Anacamptis</title>
+    <ns>0</ns>
+    <id>79769</id>
+    <revision>
+      <id>10551824</id>
+      <parentid>9638230</parentid>
+      <timestamp>2025-03-23T18:01:47Z</timestamp>
+      <contributor>
+        <username>Pigsonthewing-bot</username>
+        <id>1492768</id>
+      </contributor>
+      <minor />
+      <comment>/* {{int:Name}} */ clean up, replaced: {{BHLpage| → {{BHL|page/</comment>
+      <origin>10551824</origin>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text bytes="6584" sha1="9m0xqis6dazh2l6r1pvwxmzc8r721bz" xml:space="preserve">{{image|ANACAMPTIS PYRAMIDALIS - MORROCURT - IB-368 (Flor caputxina).JPG|250|'''''[[Anacamptis pyramidalis]]'''''&lt;br&gt;Typus of {{Taxon italics|Anacamptis|linked=yes}}}}
+
+== {{int:Taxonavigation}} ==
+{{Anacamptis}}
+Sectiones: (7)&lt;br&gt;
+{{sect|A|nacamptis|Anacamptis}}
+{{sect|A|nacamptis|Boryae}}
+{{sect|A|nacamptis|Coriophorae}}
+{{sect|A|nacamptis|Laxiflorae}}
+{{sect|A|nacamptis|Moriones}}
+{{sect|A|nacamptis|Papilionaceae}}
+{{sectlast|A|nacamptis|Saccatae}}
+----
+Species: (11)&lt;br&gt;
+{{sp|A|nacamptis|boryi}}
+{{sp|A|nacamptis|collina}}
+{{sp|A|nacamptis|coriophora}}
+{{sp|A|nacamptis|cyrenaica}}
+{{sp|A|nacamptis|israelitica}}
+{{sp|A|nacamptis|laxiflora}}
+{{sp|A|nacamptis|morio}}
+{{sp|A|nacamptis|palustris}}
+{{sp|A|nacamptis|papilionacea}}
+{{sp|A|nacamptis|pyramidalis}}
+{{splast|A|nacamptis|sancta}}
+----
+Subspecies: (15)&lt;br&gt;
+{{subspplant|A|nacamptis|coriophora||fragrans}}
+{{subspplant|A|nacamptis|laxiflora||dielsiana}}
+{{subspplant|A|nacamptis|laxiflora||dinsmorei}}
+{{subspplant|A|nacamptis|morio||caucasica}}
+{{subspplant|A|nacamptis|morio||champagneuxii}}
+{{subspplant|A|nacamptis|morio||longicornu}}
+{{subspplant|A|nacamptis|morio||picta}}
+{{subspplant|A|nacamptis|morio||syriaca}}
+{{subspplant|A|nacamptis|palustris||elegans}}
+{{Subspplant|A|nacamptis|palustris||robusta}}
+{{subspplant|A|nacamptis|papilionacea||alibertis}}
+{{subspplant|A|nacamptis|papilionacea||expansa}}
+{{subspplant|A|nacamptis|papilionacea||messenica}}
+{{subspplant|A|nacamptis|papilionacea||palaestina}}
+{{subspplantlast|A|nacamptis|papilionacea||schirwanica}}
+----
+Nothospecies: (23)&lt;br&gt;
+{{sp|A|nacamptis|× alata}}
+{{sp|A|nacamptis|× alatoides}}
+{{sp|A|nacamptis|× caccabaria}}
+{{sp|A|nacamptis|× dafnii}}
+{{sp|A|nacamptis|× duquesnei}}
+{{sp|A|nacamptis|× eccarii}}
+{{sp|A|nacamptis|× feinbruniae}}
+{{sp|A|nacamptis|× genevensis}}
+{{sp|A|nacamptis|× gennarii}}
+{{sp|A|nacamptis|× gerakarionis}}
+{{sp|A|nacamptis|× laniccae}}
+{{sp|A|nacamptis|× larzacensis}}
+{{sp|A|nacamptis|× lasithica}}
+{{sp|A|nacamptis|× lesbiensis}}
+{{sp|A|nacamptis|× lloydiana}}
+{{sp|A|nacamptis|× menosii}}
+{{sp|A|nacamptis|× olida}}
+{{sp|A|nacamptis|× parvifolia}}
+{{sp|A|nacamptis|× sciathia}}
+{{sp|A|nacamptis|× semisaccata}}
+{{sp|A|nacamptis|× simorrensis}}
+{{sp|A|nacamptis|× timbali}}
+{{splast|A|nacamptis|× van-lookenii}}
+----
+Nothosubspecies: (22)&lt;br&gt;
+{{nothosubsp|A|nacamptis|× alata||alata}}
+{{nothosubsp|A|nacamptis|× alata||apolonana}}
+{{nothosubsp|A|nacamptis|× alata||sarcidani}}
+{{nothosubsp|A|nacamptis|× gennarii||bornemanniae}}
+{{nothosubsp|A|nacamptis|× gennarii||choirokitiana}}
+{{nothosubsp|A|nacamptis|× gennarii||gennarii}}
+{{nothosubsp|A|nacamptis|× gennarii||kusadasiensis}}
+{{nothosubsp|A|nacamptis|× gennarii||orientecaucasica}}
+{{nothosubsp|A|nacamptis|× gennarii||subpapilionacea}}
+{{nothosubsp|A|nacamptis|× laniccae||galloprovinciana}}
+{{nothosubsp|A|nacamptis|× laniccae||laniccae}}
+{{nothosubsp|A|nacamptis|× olida||olida}}
+{{nothosubsp|A|nacamptis|× olida||paparistoi}}
+{{nothosubsp|A|nacamptis|× parvifolia||bicknellii}}
+{{nothosubsp|A|nacamptis|× semisaccata||murgiana}}
+{{nothosubsp|A|nacamptis|× semisaccata||santamariotae}}
+{{nothosubsp|A|nacamptis|× semisaccata||semisaccata}}
+{{nothosubsp|A|nacamptis|× timbali||albuferensis}}
+{{nothosubsp|A|nacamptis|× timbali||barlae}}
+{{nothosubsp|A|nacamptis|× timbali||reinhardii}}
+{{nothosubsp|A|nacamptis|× timbali||timbali}}
+{{nothosubsplast|A|nacamptis|× timbali||ugrinskyana}}
+
+== {{int:Name}} ==
+''Anacamptis'' {{a|Louis Claude Marie Richard|Rich.}}, De Orchid. Eur.: {{BHL|page/15321900|25}} (1817).
+* {{tysp|Anacamptis pyramidalis|({{a|Carolus Linnaeus|L.}}) {{aut|Rich.}}, De Orchid. Eur.: 33 (1817)}}
+
+=== {{int:Synonymy}} ===
+{{HET}}
+** ''Vermeulenia'' {{a|Áskell Löve|Á.Löve}} &amp; {{a|Doris Benta Maria Löve|D.Löve}}, Acta Bot. Neerl. 21: 554 (1972).
+** ''Anteriorchis'' {{a|Erich Klein|E.Klein}} &amp; {{a|Dieter Strack|Strack}}, Phytochemistry 28: 2136 (1989).
+** ''Herorchis'' {{a|Daniel Séraphin René Marie Tyteca|D.Tyteca}} &amp; {{aut|E.Klein}}, J. Eur. Orch. 40: 539 (2008).
+** ''Anacampaludorchis'' {{a|Pierre Delforge|P.Delforge}}, Naturalistes Belges 90: 30 (2009).
+** ''× Anacampterorchis'' {{aut|P.Delforge}}, Naturalistes Belges 90: 30 (2009).
+** ''× Anacampteulenia'' {{aut|P.Delforge}}, Naturalistes Belges 90: 30 (2009).
+** ''× Anteriocamptis'' {{aut|P.Delforge}}, Naturalistes Belges 90: 30 (2009).
+** ''× Anterioherorchis'' {{aut|P.Delforge}}, Naturalistes Belges 90: 30 (2009).
+** ''× Anteriomeulenia'' {{aut|P.Delforge}}, Naturalistes Belges 90: 30 (2009).
+** ''× Anteriopaludorchis'' {{aut|P.Delforge}}, Naturalistes Belges 90: 30 (2009).
+** ''× Heromeulenia'' {{aut|P.Delforge}}, Naturalistes Belges 90: 30 (2009).
+** ''× Heropaludorchis'' {{aut|P.Delforge}}, Naturalistes Belges 90: 30 (2009).
+** ''× Paludomeulenia'' {{aut|P.Delforge}}, Naturalistes Belges 90: 30 (2009).
+** ''Paludorchis'' {{aut|P.Delforge}}, Naturalistes Belges 90: 24 (2009).
+
+{{nadi|
+* '''Europe'''
+** '''Northern Europe'''
+*** Denmark, Great Britain, Ireland, Norway, Sweden.
+** '''Middle Europe'''
+*** Austria, Belgium, Czechoslovakia, Germany, Hungary, Netherlands, Poland, Switzerland.
+** '''Southwestern Europe'''
+*** Baleares, Corse, France, Portugal, Sardegna, Spain.
+** '''Southeastern Europe'''
+*** Albania, Bulgaria, Greece, Italy, Kriti, Romania, Sicilia, Turkey-in-Europe, Yugoslavia.
+** '''Eastern Europe'''
+*** Belarus, Baltic States, Krym, Central European Russia, East European Russia, South European Russia, Ukraine.
+* '''Africa'''
+** '''Northern Africa'''
+*** Algeria, Libya, Morocco, Tunisia.
+* '''Asia-Temperate'''
+** '''Middle Asia'''
+*** Kazakhstan, Turkmenistan, Tadzhikistan, Uzbekistan.
+** '''Caucasus'''
+*** North Caucasus, Transcaucasus.
+** '''Western Asia'''
+*** Afghanistan, Cyprus, East Aegean Islands, Iran, Iraq, Lebanon-Syria, Palestine, Turkey.
+** '''Arabian Peninsula'''
+*** Saudi Arabia.
+}}
+
+== {{int:References}} ==
+=== {{int:Primary references}} ===
+{{Richard, 1817a}}
+
+=== {{int:Additional references}} ===
+{{Pridgeon et al., 1997}}
+{{Bateman, Pridgeon &amp; Chase, 1997}}
+{{Kretzschmar, Eccarius &amp; Dietrich, 2007}}
+* {{Genorch 2|249}}
+
+=== {{int:Links}} ===
+{{GBIF|{{#property:P846}}|2023|Jul|2}}
+{{PWO|2023|Jul|2}}
+{{Catol-Hassler|2023|Jul|2}}
+{{World Plants|{{#property:P961}}|2023|2 Jul}}
+{{IPNI|{{#property:P961}}|2023|2 Jul}}
+{{MBG|2023|Jul|2}}
+
+== {{int:Vernacular names}} ==
+{{#invoke:VN|main}}{{VN}}
+
+{{Commons}}
+{{Taxonbar}}
+[[Category:Louis Claude Marie Richard taxa]]</text>
+      <sha1>9m0xqis6dazh2l6r1pvwxmzc8r721bz</sha1>
+    </revision>
+  </page>
+
+  <page>
+    <title>Brachypodium</title>
+    <ns>0</ns>
+    <id>58295</id>
+    <revision>
+      <id>10853026</id>
+      <parentid>10458046</parentid>
+      <timestamp>2025-10-25T09:16:03Z</timestamp>
+      <contributor>
+        <username>MILEPRI</username>
+        <id>924668</id>
+      </contributor>
+      <origin>10853026</origin>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text bytes="4090" sha1="fvhhhk9yezvauo40537m9yl1f6aj6bb" xml:space="preserve">{{Image|Brachypodium retusum hivern Canyelles.jpg|''[[Brachypodium retusum]]''}}
+
+=={{int:Taxonavigation}}==
+{{Brachypodium}}
+Species:&lt;br /&gt;
+{{sp|B|rachypodium|× ambrosii}}
+{{sp|B|rachypodium|× apollinaris}}
+{{sp|B|rachypodium|arbuscula}}
+{{sp|B|rachypodium|atlanticum}}
+{{sp|B|rachypodium|boissieri}}
+{{sp|B|rachypodium|bolusii}}
+{{sp|B|rachypodium|× cugnacii}}
+{{sp|B|rachypodium|× diazii}}
+{{sp|B|rachypodium|distachyon}}
+{{sp|B|rachypodium|flexum}}
+{{sp|B|rachypodium|genuense}}
+{{sp|B|rachypodium|glaucovirens}}
+{{sp|B|rachypodium|humbertianum}}
+{{sp|B|rachypodium|hybridum}}
+{{sp|B|rachypodium|kawakamii}}
+{{sp|B|rachypodium|kotschyi}}
+{{sp|B|rachypodium|madagascariense}}
+{{sp|B|rachypodium|mexicanum}}
+{{sp|B|rachypodium|peregrinum}}
+{{sp|B|rachypodium|× paui }}
+{{sp|B|rachypodium|peregrinum}}
+{{sp|B|rachypodium|perrieri}}
+{{sp|B|rachypodium|phoenicoides}}
+{{sp|B|rachypodium|pinnatum}}
+{{sp|B|rachypodium|pringlei}}
+{{sp|B|rachypodium|retusum}}
+{{sp|B|rachypodium|rigidum}}
+{{sp|B|rachypodium|rupestre}}
+{{splast|B|rachypodium|sylvaticum}}
+{{just|{{PWO|2025|October|25}}}}
+
+=={{int:Name}}==
+''Brachypodium'' {{a|Ambroise Marie François Joseph Palisot de Beauvois|P.Beauv.}}, Ess. Agrostogr.: 100 (1812)
+* {{tysp|Brachypodium pinnatum|({{a|L.}}) P.Beauv., Ess. Agrostogr.: 101, 155 (1812)}}
+
+==={{int:Synonyms}}===
+{{HET}}
+** ''Brevipodium'' [[Á. Löve]] &amp; [[D. Löve]], Bot. Not. 114: 36 (1961).
+** ''Trachynia'' {{a|Johann Heinrich Friedrich Link|Link}}, Hort. Berol. 1: 42 (1827).
+** ''Disticheia'' [[Ehrh.]], Beitr. Naturk. 4: 148 (1789).
+
+{{nadi|
+* '''Continental: America &amp; Old World'''
+*** Afghanistan, Albania, Algeria, Altay, Assam, Austria, Azores, Baleares, Baltic States, Belarus, Belgium, Bolivia, Bulgaria, Burundi, Buryatiya, Cabinda, Cameroon, Canary Is., Cape Provinces, Cape Verde, Central European Rus, China North-Central, China South-Central, China Southeast, Chita, Colombia, Corse, Costa Rica, Cyprus, Czechoslovakia, Denmark, Djibouti, East Aegean Is., East European Russia, East Himalaya, Ecuador, Egypt, Eritrea, Ethiopia, Finland, France, Free State, Germany, Great Britain, Greece, Guatemala, Gulf of Guinea Is., Gulf States, Honduras, Hungary, India, Inner Mongolia, Iran, Iraq, Ireland, Irkutsk, Italy, Japan, Jawa, Kazakhstan, Kenya, Kirgizstan, Korea, Krasnoyarsk, Kriti, Krym, Kuril Is., Kuwait, KwaZulu-Natal, Lebanon-Syria, Lesotho, Lesser Sunda Is., Libya, Madagascar, Madeira, Malawi, Maluku, Manchuria, Mexico Central, Mexico Gulf, Mexico Northeast, Mexico Northwest, Mexico Southeast, Mexico Southwest, Mongolia, Morocco, Mozambique, Nepal, Netherlands, New Guinea, Nigeria, North Caucasus, North European Russi, Northern Provinces, Northwest European R, Norway, Oman, Pakistan, Palestine, Panamá, Peru, Philippines, Poland, Portugal, Qinghai, Romania, Rwanda, Sakhalin, Sardegna, Saudi Arabia, Sicilia, Sierra Leone, Sinai, South European Russi, Spain, Sri Lanka, Sudan, Sulawesi, Sumatera, Swaziland, Sweden, Switzerland, Tadzhikistan, Taiwan, Tanzania, Tibet, Transcaucasus, Tunisia, Turkey, Turkey-in-Europe, Turkmenistan, Tuva, Uganda, Ukraine, Uzbekistan, Venezuela, West Himalaya, West Siberia, Western Sahara, Xinjiang, Yakutskiya, Yemen, Yugoslavia, Zambia, Zimbabwe
+** '''Introduced into:'''
+*** Argentina Northeast, California, Chile Central, Colorado, Hawaii, Juan Fernández Is., Massachusetts, Michigan, New Jersey, New South Wales, New York, New Zealand North, New Zealand South, Ontario, Oregon, Réunion, South Australia, St.Helena, Tasmania, Texas, Uruguay, Victoria, Virginia, Western Australia
+}}
+=={{int:References}}==
+==={{int:Primary references}}===
+* {{Palisot de Beauvois, 1812}}: 100, 15, pl. 19, f. 35.
+==={{int:Additional references}}===
+* {{Govaerts, 2011}}
+==={{int:Links}}===
+{{POWO|2013|Oct.|31}}
+* {{GWSP|2013|Oct.|31}}
+{{MBG|2013|Oct.|31}}
+{{IPNI||2013|31 Oct.}}
+{{GRIN||1663|23 March 2006}}
+{{GBIF|13231699}}.
+
+=={{int:Vernacular names}}==
+{{VN
+|ar=دنبان
+|en=False Bromes
+|fi=Vihnelusteet
+}}
+{{Taxonbar}}
+{{Commonscat}}
+
+[[Category:Ambroise Marie François Joseph Palisot de Beauvois taxa]]</text>
+      <sha1>fvhhhk9yezvauo40537m9yl1f6aj6bb</sha1>
+    </revision>
+  </page>
+</mediawiki>

@@ -8,6 +8,7 @@ import (
 	"path/filepath"
 	"strings"
 
+	"github.com/gnames/gn"
 	"github.com/gnames/gnlib/ent/nomcode"
 	"github.com/sfborg/sflib/pkg/coldp"
 	"github.com/sfborg/sflib/pkg/sfga"
@@ -17,7 +18,8 @@ import (
 // WFWP generates TWO SFGA files (ferns and plants).
 // Reference: original lines 750-1240, 1301-1320
 func (wp *worldplants) ToSfga(sfgaArchive sfga.Archive) error {
-	slog.Info("Starting WFWP SFGA conversion")
+	slog.Info("starting WFWP SFGA conversion")
+	gn.Info("Starting WFWP SFGA conversion")
 
 	extractDir := wp.cfg.ExtractDir
 
@@ -28,7 +30,8 @@ func (wp *worldplants) ToSfga(sfgaArchive sfga.Archive) error {
 	if choice == "plants" {
 		// Process plants dataset (1141)
 		plantsPath := filepath.Join(extractDir, "plants.csv")
-		slog.Info("Processing plants dataset", "path", plantsPath)
+		slog.Info("processing plants dataset", "path", plantsPath)
+		gn.Info("Processing plants dataset")
 		err := wp.processDataset(plantsPath, "1141", "plants", sfgaArchive)
 		if err != nil {
 			return fmt.Errorf("failed to process plants: %w", err)
@@ -36,7 +39,8 @@ func (wp *worldplants) ToSfga(sfgaArchive sfga.Archive) error {
 	} else {
 		// Process ferns dataset (1140) - default
 		fernsPath := filepath.Join(extractDir, "ferns.csv")
-		slog.Info("Processing ferns dataset", "path", fernsPath)
+		slog.Info("processing ferns dataset", "path", fernsPath)
+		gn.Info("Processing ferns dataset %s", fernsPath)
 		err := wp.processDataset(fernsPath, "1140", "ferns", sfgaArchive)
 		if err != nil {
 			return fmt.Errorf("failed to process ferns: %w", err)
@@ -44,6 +48,7 @@ func (wp *worldplants) ToSfga(sfgaArchive sfga.Archive) error {
 	}
 
 	slog.Info("WFWP SFGA conversion complete")
+	gn.Info("WFWP SFGA conversion complete")
 	return nil
 }
 
@@ -55,7 +60,8 @@ func (wp *worldplants) promptDatasetChoice() string {
 	reader := bufio.NewReader(os.Stdin)
 	input, err := reader.ReadString('\n')
 	if err != nil {
-		slog.Warn("Error reading input, using default (ferns)", "error", err)
+		slog.Warn("error reading input, using default (ferns)", "error", err)
+		gn.Warn("Error reading input, using default (ferns)")
 		return "ferns"
 	}
 
@@ -76,7 +82,8 @@ func (wp *worldplants) processDataset(
 	suffix string,
 	sfgaArchive sfga.Archive,
 ) error {
-	slog.Info("Building hierarchy", "dataset", datasetID)
+	slog.Info("building hierarchy", "dataset", datasetID)
+	gn.Info("Building hierarchy")
 
 	// Build hierarchy from CSV
 	nodes, nodeMap, err := wp.buildHierarchy(csvPath)
@@ -84,12 +91,14 @@ func (wp *worldplants) processDataset(
 		return fmt.Errorf("failed to build hierarchy: %w", err)
 	}
 
-	slog.Info("Generating persistent IDs", "nodes", len(nodes))
+	slog.Info("generating persistent IDs", "nodes", len(nodes))
+	gn.Info("Generating persistent IDs: %d nodes", len(nodes))
 
 	// Generate persistent IDs
 	persistentIDs := wp.generatePersistentIDs(nodes, nodeMap)
 
-	slog.Info("Processing nodes to create records")
+	slog.Info("processing nodes to create records")
+	gn.Info("Processing nodes to create records")
 
 	// Process all nodes to create records
 	records, err := wp.processAllNodes(
@@ -102,7 +111,7 @@ func (wp *worldplants) processDataset(
 	}
 
 	slog.Info(
-		"Inserting to SFGA",
+		"inserting to SFGA",
 		"references", len(records.references),
 		"nameUsages", len(records.nameUsages),
 		"distributions", len(records.distributions),
@@ -122,7 +131,8 @@ func (wp *worldplants) processDataset(
 		return fmt.Errorf("failed to insert to SFGA: %w", err)
 	}
 
-	slog.Info("Fetching and inserting metadata", "dataset", datasetID)
+	slog.Info("fetching and inserting metadata", "dataset", datasetID)
+	gn.Info("Fetching and inserting metadata")
 
 	// Fetch and insert metadata
 	meta, err := wp.fetchMetadata(
@@ -168,7 +178,7 @@ func (wp *worldplants) generatePersistentIDs(
 			// Check for duplicates
 			if _, duplicate := uniqueIDs[persistentID]; duplicate {
 				slog.Warn(
-					"Duplicate persistent ID (skipping)",
+					"duplicate persistent ID (skipping)",
 					"name", node.verbatimName,
 					"id", persistentID,
 				)
@@ -219,7 +229,7 @@ func (wp *worldplants) processAllNodes(
 
 	for i, node := range nodes {
 		if (i+1)%1000 == 0 {
-			slog.Info("Processing node", "count", i+1, "total", len(nodes))
+			slog.Info("processing node", "count", i+1, "total", len(nodes))
 		}
 
 		persistentID := persistentIDs[node.id]
@@ -235,7 +245,7 @@ func (wp *worldplants) processAllNodes(
 			referenceLookup,
 		)
 		if err != nil {
-			slog.Warn("Failed to create accepted name", "error", err)
+			slog.Warn("failed to create accepted name", "error", err)
 			continue
 		}
 
@@ -249,7 +259,7 @@ func (wp *worldplants) processAllNodes(
 			referenceLookup,
 		)
 		if err != nil {
-			slog.Warn("Failed to process synonyms", "error", err)
+			slog.Warn("failed to process synonyms", "error", err)
 		}
 
 		// Add synonyms to name usages
@@ -280,7 +290,8 @@ func (wp *worldplants) processAllNodes(
 		}
 	}
 
-	slog.Info("Linking basionyms", "count", len(allBasionyms))
+	slog.Info("linking basionyms", "count", len(allBasionyms))
+	gn.Info("Linking %d basionyms", len(allBasionyms))
 
 	// Link basionyms to combinations
 	err := linkBasionyms(allNameUsages, allBasionyms, wp)
@@ -395,7 +406,8 @@ func (wp *worldplants) insertToSfga(
 	var err error
 
 	// Insert in correct order
-	slog.Info("Inserting references", "count", len(records.references))
+	slog.Info("inserting references", "count", len(records.references))
+	gn.Info("Inserting %d references", len(records.references))
 	err = sfgaArchive.InsertReferences(records.references)
 	if err != nil {
 		return fmt.Errorf("failed to insert references: %w", err)
@@ -406,7 +418,7 @@ func (wp *worldplants) insertToSfga(
 	var deduplicatedUsages []coldp.NameUsage
 	for _, usage := range records.nameUsages {
 		if _, exists := uniqueUsages[usage.ID]; exists {
-			slog.Warn("Duplicate name usage found (skipping)", "id", usage.ID)
+			slog.Warn("duplicate name usage found (skipping)", "id", usage.ID)
 			continue
 		}
 		uniqueUsages[usage.ID] = usage
@@ -414,22 +426,28 @@ func (wp *worldplants) insertToSfga(
 	}
 
 	slog.Info(
-		"Inserting name usages",
+		"inserting name usages",
 		"count", len(deduplicatedUsages),
 		"duplicates_removed", len(records.nameUsages)-len(deduplicatedUsages),
+	)
+	gn.Info("Inserting %d name usages", len(deduplicatedUsages))
+	gn.Info(
+		"Removed %d duplicates", len(records.nameUsages)-len(deduplicatedUsages),
 	)
 	err = sfgaArchive.InsertNameUsages(deduplicatedUsages)
 	if err != nil {
 		return fmt.Errorf("failed to insert name usages: %w", err)
 	}
 
-	slog.Info("Inserting distributions", "count", len(records.distributions))
+	slog.Info("inserting distributions", "count", len(records.distributions))
+	gn.Info("Inserting %d distributions", len(records.distributions))
 	err = sfgaArchive.InsertDistributions(records.distributions)
 	if err != nil {
 		return fmt.Errorf("failed to insert distributions: %w", err)
 	}
 
-	slog.Info("Inserting vernaculars", "count", len(records.vernaculars))
+	slog.Info("inserting vernaculars", "count", len(records.vernaculars))
+	gn.Info("Inserting %d vernaculars", len(records.vernaculars))
 	err = sfgaArchive.InsertVernaculars(records.vernaculars)
 	if err != nil {
 		return fmt.Errorf("failed to insert vernaculars: %w", err)

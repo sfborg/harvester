@@ -5,6 +5,8 @@ import (
 	"fmt"
 	"log/slog"
 
+	"github.com/fatih/color"
+	"github.com/gnames/gn"
 	"github.com/gnames/gnparser"
 	"github.com/gnames/gnsys"
 	"github.com/sfborg/harvester/internal/sysio"
@@ -39,7 +41,12 @@ func (c *Convertor) Config() config.Config {
 }
 
 func (c *Convertor) Label() string {
-	return c.set.Label
+
+	res := c.set.Label
+	if c.set.ManualSteps {
+		res += color.RedString("*")
+	}
+	return res
 }
 
 func (c *Convertor) Name() string {
@@ -56,6 +63,7 @@ func (c *Convertor) ManualSteps() bool {
 func (c *Convertor) Download() (string, error) {
 	var err error
 	var path string
+
 	err = sysio.ResetCache(c.cfg)
 	if err != nil {
 		return "", err
@@ -63,8 +71,9 @@ func (c *Convertor) Download() (string, error) {
 
 	if c.cfg.LoadFile != "" {
 		slog.Info(
-			"Using local file", "source", c.set.Label, "file", c.cfg.LoadFile,
+			"using local file", "source", c.set.Label, "file", c.cfg.LoadFile,
 		)
+		gn.Info("Using local file for %s: %s", c.set.Label, c.cfg.LoadFile)
 		return c.cfg.LoadFile, nil
 	}
 
@@ -73,7 +82,8 @@ func (c *Convertor) Download() (string, error) {
 		return "", err
 	}
 
-	slog.Info("Downloading", "source", c.set.Label)
+	slog.Info("downloading", "source", c.set.Label)
+	gn.Info("Downloading %s", c.set.Label)
 	path, err = gnsys.Download(c.set.URL, c.cfg.DownloadDir, true)
 	if err != nil {
 		return path, err
@@ -90,6 +100,8 @@ func (c *Convertor) Extract(path string) error {
 		f = gnsys.ExtractTar
 	case gnsys.TarGzFT:
 		f = gnsys.ExtractTarGz
+	case gnsys.Bz2FT:
+		f = gnsys.ExtractBz2
 	case gnsys.TarBzFT:
 		f = gnsys.ExtractTarBz2
 	case gnsys.TarXzFt:
@@ -120,6 +132,7 @@ func (c *Convertor) InitSfga() (sfga.Archive, error) {
 }
 
 func (c *Convertor) ToSfga(_ sfga.Archive) error {
-	slog.Info("Running a placeholder ToSFGA method")
+	slog.Info("running a placeholder ToSfga method")
+	gn.Warn("Runs a placeholder for ToSfga method")
 	return nil
 }
