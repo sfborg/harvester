@@ -4,6 +4,7 @@ import (
 	"github.com/sfborg/harvester/internal/sources/grin"
 	"github.com/sfborg/harvester/internal/sources/ioc"
 	"github.com/sfborg/harvester/internal/sources/ion"
+	"github.com/sfborg/harvester/internal/sources/ncbi"
 	"github.com/sfborg/harvester/internal/sources/paleodb"
 	"github.com/sfborg/harvester/internal/sources/wikisp"
 	"github.com/sfborg/harvester/internal/sources/worldplants"
@@ -18,6 +19,7 @@ func GetDataSets(cfg config.Config) map[string]data.Convertor {
 		grin.New(cfg),
 		ion.New(cfg),
 		ioc.New(cfg),
+		ncbi.New(cfg),
 		paleodb.New(cfg),
 		worldplants.New(cfg),
 		wikisp.New(cfg),

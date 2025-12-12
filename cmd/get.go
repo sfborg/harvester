@@ -71,6 +71,7 @@ var getCmd = &cobra.Command{
 
 		err := hr.Get(l, outPath)
 		if err != nil {
+			fmt.Printf("err: %s", err)
 			gn.PrintErrorMessage(err)
 			return err
 		}
