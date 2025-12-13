@@ -51,13 +51,13 @@ func (h *harvester) Get(label, outPath string) error {
 		if err != nil {
 			return err
 		}
+	}
 
-		slog.Info("extracting files", "source", ds.Label())
-		gn.Message("Extracting files of <em>%s</em>", ds.Label())
-		err = ds.Extract(dlPath)
-		if err != nil {
-			return err
-		}
+	slog.Info("extracting files", "source", ds.Label())
+	gn.Message("Extracting files of <em>%s</em>", ds.Label())
+	err = ds.Extract(dlPath)
+	if err != nil {
+		return err
 	}
 
 	slog.Info("creating SFG archive")

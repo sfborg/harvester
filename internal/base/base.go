@@ -92,6 +92,13 @@ func (c *Convertor) Download() (string, error) {
 }
 
 func (c *Convertor) Extract(path string) error {
+	// If path is empty (skip download mode), assume files are already
+	// extracted and skip this step.
+	if path == "" {
+		slog.Info("skip extraction (using cached files)")
+		return nil
+	}
+
 	var f gnsys.Extractor
 	switch gnsys.GetFileType(path) {
 	case gnsys.ZipFT:
