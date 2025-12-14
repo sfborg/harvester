@@ -46,7 +46,7 @@ var getCmd = &cobra.Command{
 
 		flags := []flagFunc{
 			skipFlag, fileFlag, zipFlag, delimFlag, quotesFlag, badRowFlag,
-			dateFlag, dataVersionFlag,
+			dateFlag, dataVersionFlag, schemaFlag,
 		}
 
 		for _, v := range flags {
@@ -128,5 +128,9 @@ func init() {
 	rootCmd.Flags().StringP(
 		"delimiter", "d", "",
 		"a delimiter for delimiter-separated files like CSV/TSV/PSV etc.",
+	)
+	getCmd.Flags().StringP(
+		"schema", "S", "",
+		"path to local schema.sql file (instead of fetching from GitHub)",
 	)
 }

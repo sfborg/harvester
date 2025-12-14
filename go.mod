@@ -6,19 +6,19 @@ require (
 	github.com/dustin/go-humanize v1.0.1
 	github.com/fatih/color v1.18.0
 	github.com/gnames/gn v0.1.4
-	github.com/gnames/gnfmt v0.6.3
-	github.com/gnames/gnlib v0.61.0
-	github.com/gnames/gnparser v1.11.8
+	github.com/gnames/gnfmt v0.6.4
+	github.com/gnames/gnlib v0.62.0
+	github.com/gnames/gnparser v1.11.9
 	github.com/gnames/gnsys v0.4.3
 	github.com/gnames/gnuuid v0.2.0
 	github.com/google/uuid v1.6.0
-	github.com/jedib0t/go-pretty/v6 v6.6.9
-	github.com/sfborg/sflib v0.4.7
-	github.com/spf13/cobra v1.10.1
+	github.com/jedib0t/go-pretty/v6 v6.7.7
+	github.com/sfborg/sflib v0.4.8
+	github.com/spf13/cobra v1.10.2
 	github.com/stretchr/testify v1.10.0
-	golang.org/x/sync v0.17.0
+	golang.org/x/sync v0.19.0
 	gopkg.in/yaml.v3 v3.0.1
-	modernc.org/sqlite v1.40.0
+	modernc.org/sqlite v1.40.1
 )
 
 require (
@@ -30,7 +30,7 @@ require (
 	github.com/fsnotify/fsnotify v1.5.1 // indirect
 	github.com/gnames/organizer v0.1.1 // indirect
 	github.com/gnames/tribool v0.1.1 // indirect
-	github.com/goccy/go-yaml v1.18.0 // indirect
+	github.com/goccy/go-yaml v1.19.0 // indirect
 	github.com/hashicorp/hcl v1.0.0 // indirect
 	github.com/inconshreveable/mousetrap v1.1.0 // indirect
 	github.com/json-iterator/go v1.1.12 // indirect
@@ -58,17 +58,17 @@ require (
 	github.com/spf13/viper v1.10.1 // indirect
 	github.com/subosito/gotenv v1.2.0 // indirect
 	github.com/ulikunitz/xz v0.5.15 // indirect
-	golang.org/x/exp v0.0.0-20251023183803-a4bb9ffd2546 // indirect
-	golang.org/x/mod v0.29.0 // indirect
-	golang.org/x/net v0.46.0 // indirect
-	golang.org/x/sys v0.38.0 // indirect
-	golang.org/x/telemetry v0.0.0-20251008203120-078029d740a8 // indirect
-	golang.org/x/text v0.30.0 // indirect
-	golang.org/x/tools v0.38.0 // indirect
+	golang.org/x/exp v0.0.0-20251209150349-8475f28825e9 // indirect
+	golang.org/x/mod v0.31.0 // indirect
+	golang.org/x/net v0.48.0 // indirect
+	golang.org/x/sys v0.39.0 // indirect
+	golang.org/x/telemetry v0.0.0-20251203150158-8fff8a5912fc // indirect
+	golang.org/x/text v0.32.0 // indirect
+	golang.org/x/tools v0.40.0 // indirect
 	gopkg.in/check.v1 v1.0.0-20200227125254-8fa46927fb4f // indirect
 	gopkg.in/ini.v1 v1.66.2 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
-	modernc.org/libc v1.66.10 // indirect
+	modernc.org/libc v1.67.1 // indirect
 	modernc.org/mathutil v1.7.1 // indirect
 	modernc.org/memory v1.11.0 // indirect
 )
@@ -78,3 +78,6 @@ tool (
 	github.com/spf13/cobra-cli
 	golang.org/x/tools/cmd/goimports
 )
+
+// Use local sflib for development (has InferBasionyms)
+replace github.com/sfborg/sflib => ../sflib
