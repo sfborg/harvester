@@ -112,3 +112,10 @@ func delimFlag(cmd *cobra.Command) {
 		)
 	}
 }
+
+func schemaFlag(cmd *cobra.Command) {
+	s, _ := cmd.Flags().GetString("schema")
+	if s != "" {
+		opts = append(opts, config.OptLocalSchemaPath(s))
+	}
+}

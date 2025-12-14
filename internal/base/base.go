@@ -13,6 +13,7 @@ import (
 	"github.com/sfborg/harvester/pkg/config"
 	"github.com/sfborg/harvester/pkg/data"
 	"github.com/sfborg/sflib"
+	sflibcfg "github.com/sfborg/sflib/config"
 	"github.com/sfborg/sflib/pkg/sfga"
 )
 
@@ -126,16 +127,22 @@ func (c *Convertor) Extract(path string) error {
 func (c *Convertor) InitSfga() (sfga.Archive, error) {
 	sysio.EmptyDir(c.cfg.SfgaDir)
 
-	sfga := sflib.NewSfga()
-	err := sfga.Create(c.cfg.SfgaDir)
+	var sflibOpts []sflibcfg.Option
+	if c.cfg.LocalSchemaPath != "" {
+		slog.Info("using local schema", "path", c.cfg.LocalSchemaPath)
+		sflibOpts = append(sflibOpts, sflibcfg.OptLocalSchemaPath(c.cfg.LocalSchemaPath))
+	}
+
+	arc := sflib.NewSfga(sflibOpts...)
+	err := arc.Create(c.cfg.SfgaDir)
 	if err != nil {
 		return nil, err
 	}
-	_, err = sfga.Connect()
+	_, err = arc.Connect()
 	if err != nil {
 		return nil, err
 	}
-	return sfga, nil
+	return arc, nil
 }
 
 func (c *Convertor) ToSfga(_ sfga.Archive) error {

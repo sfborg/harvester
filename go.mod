@@ -78,3 +78,6 @@ tool (
 	github.com/spf13/cobra-cli
 	golang.org/x/tools/cmd/goimports
 )
+
+// Use local sflib for development (has InferBasionyms)
+replace github.com/sfborg/sflib => ../sflib

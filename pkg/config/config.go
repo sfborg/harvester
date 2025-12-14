@@ -72,6 +72,10 @@ type Config struct {
 
 	// WithZipOutput indicates that zipped archives have to be created.
 	WithZipOutput bool
+
+	// LocalSchemaPath is the path to a local schema.sql file to use
+	// instead of fetching from GitHub. Useful for development.
+	LocalSchemaPath string
 }
 
 // Option is the type for all option functions available to modify
@@ -141,6 +145,12 @@ func OptColSep(s string) Option {
 func OptBadRow(br gnfmt.BadRow) Option {
 	return func(c *Config) {
 		c.BadRow = br
+	}
+}
+
+func OptLocalSchemaPath(s string) Option {
+	return func(c *Config) {
+		c.LocalSchemaPath = s
 	}
 }
 
