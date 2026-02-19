@@ -13,7 +13,7 @@ require (
 	github.com/gnames/gnuuid v0.2.0
 	github.com/google/uuid v1.6.0
 	github.com/jedib0t/go-pretty/v6 v6.7.8
-	github.com/sfborg/sflib v0.5.3
+	github.com/sfborg/sflib v0.5.5
 	github.com/spf13/cobra v1.10.2
 	github.com/stretchr/testify v1.11.1
 	golang.org/x/sync v0.19.0
