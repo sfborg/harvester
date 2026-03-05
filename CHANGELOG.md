@@ -5,6 +5,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [v0.2.1] - 2026-03-05 Thu
+
+Add: documentation in README.md, .zenodo.json.
+
+## [v0.2.0] - 2026-02-19 Thu
+
+Add: update modules.
+Add: opton to infer basionyms in ITIS.
+Add: ITIS.
+Add [#19]: NCBI.
+Add [#18]: Wikispecies.
+Add [#16]: World Ferns, World Plants.
+Add [#15]: IOC World Bird List.
+Add: IDs to paleobiodb hierarchy.
+
 ## [v0.1.0] - 2025-02-12 Wed
 
 Add [#12]: import Paleobiodb.
@@ -31,6 +46,8 @@ Add: initial commit
 
 This document follows [changelog guidelines]
 
+[v0.2.1]: https://github.com/sfborg/harverster/tree/v0.2.0...v0.2.1
+[v0.2.0]: https://github.com/sfborg/harverster/tree/v0.1.0...v0.2.0
 [v0.1.0]: https://github.com/sfborg/harverster/tree/v0.0.0...v0.1.0
 [v0.0.0]: https://github.com/sfborg/harverster/tree/v0.0.0
 [#20]: https://github.com/sfborg/harverster/issues/20

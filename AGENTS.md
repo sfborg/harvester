@@ -1,6 +1,6 @@
-# CLAUDE.md
+# AGENTS.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+This file provides guidance to coding agents when working with code in this repository.
 
 ## Project Overview
 
@@ -43,29 +43,36 @@ just release     # Build releases for all platforms (Linux, Mac, Windows)
 
 ### Application Usage
 ```bash
-harvester list              # List all supported datasets
-harvester list -v           # List with detailed information
-harvester get <label>       # Convert dataset to SFGA format
-harvester get <label> -s    # Skip download step (use cached data)
-harvester get <label> -z    # Output compressed zip file
+harvester list                        # List all supported datasets
+harvester list -v                     # List with detailed information
+harvester get <label> [output]        # Convert dataset to SFGA format
+harvester get <label> [output] -s     # Skip download, use cached data
+harvester get <label> [output] -z     # Output as compressed zip file
 ```
+
+`<label>` can be a dataset name or its row number from `harvester list`.
+`[output]` is an optional output file path (without extension — extensions
+are added automatically).
 
 ## Architecture
 
 ### Core Components
 
 **Main Entry Point** (`main.go` → `cmd/root.go`)
+
 - Uses Cobra for CLI interface
 - Sets up structured logging with `tint` handler
 - Commands: `list` and `get`
 
 **Harvester Interface** (`pkg/harvester.go`, `pkg/interface.go`)
+
 - `Harvester` interface provides two methods:
   - `List()` - returns map of all registered data sources
   - `Get(label, outPath)` - converts a specific dataset to SFGA format
 - Core workflow: Download → Extract → InitSfga → ToSfga → Export
 
 **Data Convertor Interface** (`pkg/data/interface.go`)
+
 - All data sources implement the `Convertor` interface
 - Split into `Accessor` (metadata) and `Processor` (actions)
 - Key methods each source must implement:
@@ -75,15 +82,17 @@ harvester get <label> -z    # Output compressed zip file
   - `ToSfga()` - transform data into SFGA format
 
 **Base Implementation** (`internal/base/base.go`)
+
 - Provides default implementations for common Convertor methods
 - Handles automatic archive format detection (zip, tar.gz, tar.bz2, tar.xz)
 - Integrates gnparser for scientific name parsing
 - Sources can embed this and override specific methods
 
 **Source Registration** (`internal/list/list.go`)
+
 - `GetDataSets()` function returns map of all available sources
 - Each source is registered with a unique label (map key)
-- Currently supports: grin, ion, ioc birds, paleodb, wfwp
+- Currently supports: grin, ion, ioc, itis, ncbi, paleodb, wikisp, worldplants
 
 ### Adding a New Data Source
 
