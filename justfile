@@ -1,5 +1,7 @@
 app       := "harvester"
 org       := "github.com/sfborg/"
+bindir    := "bin"
+reldir    := "/tmp"
 version   := `git describe --tags`
 ver       := `git describe --tags --abbrev=0`
 date      := `date -u '+%Y-%m-%d_%H:%M:%S'`
@@ -23,15 +25,15 @@ test:
 
 # Build the binary (development build with timestamp and git version)
 build: peg
-    @mkdir -p bin
-    {{no_c}} go build {{flags_ld}} -o bin/{{app}}
-    @echo "✅ {{app}} built to bin/{{app}}"
+    @mkdir -p {{bindir}}
+    {{no_c}} go build {{flags_ld}} -o {{bindir}}/{{app}}
+    @echo "✅ {{app}} built to {{bindir}}/{{app}}"
 
 # Build release binary (uses version.go for Version, timestamp for Build)
 build-release: peg
-    @mkdir -p bin
-    {{no_c}} go build {{flags_rel}} -o bin/{{app}}
-    @echo "✅ {{app}} release binary built to bin/{{app}}"
+    @mkdir -p {{bindir}}
+    {{no_c}} go build {{flags_rel}} -o {{bindir}}/{{app}}
+    @echo "✅ {{app}} release binary built to {{bindir}}/{{app}}"
 
 # Install to ~/go/bin (development build with timestamp and git version)
 install: peg
@@ -42,25 +44,23 @@ install: peg
 release: peg
     @echo "Building releases for Linux, Mac (Intel), Mac (ARM), Windows"
 
-    @mkdir -p bin/releases
+    {{no_c}} {{linux}} {{x86}} go build {{flags_rel}} -o {{reldir}}/{{app}}
+    tar zcvf {{reldir}}/{{app}}-{{ver}}-linux.tar.gz -C {{reldir}} {{app}}
+    rm {{reldir}}/{{app}}
 
-    {{no_c}} {{linux}} {{x86}} go build {{flags_rel}} -o bin/releases/{{app}}
-    tar zcvf bin/releases/{{app}}-{{ver}}-linux.tar.gz -C bin/releases {{app}}
-    rm bin/releases/{{app}}
+    {{no_c}} {{mac}} {{x86}} go build {{flags_rel}} -o {{reldir}}/{{app}}
+    tar zcvf {{reldir}}/{{app}}-{{ver}}-mac-amd64.tar.gz -C {{reldir}} {{app}}
+    rm {{reldir}}/{{app}}
 
-    {{no_c}} {{mac}} {{x86}} go build {{flags_rel}} -o bin/releases/{{app}}
-    tar zcvf bin/releases/{{app}}-{{ver}}-mac-amd64.tar.gz -C bin/releases {{app}}
-    rm bin/releases/{{app}}
+    {{no_c}} {{mac}} {{arm}} go build {{flags_rel}} -o {{reldir}}/{{app}}
+    tar zcvf {{reldir}}/{{app}}-{{ver}}-mac-arm64.tar.gz -C {{reldir}} {{app}}
+    rm {{reldir}}/{{app}}
 
-    {{no_c}} {{mac}} {{arm}} go build {{flags_rel}} -o bin/releases/{{app}}
-    tar zcvf bin/releases/{{app}}-{{ver}}-mac-arm64.tar.gz -C bin/releases {{app}}
-    rm bin/releases/{{app}}
+    {{no_c}} {{win}} {{x86}} go build {{flags_rel}} -o {{reldir}}/{{app}}.exe
+    cd {{reldir}} && zip -9 {{app}}-{{ver}}-win-64.zip {{app}}.exe
+    rm {{reldir}}/{{app}}.exe
 
-    {{no_c}} {{win}} {{x86}} go build {{flags_rel}} -o bin/releases/{{app}}.exe
-    cd bin/releases && zip -9 {{app}}-{{ver}}-win-64.zip APP.exe
-    rm bin/releases/APP.exe
-
-    @echo "✅ Release binaries created in bin/releases/"
+    @echo "✅ Release binaries created in {{reldir}}/"
 
 # Clean build artifacts
 clean:

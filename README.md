@@ -1,5 +1,7 @@
 # Harvester
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18882366.svg)](https://doi.org/10.5281/zenodo.18882366)
+
 Harvester converts biodiversity datasets from various formats into [SFGA]
 (Species File Group Archive) — a standardized format for taxonomic data.
 
