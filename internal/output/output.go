@@ -4,8 +4,8 @@ import (
 	"os"
 	"sort"
 
+	"github.com/fatih/color"
 	"github.com/jedib0t/go-pretty/v6/table"
-	"github.com/jedib0t/go-pretty/v6/text"
 	"github.com/sfborg/harvester/pkg/data"
 )
 
@@ -29,9 +29,13 @@ func New(list map[string]data.Convertor) *Output {
 	sort.Strings(labels)
 	for i, v := range labels {
 		datum := list[v]
+		label := datum.Label()
+		if datum.ManualSteps() {
+			label += color.RedString("*")
+		}
 		od := OutputDataset{
 			Index: i + 1,
-			Label: datum.Label(),
+			Label: label,
 			Title: datum.Name(),
 			Notes: datum.Description(),
 		}
@@ -45,7 +49,8 @@ func (o *Output) Table() {
 	t.SetStyle(table.StyleLight)
 	t.SetOutputMirror(os.Stdout)
 	t.SetColumnConfigs([]table.ColumnConfig{
-		{Name: "Written", Align: text.AlignRight},
+		{Name: "Title", WidthMax: 20},
+		{Name: "Notes"},
 	})
 	header := table.Row{"#", "Label", "Title", "Notes"}
 	t.AppendHeader(header)

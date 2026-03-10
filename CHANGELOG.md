@@ -5,6 +5,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+Add [#21]: add LPSN.
+
 ## [v0.2.1] - 2026-03-05 Thu
 
 Add: documentation in README.md, .zenodo.json.

@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"log/slog"
 
-	"github.com/fatih/color"
 	"github.com/gnames/gn"
 	"github.com/gnames/gnparser"
 	"github.com/gnames/gnsys"
@@ -42,12 +41,7 @@ func (c *Convertor) Config() config.Config {
 }
 
 func (c *Convertor) Label() string {
-
-	res := c.set.Label
-	if c.set.ManualSteps {
-		res += color.RedString("*")
-	}
-	return res
+	return c.set.Label
 }
 
 func (c *Convertor) Name() string {

@@ -65,8 +65,11 @@ var listCmd = &cobra.Command{
 			}
 			sort.Strings(labels)
 			for i, v := range labels {
-				fmt.Printf("%0.2d %s", i+1, v)
-				fmt.Println()
+				label := v
+				if list[v].ManualSteps() {
+					label += color.RedString("*")
+				}
+				fmt.Printf("%0.2d %s\n", i+1, label)
 			}
 			fmt.Printf(
 				"\n%s - require manual steps. Use --verbose for details\n",
