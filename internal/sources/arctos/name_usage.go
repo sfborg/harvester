@@ -60,9 +60,9 @@ func (a *arctos) importNameUsages() error {
 		data.AddParsedData(gnp, nu)
 
 		if nu.CanonicalFull != "" {
-			nu.LocalID = url.QueryEscape(nu.CanonicalFull)
+			nu.NameAlternativeID = "gnoutlink:" + url.QueryEscape(nu.CanonicalFull)
 		} else {
-			nu.LocalID = url.QueryEscape(nu.ScientificName)
+			nu.NameAlternativeID = "gnoutlink:" + url.QueryEscape(nu.ScientificName)
 		}
 
 		batch = append(batch, *nu)
@@ -81,9 +81,9 @@ func (a *arctos) importNameUsages() error {
 				snu.ID = makeID(s.relatedName)
 				data.AddParsedData(gnp, snu)
 				if snu.CanonicalFull != "" {
-					snu.LocalID = url.QueryEscape(snu.CanonicalFull)
+					snu.NameAlternativeID = "gnoutlink:" + url.QueryEscape(snu.CanonicalFull)
 				} else {
-					snu.LocalID = url.QueryEscape(snu.ScientificName)
+					snu.NameAlternativeID = "gnoutlink:" + url.QueryEscape(snu.ScientificName)
 				}
 				batch = append(batch, *snu)
 				total++
