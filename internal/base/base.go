@@ -108,6 +108,8 @@ func (c *Convertor) Extract(path string) error {
 		f = gnsys.ExtractTarBz2
 	case gnsys.TarXzFt:
 		f = gnsys.ExtractTarXz
+	case gnsys.XzFT:
+		f = gnsys.ExtractXz
 	default:
 		return fmt.Errorf("cannot determine file format of '%s'", path)
 	}

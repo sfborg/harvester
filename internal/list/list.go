@@ -2,6 +2,7 @@ package list
 
 import (
 	"github.com/sfborg/harvester/internal/sources/arctos"
+	"github.com/sfborg/harvester/internal/sources/ipni"
 	"github.com/sfborg/harvester/internal/sources/grin"
 	"github.com/sfborg/harvester/internal/sources/ioc"
 	"github.com/sfborg/harvester/internal/sources/ion"
@@ -22,6 +23,7 @@ func GetDataSets(cfg config.Config) map[string]data.Convertor {
 	//  values are the corresponding data converters.
 	ds := []data.Convertor{
 		arctos.New(cfg),
+		ipni.New(cfg),
 		grin.New(cfg),
 		mycobank.New(cfg),
 		ion.New(cfg),
