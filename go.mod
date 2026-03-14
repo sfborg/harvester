@@ -13,7 +13,7 @@ require (
 	github.com/gnames/gnuuid v0.2.0
 	github.com/google/uuid v1.6.0
 	github.com/jedib0t/go-pretty/v6 v6.7.8
-	github.com/sfborg/sflib v0.5.6
+	github.com/sfborg/sflib v0.5.8
 	github.com/spf13/cobra v1.10.2
 	github.com/stretchr/testify v1.11.1
 	github.com/xuri/excelize/v2 v2.10.1
@@ -83,6 +83,3 @@ tool (
 	github.com/spf13/cobra-cli
 	golang.org/x/tools/cmd/goimports
 )
-
-// Use local sflib for development (has InferBasionyms)
-replace github.com/sfborg/sflib => ../sflib

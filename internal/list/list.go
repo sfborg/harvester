@@ -12,6 +12,7 @@ import (
 	"github.com/sfborg/harvester/internal/sources/ncbi"
 	"github.com/sfborg/harvester/internal/sources/nzor"
 	"github.com/sfborg/harvester/internal/sources/paleodb"
+	"github.com/sfborg/harvester/internal/sources/wcvp"
 	"github.com/sfborg/harvester/internal/sources/wikisp"
 	"github.com/sfborg/harvester/internal/sources/worldplants"
 	"github.com/sfborg/harvester/pkg/config"
@@ -33,6 +34,7 @@ func GetDataSets(cfg config.Config) map[string]data.Convertor {
 		ncbi.New(cfg),
 		nzor.New(cfg),
 		paleodb.New(cfg),
+		wcvp.New(cfg),
 		worldplants.New(cfg),
 		wikisp.New(cfg),
 	}

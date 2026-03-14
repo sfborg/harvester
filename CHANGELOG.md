@@ -5,7 +5,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-Add [#21]: add LPSN.
+## [v0.2.2] - 2026-03-14 Sat
+
+Add [#25]: WCVP.
+Add [#17]: IPNI.
+Add [#24]: NZOR.
+Add [#23]: MicoBank.
+Add [#22]: Arctos.
+Add [#21]: LPSN.
+Fix: remove replace sflib from go.mod
 
 ## [v0.2.1] - 2026-03-05 Thu
 
