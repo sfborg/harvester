@@ -10,7 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 Add [#25]: WCVP.
 Add [#17]: IPNI.
 Add [#24]: NZOR.
-Add [#23]: MicoBank.
+Add [#23]: MycoBank.
 Add [#22]: Arctos.
 Add [#21]: LPSN.
 Fix: remove replace sflib from go.mod
@@ -56,10 +56,16 @@ Add: initial commit
 
 This document follows [changelog guidelines]
 
+[v0.2.2]: https://github.com/sfborg/harvester/tree/v0.2.1...v0.2.2
 [v0.2.1]: https://github.com/sfborg/harverster/tree/v0.2.0...v0.2.1
 [v0.2.0]: https://github.com/sfborg/harverster/tree/v0.1.0...v0.2.0
 [v0.1.0]: https://github.com/sfborg/harverster/tree/v0.0.0...v0.1.0
 [v0.0.0]: https://github.com/sfborg/harverster/tree/v0.0.0
+[#25]: https://github.com/sfborg/harvester/issues/25
+[#24]: https://github.com/sfborg/harvester/issues/24
+[#23]: https://github.com/sfborg/harvester/issues/23
+[#22]: https://github.com/sfborg/harvester/issues/22
+[#21]: https://github.com/sfborg/harvester/issues/21
 [#20]: https://github.com/sfborg/harverster/issues/20
 [#19]: https://github.com/sfborg/harverster/issues/19
 [#18]: https://github.com/sfborg/harverster/issues/18
