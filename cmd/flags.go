@@ -141,6 +141,20 @@ func clbPasswordFlag(cmd *cobra.Command) {
 	}
 }
 
+func clbDatasetIDFlag(cmd *cobra.Command) {
+	i, _ := cmd.Flags().GetInt("clb-dataset-id")
+	if i != 0 {
+		opts = append(opts, config.OptCLBDatasetID(i))
+	}
+}
+
+func clbDatasetAliasFlag(cmd *cobra.Command) {
+	s, _ := cmd.Flags().GetString("clb-dataset-alias")
+	if s != "" {
+		opts = append(opts, config.OptCLBDatasetAlias(s))
+	}
+}
+
 func clbTaxonIDFlag(cmd *cobra.Command) {
 	s, _ := cmd.Flags().GetString("clb-taxon-id")
 	if s != "" {

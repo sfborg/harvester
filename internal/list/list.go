@@ -1,6 +1,7 @@
 package list
 
 import (
+	"github.com/sfborg/harvester/internal/sources/clbsrc"
 	"github.com/sfborg/harvester/internal/sources/arctos"
 	"github.com/sfborg/harvester/internal/sources/ipni"
 	"github.com/sfborg/harvester/internal/sources/grin"
@@ -24,6 +25,7 @@ func GetDataSets(cfg config.Config) map[string]data.Convertor {
 	// The keys of the map are the names of the data sources, and the
 	//  values are the corresponding data converters.
 	ds := []data.Convertor{
+		clbsrc.New(cfg),
 		arctos.New(cfg),
 		ipni.New(cfg),
 		grin.New(cfg),

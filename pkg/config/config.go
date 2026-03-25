@@ -89,6 +89,11 @@ type Config struct {
 	// CLBDatasetID is the ChecklistBank dataset identifier.
 	CLBDatasetID int
 
+	// CLBDatasetAlias is used as the output file base name. If empty,
+	// the alias is fetched from the CLB dataset metadata or derived
+	// from the dataset title.
+	CLBDatasetAlias string
+
 	// CLBTaxonID is the root taxon ID for filtering CLB exports.
 	CLBTaxonID string
 
@@ -217,6 +222,12 @@ func OptCLBPassword(s string) Option {
 func OptCLBDatasetID(i int) Option {
 	return func(c *Config) {
 		c.CLBDatasetID = i
+	}
+}
+
+func OptCLBDatasetAlias(s string) Option {
+	return func(c *Config) {
+		c.CLBDatasetAlias = s
 	}
 }
 

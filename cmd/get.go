@@ -22,14 +22,20 @@ THE SOFTWARE.
 package cmd
 
 import (
+	"bufio"
 	"fmt"
+	"os"
 	"sort"
 	"strconv"
+	"strings"
+	"syscall"
 
 	"github.com/gnames/gn"
+	"github.com/sfborg/harvester/internal/clb"
 	harvester "github.com/sfborg/harvester/pkg"
 	"github.com/sfborg/harvester/pkg/config"
 	"github.com/spf13/cobra"
+	"golang.org/x/term"
 )
 
 // getCmd represents the get command
@@ -47,8 +53,9 @@ var getCmd = &cobra.Command{
 		flags := []flagFunc{
 			skipFlag, fileFlag, zipFlag, delimFlag, quotesFlag, badRowFlag,
 			dateFlag, dataVersionFlag, schemaFlag,
-			clbApiFlag, clbUserFlag, clbPasswordFlag,
-			clbTaxonIDFlag, clbSynonymsFlag, clbBareNamesFlag,
+			clbApiFlag, clbUserFlag, clbPasswordFlag, clbDatasetIDFlag,
+			clbDatasetAliasFlag, clbTaxonIDFlag,
+			clbSynonymsFlag, clbBareNamesFlag,
 			clbExtendedFlag, clbExtinctFlag, clbClassificationFlag,
 			clbTaxGroupsFlag, clbMinRankFlag,
 		}
@@ -68,9 +75,16 @@ var getCmd = &cobra.Command{
 			return err
 		}
 
+		// Prompt for missing CLB parameters if needed.
+		if needsCLBPrompt(l, cfg) {
+			cfg, hr = promptCLBParams(l, cfg)
+		}
+
 		outPath := l
 		if len(args) == 2 {
 			outPath = args[1]
+		} else if cfg.CLBDatasetID != 0 {
+			outPath = resolveCLBAlias(cfg)
 		}
 
 		err := hr.Get(l, outPath)
@@ -81,6 +95,83 @@ var getCmd = &cobra.Command{
 		}
 		return nil
 	},
+}
+
+// resolveCLBAlias returns the output file base name for a CLB dataset.
+// It uses CLBDatasetAlias if set, otherwise fetches the alias from
+// the CLB API metadata.
+func resolveCLBAlias(cfg config.Config) string {
+	if cfg.CLBDatasetAlias != "" {
+		return cfg.CLBDatasetAlias
+	}
+
+	client := clb.New(cfg.CLBApi, "", "")
+	alias, err := client.FetchDatasetAlias(cfg.CLBDatasetID)
+	if err != nil {
+		gn.Warn("Could not fetch dataset alias: %s", err)
+		return fmt.Sprintf("clb-%d", cfg.CLBDatasetID)
+	}
+
+	return alias
+}
+
+// clbSources lists source labels that require CLB credentials.
+var clbSources = map[string]bool{
+	"clb": true,
+	"wsc": true,
+}
+
+// needsCLBPrompt returns true when the source needs interactive
+// input for missing CLB parameters.
+func needsCLBPrompt(label string, cfg config.Config) bool {
+	if !clbSources[label] {
+		return false
+	}
+	if cfg.SkipDownload || cfg.LoadFile != "" {
+		return false
+	}
+	if label == "clb" && cfg.CLBDatasetID == 0 {
+		return true
+	}
+	return cfg.CLBUser == "" || cfg.CLBPassword == ""
+}
+
+// promptCLBParams asks the user for missing CLB parameters
+// interactively. The password is hidden. It returns an updated
+// config and harvester.
+func promptCLBParams(
+	label string, cfg config.Config,
+) (config.Config, harvester.Harvester) {
+	reader := bufio.NewReader(os.Stdin)
+
+	if label == "clb" && cfg.CLBDatasetID == 0 {
+		fmt.Print("ChecklistBank dataset ID: ")
+		line, _ := reader.ReadString('\n')
+		line = strings.TrimSpace(line)
+		if id, err := strconv.Atoi(line); err == nil && id > 0 {
+			opts = append(opts, config.OptCLBDatasetID(id))
+		}
+	}
+
+	if cfg.CLBUser == "" {
+		fmt.Print("ChecklistBank username: ")
+		user, _ := reader.ReadString('\n')
+		user = strings.TrimSpace(user)
+		opts = append(opts, config.OptCLBUser(user))
+	}
+
+	if cfg.CLBPassword == "" {
+		fmt.Print("ChecklistBank password: ")
+		pw, err := term.ReadPassword(int(syscall.Stdin))
+		fmt.Println()
+		if err == nil {
+			opts = append(opts, config.OptCLBPassword(string(pw)))
+		}
+	}
+
+	cfg = config.New(opts...)
+	hr := harvester.New(cfg)
+	return cfg, hr
 }
 
 func getLabel(hr harvester.Harvester, ds string) string {
@@ -145,6 +236,11 @@ func init() {
 	)
 	getCmd.Flags().String("clb-user", "", "ChecklistBank username")
 	getCmd.Flags().String("clb-password", "", "ChecklistBank password")
+	getCmd.Flags().Int("clb-dataset-id", 0, "ChecklistBank dataset ID")
+	getCmd.Flags().String(
+		"clb-dataset-alias", "",
+		"output file base name (default: from CLB dataset metadata)",
+	)
 	getCmd.Flags().String(
 		"clb-taxon-id", "",
 		"root taxon ID for CLB export filtering",

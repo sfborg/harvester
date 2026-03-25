@@ -1,6 +1,7 @@
 // Package clb provides a client for the ChecklistBank API.
 // It handles authentication, triggering dataset exports, polling
-// for completion, and downloading the resulting archives.
+// for completion, and downloading the resulting archives. It also
+// provides helpers for converting downloaded COLDP archives to SFGA.
 package clb
 
 import (
@@ -11,11 +12,16 @@ import (
 	"log/slog"
 	"net/http"
 	"os"
+	"os/exec"
 	"path/filepath"
 	"strings"
 	"time"
 
 	"github.com/gnames/gn"
+	"github.com/sfborg/harvester/pkg/config"
+	"github.com/sfborg/sflib"
+	sflibcfg "github.com/sfborg/sflib/config"
+	"github.com/sfborg/sflib/pkg/sfga"
 )
 
 // Client communicates with the ChecklistBank API.
@@ -255,6 +261,79 @@ func (c *Client) DownloadExport(
 	return outPath, nil
 }
 
+// FetchDatasetAlias returns a short name for the dataset suitable for
+// use as an output file name. It first checks the dataset's alias
+// field; if empty, it derives an acronym from the first letter of
+// each word in the title.
+func (c *Client) FetchDatasetAlias(datasetID int) (string, error) {
+	url := fmt.Sprintf("%s/dataset/%d.json", c.api, datasetID)
+	slog.Info("fetching dataset metadata", "dataset", datasetID)
+
+	req, err := http.NewRequest(http.MethodGet, url, nil)
+	if err != nil {
+		return "", fmt.Errorf("creating dataset request: %w", err)
+	}
+	req.Header.Set("Accept", "application/json")
+	if c.token != "" {
+		req.Header.Set("Authorization", "Bearer "+c.token)
+	}
+
+	resp, err := c.http.Do(req)
+	if err != nil {
+		return "", fmt.Errorf("dataset request failed: %w", err)
+	}
+	defer resp.Body.Close()
+
+	if resp.StatusCode != http.StatusOK {
+		body, _ := io.ReadAll(resp.Body)
+		return "", fmt.Errorf(
+			"dataset fetch failed (HTTP %d): %s",
+			resp.StatusCode, string(body),
+		)
+	}
+
+	var ds datasetMeta
+	if err := json.NewDecoder(resp.Body).Decode(&ds); err != nil {
+		return "", fmt.Errorf("decoding dataset metadata: %w", err)
+	}
+
+	if ds.Alias != "" {
+		slog.Info("using dataset alias", "alias", ds.Alias)
+		return sanitizeAlias(ds.Alias), nil
+	}
+
+	// Derive acronym from first letter of each word in the title.
+	alias := acronymFromTitle(ds.Title)
+	slog.Info("derived alias from title", "title", ds.Title, "alias", alias)
+	return alias, nil
+}
+
+type datasetMeta struct {
+	Alias string `json:"alias"`
+	Title string `json:"title"`
+}
+
+// sanitizeAlias lowercases an alias and replaces spaces with
+// underscores so it is safe to use as a file name.
+func sanitizeAlias(alias string) string {
+	alias = strings.ToLower(alias)
+	alias = strings.ReplaceAll(alias, " ", "_")
+	return alias
+}
+
+// acronymFromTitle takes the first letter of each word in a title
+// and returns it lowercased as a short identifier.
+func acronymFromTitle(title string) string {
+	words := strings.Fields(title)
+	var b strings.Builder
+	for _, w := range words {
+		if len(w) > 0 {
+			b.WriteByte(w[0])
+		}
+	}
+	return strings.ToLower(b.String())
+}
+
 // SearchTaxon searches for a taxon by name within a dataset and
 // returns the taxon ID of the first accepted match. The rank and
 // status parameters narrow the search. This resolves taxon names
@@ -381,4 +460,80 @@ func (c *Client) getExportStatus(url string) (*ExportStatus, error) {
 	}
 
 	return &status, nil
+}
+
+// ColdpToSfga converts a COLDP zip archive to SFGA format using
+// the sf tool and returns the connected archive. This is shared by
+// all ChecklistBank-based sources.
+func ColdpToSfga(coldpPath string, cfg config.Config) (sfga.Archive, error) {
+	sfgaOutPath := filepath.Join(cfg.SfgaDir, "output")
+
+	args := []string{"from", "coldp", coldpPath, sfgaOutPath}
+
+	code := NomCodeFlag(cfg)
+	if code != "" {
+		args = append(args, "-c", code)
+	}
+
+	if cfg.WithZipOutput {
+		args = append(args, "-z")
+	}
+
+	slog.Info("running sf from coldp", "args", args)
+	gn.Info("Converting COLDP to SFGA with sf tool")
+
+	cmd := exec.Command("sf", args...)
+	out, err := cmd.CombinedOutput()
+	if err != nil {
+		return nil, fmt.Errorf(
+			"sf from coldp failed: %w\noutput: %s", err, string(out),
+		)
+	}
+
+	slog.Info("sf from coldp completed", "output", string(out))
+
+	var sflibOpts []sflibcfg.Option
+	if cfg.LocalSchemaPath != "" {
+		sflibOpts = append(
+			sflibOpts,
+			sflibcfg.OptLocalSchemaPath(cfg.LocalSchemaPath),
+		)
+	}
+
+	arc := sflib.NewSfga(sflibOpts...)
+	arc.SetDb(sfgaOutPath + ".sqlite")
+	_, err = arc.Connect()
+	if err != nil {
+		return nil, fmt.Errorf("connecting to SFGA: %w", err)
+	}
+
+	return arc, nil
+}
+
+// NomCodeFlag returns the sf tool flag value for the configured
+// nomenclatural code.
+func NomCodeFlag(cfg config.Config) string {
+	switch cfg.Code.String() {
+	case "ICZN":
+		return "zoo"
+	case "ICN":
+		return "bot"
+	case "ICNP":
+		return "bact"
+	case "ICTV":
+		return "vir"
+	case "ICNCP":
+		return "cult"
+	default:
+		return ""
+	}
+}
+
+// FindColdpZip looks for a COLDP zip archive in the given directory.
+func FindColdpZip(dir string) (string, error) {
+	matches, _ := filepath.Glob(filepath.Join(dir, "*.zip"))
+	if len(matches) == 0 {
+		return "", fmt.Errorf("no COLDP archive found in %s", dir)
+	}
+	return matches[0], nil
 }

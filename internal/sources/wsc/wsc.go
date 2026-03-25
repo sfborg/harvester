@@ -3,8 +3,6 @@ package wsc
 import (
 	"fmt"
 	"log/slog"
-	"os/exec"
-	"path/filepath"
 
 	"github.com/gnames/gn"
 	"github.com/sfborg/harvester/internal/base"
@@ -12,8 +10,6 @@ import (
 	"github.com/sfborg/harvester/internal/sysio"
 	"github.com/sfborg/harvester/pkg/config"
 	"github.com/sfborg/harvester/pkg/data"
-	"github.com/sfborg/sflib"
-	sflibcfg "github.com/sfborg/sflib/config"
 	"github.com/sfborg/sflib/pkg/sfga"
 )
 
@@ -134,79 +130,16 @@ func (w *wsc) InitSfga() (sfga.Archive, error) {
 
 	coldpPath := w.coldpPath
 	if coldpPath == "" {
-		// When using skip-download, look for a zip in DownloadDir.
-		matches, _ := filepath.Glob(
-			filepath.Join(w.cfg.DownloadDir, "*.zip"),
-		)
-		if len(matches) == 0 {
-			return nil, fmt.Errorf("no COLDP archive found in %s", w.cfg.DownloadDir)
+		var err error
+		coldpPath, err = clb.FindColdpZip(w.cfg.DownloadDir)
+		if err != nil {
+			return nil, err
 		}
-		coldpPath = matches[0]
 	}
 
-	sfgaOutPath := filepath.Join(w.cfg.SfgaDir, "output")
-
-	args := []string{"from", "coldp", coldpPath, sfgaOutPath}
-
-	code := nomCodeFlag(w.cfg)
-	if code != "" {
-		args = append(args, "-c", code)
-	}
-
-	if w.cfg.WithZipOutput {
-		args = append(args, "-z")
-	}
-
-	slog.Info("running sf from coldp", "args", args)
-	gn.Info("Converting COLDP to SFGA with sf tool")
-
-	cmd := exec.Command("sf", args...)
-	out, err := cmd.CombinedOutput()
-	if err != nil {
-		return nil, fmt.Errorf(
-			"sf from coldp failed: %w\noutput: %s", err, string(out),
-		)
-	}
-
-	slog.Info("sf from coldp completed", "output", string(out))
-
-	var sflibOpts []sflibcfg.Option
-	if w.cfg.LocalSchemaPath != "" {
-		sflibOpts = append(
-			sflibOpts,
-			sflibcfg.OptLocalSchemaPath(w.cfg.LocalSchemaPath),
-		)
-	}
-
-	arc := sflib.NewSfga(sflibOpts...)
-	arc.SetDb(sfgaOutPath + ".sqlite")
-	_, err = arc.Connect()
-	if err != nil {
-		return nil, fmt.Errorf("connecting to SFGA: %w", err)
-	}
-
-	return arc, nil
+	return clb.ColdpToSfga(coldpPath, w.cfg)
 }
 
 func (w *wsc) ToSfga(_ sfga.Archive) error {
 	return nil
-}
-
-// nomCodeFlag returns the sf tool flag value for the configured
-// nomenclatural code.
-func nomCodeFlag(cfg config.Config) string {
-	switch cfg.Code.String() {
-	case "ICZN":
-		return "zoo"
-	case "ICN":
-		return "bot"
-	case "ICNP":
-		return "bact"
-	case "ICTV":
-		return "vir"
-	case "ICNCP":
-		return "cult"
-	default:
-		return ""
-	}
 }
