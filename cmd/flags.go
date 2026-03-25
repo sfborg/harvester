@@ -119,3 +119,101 @@ func schemaFlag(cmd *cobra.Command) {
 		opts = append(opts, config.OptLocalSchemaPath(s))
 	}
 }
+
+func clbApiFlag(cmd *cobra.Command) {
+	s, _ := cmd.Flags().GetString("clb-api")
+	if s != "" {
+		opts = append(opts, config.OptCLBApi(s))
+	}
+}
+
+func clbUserFlag(cmd *cobra.Command) {
+	s, _ := cmd.Flags().GetString("clb-user")
+	if s != "" {
+		opts = append(opts, config.OptCLBUser(s))
+	}
+}
+
+func clbPasswordFlag(cmd *cobra.Command) {
+	s, _ := cmd.Flags().GetString("clb-password")
+	if s != "" {
+		opts = append(opts, config.OptCLBPassword(s))
+	}
+}
+
+func clbTaxonIDFlag(cmd *cobra.Command) {
+	s, _ := cmd.Flags().GetString("clb-taxon-id")
+	if s != "" {
+		opts = append(opts, config.OptCLBTaxonID(s))
+	}
+}
+
+func clbFormatFlag(cmd *cobra.Command) {
+	s, _ := cmd.Flags().GetString("clb-format")
+	if s != "" {
+		opts = append(opts, config.OptCLBFormat(s))
+	}
+}
+
+func clbSynonymsFlag(cmd *cobra.Command) {
+	if cmd.Flags().Changed("clb-synonyms") {
+		b, _ := cmd.Flags().GetBool("clb-synonyms")
+		opts = append(opts, config.OptCLBSynonyms(b))
+	}
+}
+
+func clbBareNamesFlag(cmd *cobra.Command) {
+	if cmd.Flags().Changed("clb-bare-names") {
+		b, _ := cmd.Flags().GetBool("clb-bare-names")
+		opts = append(opts, config.OptCLBBareNames(b))
+	}
+}
+
+func clbExtendedFlag(cmd *cobra.Command) {
+	if cmd.Flags().Changed("clb-extended") {
+		b, _ := cmd.Flags().GetBool("clb-extended")
+		opts = append(opts, config.OptCLBExtended(b))
+	}
+}
+
+func clbExtinctFlag(cmd *cobra.Command) {
+	if cmd.Flags().Changed("clb-extinct") {
+		b, _ := cmd.Flags().GetBool("clb-extinct")
+		opts = append(opts, config.OptCLBExtinct(&b))
+	}
+}
+
+func clbClassificationFlag(cmd *cobra.Command) {
+	if cmd.Flags().Changed("clb-classification") {
+		b, _ := cmd.Flags().GetBool("clb-classification")
+		opts = append(opts, config.OptCLBClassification(b))
+	}
+}
+
+func clbTaxGroupsFlag(cmd *cobra.Command) {
+	if cmd.Flags().Changed("clb-tax-groups") {
+		b, _ := cmd.Flags().GetBool("clb-tax-groups")
+		opts = append(opts, config.OptCLBTaxGroups(b))
+	}
+}
+
+func clbMinRankFlag(cmd *cobra.Command) {
+	s, _ := cmd.Flags().GetString("clb-min-rank")
+	if s != "" {
+		opts = append(opts, config.OptCLBMinRank(s))
+	}
+}
+
+func clbExcelFlag(cmd *cobra.Command) {
+	if cmd.Flags().Changed("clb-excel") {
+		b, _ := cmd.Flags().GetBool("clb-excel")
+		opts = append(opts, config.OptCLBExcel(b))
+	}
+}
+
+func clbTabFormatFlag(cmd *cobra.Command) {
+	s, _ := cmd.Flags().GetString("clb-tab-format")
+	if s != "" {
+		opts = append(opts, config.OptCLBTabFormat(s))
+	}
+}

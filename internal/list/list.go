@@ -15,6 +15,7 @@ import (
 	"github.com/sfborg/harvester/internal/sources/wcvp"
 	"github.com/sfborg/harvester/internal/sources/wikisp"
 	"github.com/sfborg/harvester/internal/sources/worldplants"
+	"github.com/sfborg/harvester/internal/sources/wsc"
 	"github.com/sfborg/harvester/pkg/config"
 	"github.com/sfborg/harvester/pkg/data"
 )
@@ -37,6 +38,7 @@ func GetDataSets(cfg config.Config) map[string]data.Convertor {
 		wcvp.New(cfg),
 		worldplants.New(cfg),
 		wikisp.New(cfg),
+		wsc.New(cfg),
 	}
 
 	res := make(map[string]data.Convertor)

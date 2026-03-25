@@ -47,6 +47,10 @@ var getCmd = &cobra.Command{
 		flags := []flagFunc{
 			skipFlag, fileFlag, zipFlag, delimFlag, quotesFlag, badRowFlag,
 			dateFlag, dataVersionFlag, schemaFlag,
+			clbApiFlag, clbUserFlag, clbPasswordFlag,
+			clbTaxonIDFlag, clbFormatFlag, clbSynonymsFlag, clbBareNamesFlag,
+			clbExtendedFlag, clbExtinctFlag, clbClassificationFlag,
+			clbTaxGroupsFlag, clbMinRankFlag, clbExcelFlag, clbTabFormatFlag,
 		}
 
 		for _, v := range flags {
@@ -132,5 +136,44 @@ func init() {
 	getCmd.Flags().StringP(
 		"schema", "S", "",
 		"path to local schema.sql file (instead of fetching from GitHub)",
+	)
+
+	// ChecklistBank API flags.
+	getCmd.Flags().String(
+		"clb-api", "",
+		"ChecklistBank API URL (default https://api.checklistbank.org)",
+	)
+	getCmd.Flags().String("clb-user", "", "ChecklistBank username")
+	getCmd.Flags().String("clb-password", "", "ChecklistBank password")
+	getCmd.Flags().String(
+		"clb-taxon-id", "",
+		"root taxon ID for CLB export filtering",
+	)
+
+	// ChecklistBank export option flags.
+	getCmd.Flags().String(
+		"clb-format", "",
+		"CLB export format (default ColDP)",
+	)
+	getCmd.Flags().Bool("clb-synonyms", true, "include synonyms in CLB export")
+	getCmd.Flags().Bool("clb-bare-names", false, "include bare names in CLB export")
+	getCmd.Flags().Bool("clb-extended", true, "request extended CLB export")
+	getCmd.Flags().Bool(
+		"clb-extinct", false,
+		"filter by extinction status in CLB export",
+	)
+	getCmd.Flags().Bool(
+		"clb-classification", true,
+		"include classification in CLB export",
+	)
+	getCmd.Flags().Bool(
+		"clb-tax-groups", true,
+		"include taxonomic groups in CLB export",
+	)
+	getCmd.Flags().String("clb-min-rank", "", "minimum rank for CLB export")
+	getCmd.Flags().Bool("clb-excel", false, "request Excel format CLB export")
+	getCmd.Flags().String(
+		"clb-tab-format", "",
+		"tabular format for CLB export (CSV or TSV)",
 	)
 }

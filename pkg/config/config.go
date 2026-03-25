@@ -76,6 +76,51 @@ type Config struct {
 	// LocalSchemaPath is the path to a local schema.sql file to use
 	// instead of fetching from GitHub. Useful for development.
 	LocalSchemaPath string
+
+	// CLBApi is the ChecklistBank API base URL.
+	CLBApi string
+
+	// CLBUser is the username for ChecklistBank authentication.
+	CLBUser string
+
+	// CLBPassword is the password for ChecklistBank authentication.
+	CLBPassword string
+
+	// CLBDatasetID is the ChecklistBank dataset identifier.
+	CLBDatasetID int
+
+	// CLBTaxonID is the root taxon ID for filtering CLB exports.
+	CLBTaxonID string
+
+	// CLBFormat is the CLB export format (e.g. ColDP, DWCA).
+	CLBFormat string
+
+	// CLBSynonyms includes synonyms in the CLB export.
+	CLBSynonyms bool
+
+	// CLBBareNames includes bare names in the CLB export.
+	CLBBareNames bool
+
+	// CLBExtended requests extended data in the CLB export.
+	CLBExtended bool
+
+	// CLBExtinct filters by extinction status. nil means unset.
+	CLBExtinct *bool
+
+	// CLBClassification includes classification in the CLB export.
+	CLBClassification bool
+
+	// CLBTaxGroups includes taxonomic groups in the CLB export.
+	CLBTaxGroups bool
+
+	// CLBMinRank sets the minimum taxonomic rank for the CLB export.
+	CLBMinRank string
+
+	// CLBExcel requests Excel format for the CLB export.
+	CLBExcel bool
+
+	// CLBTabFormat sets the tabular format (CSV or TSV) for CLB export.
+	CLBTabFormat string
 }
 
 // Option is the type for all option functions available to modify
@@ -154,6 +199,96 @@ func OptLocalSchemaPath(s string) Option {
 	}
 }
 
+func OptCLBApi(s string) Option {
+	return func(c *Config) {
+		c.CLBApi = s
+	}
+}
+
+func OptCLBUser(s string) Option {
+	return func(c *Config) {
+		c.CLBUser = s
+	}
+}
+
+func OptCLBPassword(s string) Option {
+	return func(c *Config) {
+		c.CLBPassword = s
+	}
+}
+
+func OptCLBDatasetID(i int) Option {
+	return func(c *Config) {
+		c.CLBDatasetID = i
+	}
+}
+
+func OptCLBTaxonID(s string) Option {
+	return func(c *Config) {
+		c.CLBTaxonID = s
+	}
+}
+
+func OptCLBFormat(s string) Option {
+	return func(c *Config) {
+		c.CLBFormat = s
+	}
+}
+
+func OptCLBSynonyms(b bool) Option {
+	return func(c *Config) {
+		c.CLBSynonyms = b
+	}
+}
+
+func OptCLBBareNames(b bool) Option {
+	return func(c *Config) {
+		c.CLBBareNames = b
+	}
+}
+
+func OptCLBExtended(b bool) Option {
+	return func(c *Config) {
+		c.CLBExtended = b
+	}
+}
+
+func OptCLBExtinct(b *bool) Option {
+	return func(c *Config) {
+		c.CLBExtinct = b
+	}
+}
+
+func OptCLBClassification(b bool) Option {
+	return func(c *Config) {
+		c.CLBClassification = b
+	}
+}
+
+func OptCLBTaxGroups(b bool) Option {
+	return func(c *Config) {
+		c.CLBTaxGroups = b
+	}
+}
+
+func OptCLBMinRank(s string) Option {
+	return func(c *Config) {
+		c.CLBMinRank = s
+	}
+}
+
+func OptCLBExcel(b bool) Option {
+	return func(c *Config) {
+		c.CLBExcel = b
+	}
+}
+
+func OptCLBTabFormat(s string) Option {
+	return func(c *Config) {
+		c.CLBTabFormat = s
+	}
+}
+
 func New(opts ...Option) Config {
 	tmpDir := os.TempDir()
 	cacheDir, err := os.UserCacheDir()
@@ -166,12 +301,18 @@ func New(opts ...Option) Config {
 	today := currentTime.Format("2006-01-02")
 
 	res := Config{
-		CacheDir:    cacheDir,
-		JobsNum:     jobsNum,
-		Code:        nomcode.Unknown,
-		BadRow:      gnfmt.ProcessBadRow,
-		BatchSize:   50_000,
-		ArchiveDate: today,
+		CacheDir:          cacheDir,
+		JobsNum:           jobsNum,
+		Code:              nomcode.Unknown,
+		BadRow:            gnfmt.ProcessBadRow,
+		BatchSize:         50_000,
+		ArchiveDate:       today,
+		CLBApi:            "https://api.checklistbank.org",
+		CLBFormat:         "ColDP",
+		CLBSynonyms:       true,
+		CLBExtended:       true,
+		CLBClassification: true,
+		CLBTaxGroups:      true,
 	}
 	for _, opt := range opts {
 		opt(&res)
