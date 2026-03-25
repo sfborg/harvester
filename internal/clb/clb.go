@@ -38,7 +38,6 @@ type ExportRequest struct {
 	TaxGroups      bool   `json:"taxGroups"`
 	Root           *Root  `json:"root,omitempty"`
 	MinRank        string `json:"minRank,omitempty"`
-	Excel          bool   `json:"excel,omitempty"`
 	TabFormat      string `json:"tabFormat,omitempty"`
 }
 

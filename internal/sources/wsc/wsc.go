@@ -102,7 +102,6 @@ func (w *wsc) Download() (string, error) {
 		Classification: w.cfg.CLBClassification,
 		TaxGroups:      w.cfg.CLBTaxGroups,
 		MinRank:        w.cfg.CLBMinRank,
-		Excel:          w.cfg.CLBExcel,
 		TabFormat:      w.cfg.CLBTabFormat,
 		Root:           &clb.Root{ID: taxonID},
 	}

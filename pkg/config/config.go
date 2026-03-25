@@ -116,9 +116,6 @@ type Config struct {
 	// CLBMinRank sets the minimum taxonomic rank for the CLB export.
 	CLBMinRank string
 
-	// CLBExcel requests Excel format for the CLB export.
-	CLBExcel bool
-
 	// CLBTabFormat sets the tabular format (CSV or TSV) for CLB export.
 	CLBTabFormat string
 }
@@ -274,12 +271,6 @@ func OptCLBTaxGroups(b bool) Option {
 func OptCLBMinRank(s string) Option {
 	return func(c *Config) {
 		c.CLBMinRank = s
-	}
-}
-
-func OptCLBExcel(b bool) Option {
-	return func(c *Config) {
-		c.CLBExcel = b
 	}
 }
 

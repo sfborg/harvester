@@ -148,13 +148,6 @@ func clbTaxonIDFlag(cmd *cobra.Command) {
 	}
 }
 
-func clbFormatFlag(cmd *cobra.Command) {
-	s, _ := cmd.Flags().GetString("clb-format")
-	if s != "" {
-		opts = append(opts, config.OptCLBFormat(s))
-	}
-}
-
 func clbSynonymsFlag(cmd *cobra.Command) {
 	if cmd.Flags().Changed("clb-synonyms") {
 		b, _ := cmd.Flags().GetBool("clb-synonyms")
@@ -204,16 +197,3 @@ func clbMinRankFlag(cmd *cobra.Command) {
 	}
 }
 
-func clbExcelFlag(cmd *cobra.Command) {
-	if cmd.Flags().Changed("clb-excel") {
-		b, _ := cmd.Flags().GetBool("clb-excel")
-		opts = append(opts, config.OptCLBExcel(b))
-	}
-}
-
-func clbTabFormatFlag(cmd *cobra.Command) {
-	s, _ := cmd.Flags().GetString("clb-tab-format")
-	if s != "" {
-		opts = append(opts, config.OptCLBTabFormat(s))
-	}
-}

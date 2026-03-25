@@ -48,9 +48,9 @@ var getCmd = &cobra.Command{
 			skipFlag, fileFlag, zipFlag, delimFlag, quotesFlag, badRowFlag,
 			dateFlag, dataVersionFlag, schemaFlag,
 			clbApiFlag, clbUserFlag, clbPasswordFlag,
-			clbTaxonIDFlag, clbFormatFlag, clbSynonymsFlag, clbBareNamesFlag,
+			clbTaxonIDFlag, clbSynonymsFlag, clbBareNamesFlag,
 			clbExtendedFlag, clbExtinctFlag, clbClassificationFlag,
-			clbTaxGroupsFlag, clbMinRankFlag, clbExcelFlag, clbTabFormatFlag,
+			clbTaxGroupsFlag, clbMinRankFlag,
 		}
 
 		for _, v := range flags {
@@ -151,10 +151,6 @@ func init() {
 	)
 
 	// ChecklistBank export option flags.
-	getCmd.Flags().String(
-		"clb-format", "",
-		"CLB export format (default ColDP)",
-	)
 	getCmd.Flags().Bool("clb-synonyms", true, "include synonyms in CLB export")
 	getCmd.Flags().Bool("clb-bare-names", false, "include bare names in CLB export")
 	getCmd.Flags().Bool("clb-extended", true, "request extended CLB export")
@@ -171,9 +167,4 @@ func init() {
 		"include taxonomic groups in CLB export",
 	)
 	getCmd.Flags().String("clb-min-rank", "", "minimum rank for CLB export")
-	getCmd.Flags().Bool("clb-excel", false, "request Excel format CLB export")
-	getCmd.Flags().String(
-		"clb-tab-format", "",
-		"tabular format for CLB export (CSV or TSV)",
-	)
 }
