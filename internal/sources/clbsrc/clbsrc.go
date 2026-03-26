@@ -1,3 +1,7 @@
+// Package clbsrc provides a reusable ChecklistBank source
+// implementation. Individual CLB dataset sources (e.g. wsc, scarabs)
+// call New() with their dataset definition. Post-processing can be
+// added by embedding the returned Convertor and overriding ToSfga.
 package clbsrc
 
 import (
@@ -13,8 +17,8 @@ import (
 	"github.com/sfborg/sflib/pkg/sfga"
 )
 
-// clbDataset defines a featured ChecklistBank dataset.
-type clbDataset struct {
+// Dataset defines a ChecklistBank dataset for use with New().
+type Dataset struct {
 	// Label is the short identifier used in `harvester get <label>`.
 	Label string
 
@@ -25,6 +29,7 @@ type clbDataset struct {
 	Notes string
 
 	// DatasetID is the ChecklistBank dataset key.
+	// Zero means the user must supply --clb-dataset-id.
 	DatasetID int
 
 	// TaxonName is the default root taxon resolved by name search.
@@ -35,61 +40,10 @@ type clbDataset struct {
 	TaxonRank string
 }
 
-// registry lists featured ChecklistBank datasets that appear as
-// individual entries in `harvester list`. Add new entries here.
-var registry = []clbDataset{
-	{
-		Label:     "wsc",
-		Name:      "World Spider Catalog",
-		DatasetID: 56185,
-		TaxonName: "Arachnida",
-		TaxonRank: "class",
-		Notes: `World Spider Catalog from ChecklistBank (dataset 56185).
-Data is downloaded automatically via the ChecklistBank API as a
-ColDP export. Requires --clb-user and --clb-password flags for
-authentication.
-
-Root taxon 'Arachnida' is resolved dynamically by name search.
-Use --clb-taxon-id to override with a specific taxon ID.`,
-	},
-	{
-		Label: "scarabs",
-		Name: "World Scarabaeidae Database",
-		DatasetID: 1027,
-		TaxonName: "Scarabaeoidea",
-		TaxonRank: "superfamily",
-		Notes: "",
-	},
-}
-
-// IsCLBSource returns true if the given label belongs to the generic
-// CLB source or any featured dataset in the registry.
-func IsCLBSource(label string) bool {
-	if label == "clb" {
-		return true
-	}
-	for _, d := range registry {
-		if d.Label == label {
-			return true
-		}
-	}
-	return false
-}
-
-// NewAll returns convertors for the generic CLB source plus every
-// featured dataset in the registry.
-func NewAll(cfg config.Config) []data.Convertor {
-	res := []data.Convertor{newGeneric(cfg)}
-	for _, d := range registry {
-		res = append(res, newRegistered(cfg, d))
-	}
-	return res
-}
-
-// --- generic CLB source (requires --clb-dataset-id) ---
-
-func newGeneric(cfg config.Config) data.Convertor {
-	set := data.DataSet{
+// NewGeneric creates the generic "clb" source that requires
+// --clb-dataset-id from the user.
+func NewGeneric(cfg config.Config) data.Convertor {
+	return New(cfg, Dataset{
 		Label: "clb",
 		Name:  "ChecklistBank",
 		Notes: `Generic ChecklistBank export source.
@@ -101,36 +55,31 @@ Example:
   harvester get clb --clb-dataset-id 1027 \
     --clb-user USER --clb-password PASS \
     --clb-taxon-id 38829`,
-		ManualSteps: false,
-	}
-	return &clbSource{
-		cfg:       cfg,
-		Convertor: base.New(cfg, &set),
-	}
+	})
 }
 
-// --- registered (featured) CLB source ---
-
-func newRegistered(cfg config.Config, d clbDataset) data.Convertor {
+// New creates a data.Convertor backed by the ChecklistBank API.
+// Sources that need post-processing can embed the returned Convertor
+// and override ToSfga.
+func New(cfg config.Config, ds Dataset) data.Convertor {
 	set := data.DataSet{
-		Label:       d.Label,
-		Name:        d.Name,
-		Notes:       d.Notes,
+		Label:       ds.Label,
+		Name:        ds.Name,
+		Notes:       ds.Notes,
+		CLBSource:   true,
 		ManualSteps: false,
 	}
 	return &clbSource{
 		cfg:       cfg,
-		ds:        &d,
+		ds:        ds,
 		Convertor: base.New(cfg, &set),
 	}
 }
-
-// --- shared implementation ---
 
 type clbSource struct {
 	data.Convertor
 	cfg       config.Config
-	ds        *clbDataset // nil for the generic source
+	ds        Dataset
 	coldpPath string
 }
 
@@ -146,7 +95,10 @@ func (c *clbSource) Download() (string, error) {
 		return c.cfg.LoadFile, nil
 	}
 
-	datasetID := c.datasetID()
+	datasetID := c.ds.DatasetID
+	if datasetID == 0 {
+		datasetID = c.cfg.CLBDatasetID
+	}
 	if datasetID == 0 {
 		return "", fmt.Errorf(
 			"--clb-dataset-id is required for the clb source",
@@ -154,9 +106,11 @@ func (c *clbSource) Download() (string, error) {
 	}
 
 	if c.cfg.CLBUser == "" || c.cfg.CLBPassword == "" {
-		return "", fmt.Errorf(
-			"--clb-user and --clb-password are required",
-		)
+		if !clb.HasValidToken(c.cfg.CLBApi) {
+			return "", fmt.Errorf(
+				"--clb-user and --clb-password are required",
+			)
+		}
 	}
 
 	err := sysio.ResetCache(c.cfg)
@@ -234,28 +188,17 @@ func (c *clbSource) ToSfga(_ sfga.Archive) error {
 	return nil
 }
 
-// datasetID returns the dataset ID from the registry entry or
-// from the CLI flag.
-func (c *clbSource) datasetID() int {
-	if c.ds != nil {
-		return c.ds.DatasetID
-	}
-	return c.cfg.CLBDatasetID
-}
-
 // resolveTaxonID determines the root taxon ID for the export.
-// Priority: CLI flag > registry default (resolved by name) > none.
+// Priority: CLI flag > dataset default (resolved by name) > none.
 func (c *clbSource) resolveTaxonID(
 	client *clb.Client,
 	datasetID int,
 ) (string, error) {
-	// CLI flag takes priority.
 	if c.cfg.CLBTaxonID != "" {
 		return c.cfg.CLBTaxonID, nil
 	}
 
-	// Registered source with a default taxon: resolve by name.
-	if c.ds != nil && c.ds.TaxonName != "" {
+	if c.ds.TaxonName != "" {
 		id, err := client.SearchTaxon(
 			datasetID, c.ds.TaxonName,
 			c.ds.TaxonRank, "accepted",
@@ -266,6 +209,5 @@ func (c *clbSource) resolveTaxonID(
 		return id, nil
 	}
 
-	// Generic source with no taxon specified.
 	return "", nil
 }

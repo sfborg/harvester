@@ -55,6 +55,10 @@ func (c *Convertor) ManualSteps() bool {
 	return c.set.ManualSteps
 }
 
+func (c *Convertor) CLBSource() bool {
+	return c.set.CLBSource
+}
+
 func (c *Convertor) Download() (string, error) {
 	var err error
 	var path string

@@ -73,9 +73,18 @@ func New(api, user, password string) *Client {
 	}
 }
 
-// Login authenticates with the ChecklistBank API using HTTP Basic Auth
-// and stores the returned JWT bearer token.
+// Login authenticates with the ChecklistBank API. It first tries to
+// load a cached token from the config directory. If no valid cached
+// token is found, it performs a fresh login using HTTP Basic Auth
+// and caches the new token.
 func (c *Client) Login() error {
+	// Try cached token first.
+	if token, ok := loadCachedToken(c.api, c.user); ok {
+		c.token = token
+		gn.Info("Using cached ChecklistBank token")
+		return nil
+	}
+
 	url := c.api + "/user/login"
 	slog.Info("logging in to ChecklistBank", "url", url)
 	gn.Info("Logging in to ChecklistBank")
@@ -108,13 +117,75 @@ func (c *Client) Login() error {
 		return fmt.Errorf("login returned empty token")
 	}
 
+	saveCachedToken(c.api, c.user, c.token)
 	slog.Info("ChecklistBank login successful")
 	return nil
 }
 
+// freshLogin forces a new login, bypassing the cache. Used when a
+// cached token turns out to be rejected by the server.
+func (c *Client) freshLogin() error {
+	slog.Info("cached token rejected, performing fresh login")
+	gn.Info("Token expired, logging in again")
+
+	// Delete stale cache.
+	if path, err := tokenPath(); err == nil {
+		os.Remove(path)
+	}
+
+	c.token = ""
+	url := c.api + "/user/login"
+
+	req, err := http.NewRequest(http.MethodGet, url, nil)
+	if err != nil {
+		return fmt.Errorf("creating login request: %w", err)
+	}
+	req.SetBasicAuth(c.user, c.password)
+
+	resp, err := c.http.Do(req)
+	if err != nil {
+		return fmt.Errorf("login request failed: %w", err)
+	}
+	defer resp.Body.Close()
+
+	body, err := io.ReadAll(resp.Body)
+	if err != nil {
+		return fmt.Errorf("reading login response: %w", err)
+	}
+
+	if resp.StatusCode != http.StatusOK {
+		return fmt.Errorf(
+			"login failed (HTTP %d): %s", resp.StatusCode, string(body),
+		)
+	}
+
+	c.token = strings.Trim(string(body), " \t\n\r\"")
+	if c.token == "" {
+		return fmt.Errorf("login returned empty token")
+	}
+
+	saveCachedToken(c.api, c.user, c.token)
+	return nil
+}
+
 // TriggerExport starts an asynchronous export for the given dataset
-// and returns the export UUID.
+// and returns the export UUID. If the server returns 401, it
+// performs a fresh login and retries once.
 func (c *Client) TriggerExport(
+	datasetID int,
+	er ExportRequest,
+) (string, error) {
+	key, err := c.triggerExport(datasetID, er)
+	if err != nil && strings.Contains(err.Error(), "HTTP 401") {
+		if loginErr := c.freshLogin(); loginErr != nil {
+			return "", loginErr
+		}
+		return c.triggerExport(datasetID, er)
+	}
+	return key, err
+}
+
+func (c *Client) triggerExport(
 	datasetID int,
 	er ExportRequest,
 ) (string, error) {

@@ -39,6 +39,10 @@ type Accessor interface {
 	// Description() method MUST provide detailed instructions for these manual
 	// steps.
 	ManualSteps() bool
+
+	// CLBSource returns true if the source is backed by the
+	// ChecklistBank API.
+	CLBSource() bool
 }
 
 // Processor contains actions for converting source into SFGArchive.

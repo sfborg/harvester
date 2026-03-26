@@ -21,6 +21,9 @@ type DataSet struct {
 	// intervention or steps that cannot be fully automated.  If true, the
 	// Description MUST provide detailed instructions for these manual steps.
 	ManualSteps bool
+	// CLBSource is true if the source is backed by the ChecklistBank API.
+	CLBSource bool
+
 	// URL provides the URL from which the source's data can be downloaded.
 	// The URL can be provided by the maintainers of the source, or be
 	// manually created if not available otherwise.

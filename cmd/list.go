@@ -33,6 +33,8 @@ import (
 	"github.com/spf13/cobra"
 )
 
+var clbBlue = color.RGB(0, 174, 239)
+
 // listCmd represents the list command
 var listCmd = &cobra.Command{
 	Use:           "list",
@@ -55,8 +57,9 @@ var listCmd = &cobra.Command{
 			out := output.New(list)
 			out.Table()
 			fmt.Printf(
-				"\n%s - require manual steps.\n",
+				"\n%s - require manual steps.  %s - ChecklistBank source.\n",
 				color.RedString("*"),
+				clbBlue.Sprint("*"),
 			)
 		} else {
 			var labels []string
@@ -69,11 +72,16 @@ var listCmd = &cobra.Command{
 				if list[v].ManualSteps() {
 					label += color.RedString("*")
 				}
+				if list[v].CLBSource() {
+					label += clbBlue.Sprint("*")
+				}
 				fmt.Printf("%0.2d %s\n", i+1, label)
 			}
 			fmt.Printf(
-				"\n%s - require manual steps. Use --verbose for details\n",
+				"\n%s - require manual steps.  %s - ChecklistBank source.\n"+
+					"Use --verbose for details\n",
 				color.RedString("*"),
+				clbBlue.Sprint("*"),
 			)
 		}
 		return nil

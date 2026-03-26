@@ -32,7 +32,6 @@ import (
 
 	"github.com/gnames/gn"
 	"github.com/sfborg/harvester/internal/clb"
-	"github.com/sfborg/harvester/internal/sources/clbsrc"
 	harvester "github.com/sfborg/harvester/pkg"
 	"github.com/sfborg/harvester/pkg/config"
 	"github.com/spf13/cobra"
@@ -77,7 +76,7 @@ var getCmd = &cobra.Command{
 		}
 
 		// Prompt for missing CLB parameters if needed.
-		if needsCLBPrompt(l, cfg) {
+		if needsCLBPrompt(l, cfg, hr) {
 			cfg, hr = promptCLBParams(l, cfg)
 		}
 
@@ -118,8 +117,11 @@ func resolveCLBAlias(cfg config.Config) string {
 
 // needsCLBPrompt returns true when the source needs interactive
 // input for missing CLB parameters.
-func needsCLBPrompt(label string, cfg config.Config) bool {
-	if !clbsrc.IsCLBSource(label) {
+func needsCLBPrompt(
+	label string, cfg config.Config, hr harvester.Harvester,
+) bool {
+	ds, ok := hr.List()[label]
+	if !ok || !ds.CLBSource() {
 		return false
 	}
 	if cfg.SkipDownload || cfg.LoadFile != "" {
@@ -127,6 +129,10 @@ func needsCLBPrompt(label string, cfg config.Config) bool {
 	}
 	if label == "clb" && cfg.CLBDatasetID == 0 {
 		return true
+	}
+	// Don't prompt for credentials if a valid cached token exists.
+	if clb.HasValidToken(cfg.CLBApi) {
+		return false
 	}
 	return cfg.CLBUser == "" || cfg.CLBPassword == ""
 }

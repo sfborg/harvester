@@ -27,11 +27,15 @@ func New(list map[string]data.Convertor) *Output {
 		labels = append(labels, k)
 	}
 	sort.Strings(labels)
+	clbBlue := color.RGB(0, 174, 239)
 	for i, v := range labels {
 		datum := list[v]
 		label := datum.Label()
 		if datum.ManualSteps() {
 			label += color.RedString("*")
+		}
+		if datum.CLBSource() {
+			label += clbBlue.Sprint("*")
 		}
 		od := OutputDataset{
 			Index: i + 1,
