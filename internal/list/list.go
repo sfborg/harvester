@@ -1,12 +1,12 @@
 package list
 
 import (
-	"github.com/sfborg/harvester/internal/sources/clbsrc"
 	"github.com/sfborg/harvester/internal/sources/arctos"
-	"github.com/sfborg/harvester/internal/sources/ipni"
+	"github.com/sfborg/harvester/internal/sources/clbsrc"
 	"github.com/sfborg/harvester/internal/sources/grin"
 	"github.com/sfborg/harvester/internal/sources/ioc"
 	"github.com/sfborg/harvester/internal/sources/ion"
+	"github.com/sfborg/harvester/internal/sources/ipni"
 	"github.com/sfborg/harvester/internal/sources/itis"
 	"github.com/sfborg/harvester/internal/sources/lpsn"
 	"github.com/sfborg/harvester/internal/sources/mycobank"
@@ -16,7 +16,6 @@ import (
 	"github.com/sfborg/harvester/internal/sources/wcvp"
 	"github.com/sfborg/harvester/internal/sources/wikisp"
 	"github.com/sfborg/harvester/internal/sources/worldplants"
-	"github.com/sfborg/harvester/internal/sources/wsc"
 	"github.com/sfborg/harvester/pkg/config"
 	"github.com/sfborg/harvester/pkg/data"
 )
@@ -25,7 +24,6 @@ func GetDataSets(cfg config.Config) map[string]data.Convertor {
 	// The keys of the map are the names of the data sources, and the
 	//  values are the corresponding data converters.
 	ds := []data.Convertor{
-		clbsrc.New(cfg),
 		arctos.New(cfg),
 		ipni.New(cfg),
 		grin.New(cfg),
@@ -40,8 +38,10 @@ func GetDataSets(cfg config.Config) map[string]data.Convertor {
 		wcvp.New(cfg),
 		worldplants.New(cfg),
 		wikisp.New(cfg),
-		wsc.New(cfg),
 	}
+
+	// ChecklistBank sources: generic "clb" plus featured datasets.
+	ds = append(ds, clbsrc.NewAll(cfg)...)
 
 	res := make(map[string]data.Convertor)
 

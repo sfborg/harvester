@@ -32,6 +32,7 @@ import (
 
 	"github.com/gnames/gn"
 	"github.com/sfborg/harvester/internal/clb"
+	"github.com/sfborg/harvester/internal/sources/clbsrc"
 	harvester "github.com/sfborg/harvester/pkg"
 	"github.com/sfborg/harvester/pkg/config"
 	"github.com/spf13/cobra"
@@ -115,16 +116,10 @@ func resolveCLBAlias(cfg config.Config) string {
 	return alias
 }
 
-// clbSources lists source labels that require CLB credentials.
-var clbSources = map[string]bool{
-	"clb": true,
-	"wsc": true,
-}
-
 // needsCLBPrompt returns true when the source needs interactive
 // input for missing CLB parameters.
 func needsCLBPrompt(label string, cfg config.Config) bool {
-	if !clbSources[label] {
+	if !clbsrc.IsCLBSource(label) {
 		return false
 	}
 	if cfg.SkipDownload || cfg.LoadFile != "" {
