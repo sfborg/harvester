@@ -8,6 +8,7 @@ import (
 	"github.com/sfborg/harvester/internal/sources/ion"
 	"github.com/sfborg/harvester/internal/sources/ipni"
 	"github.com/sfborg/harvester/internal/sources/itis"
+	"github.com/sfborg/harvester/internal/sources/iucn"
 	"github.com/sfborg/harvester/internal/sources/lpsn"
 	"github.com/sfborg/harvester/internal/sources/mycobank"
 	"github.com/sfborg/harvester/internal/sources/ncbi"
@@ -43,8 +44,9 @@ func GetDataSets(cfg config.Config) map[string]data.Convertor {
 
 		// ChecklistBank sources.
 		clbsrc.NewGeneric(cfg),
-		wsc.New(cfg),
+		iucn.New(cfg),
 		scarabs.New(cfg),
+		wsc.New(cfg),
 	}
 
 	res := make(map[string]data.Convertor)
