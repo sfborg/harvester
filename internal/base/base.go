@@ -127,7 +127,10 @@ func (c *Convertor) Extract(path string) error {
 func (c *Convertor) InitSfga() (sfga.Archive, error) {
 	sysio.EmptyDir(c.cfg.SfgaDir)
 
-	var sflibOpts []sflibcfg.Option
+	sflibOpts := []sflibcfg.Option{
+		sflibcfg.OptSkipBasionymsIfRelationsExist(true),
+		sflibcfg.OptCreateOriginalCombinations(true),
+	}
 	if c.cfg.LocalSchemaPath != "" {
 		slog.Info("using local schema", "path", c.cfg.LocalSchemaPath)
 		sflibOpts = append(sflibOpts, sflibcfg.OptLocalSchemaPath(c.cfg.LocalSchemaPath))
