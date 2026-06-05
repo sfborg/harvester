@@ -79,6 +79,9 @@ func (a *arctos) importNameUsages() error {
 			for _, s := range synList {
 				snu := buildSynonym(s, nu.ID)
 				snu.ID = makeID(s.relatedName)
+				if snu.ID == nu.ID {
+					continue
+				}
 				data.AddParsedData(gnp, snu)
 				if snu.CanonicalFull != "" {
 					snu.NameAlternativeID = "gnoutlink:" + url.QueryEscape(snu.CanonicalFull)
@@ -137,6 +140,7 @@ func (a *arctos) loadSynonyms() (map[string][]synRec, error) {
 	}
 
 	syns := make(map[string][]synRec)
+	seen := make(map[string]struct{})
 	var count int
 
 	for {
@@ -154,6 +158,11 @@ func (a *arctos) loadSynonyms() (map[string][]synRec, error) {
 		if sciName == "" || related == "" {
 			continue
 		}
+		key := sciName + "\x00" + related
+		if _, dup := seen[key]; dup {
+			continue
+		}
+		seen[key] = struct{}{}
 		syns[sciName] = append(syns[sciName], synRec{
 			relatedName:  related,
 			relationship: rel,
