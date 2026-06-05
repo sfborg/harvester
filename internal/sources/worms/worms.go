@@ -36,9 +36,9 @@ func New(cfg config.Config) data.Convertor {
 		Notes: `WoRMS is the World Register of Marine Species, an authoritative
 classification and catalogue of marine organisms.
 
-Data must be manually downloaded from
-https://www.marinespecies.org/aphia.php?p=dwca
-as a DwCA zip file and provided via the --load-file flag.
+Data must be manually downloaded. To request a full copy go to
+https://www.marinespecies.org/usersrequest.php.
+Load DwCA zip file via the --load-file flag.
 
 Example:
   harvester worms --load-file ~/Downloads/WoRMS_DwC-A.zip`,
