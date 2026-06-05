@@ -12,16 +12,11 @@ import (
 	"log/slog"
 	"net/http"
 	"os"
-	"os/exec"
 	"path/filepath"
 	"strings"
 	"time"
 
 	"github.com/gnames/gn"
-	"github.com/sfborg/harvester/pkg/config"
-	"github.com/sfborg/sflib"
-	sflibcfg "github.com/sfborg/sflib/config"
-	"github.com/sfborg/sflib/pkg/sfga"
 )
 
 // Client communicates with the ChecklistBank API.
@@ -531,73 +526,6 @@ func (c *Client) getExportStatus(url string) (*ExportStatus, error) {
 	}
 
 	return &status, nil
-}
-
-// ColdpToSfga converts a COLDP zip archive to SFGA format using
-// the sf tool and returns the connected archive. This is shared by
-// all ChecklistBank-based sources.
-func ColdpToSfga(coldpPath string, cfg config.Config) (sfga.Archive, error) {
-	sfgaOutPath := filepath.Join(cfg.SfgaDir, "output")
-
-	args := []string{"from", "coldp", coldpPath, sfgaOutPath}
-
-	code := NomCodeFlag(cfg)
-	if code != "" {
-		args = append(args, "-c", code)
-	}
-
-	if cfg.WithZipOutput {
-		args = append(args, "-z")
-	}
-
-	slog.Info("running sf from coldp", "args", args)
-	gn.Info("Converting COLDP to SFGA with sf tool")
-
-	cmd := exec.Command("sf", args...)
-	out, err := cmd.CombinedOutput()
-	if err != nil {
-		return nil, fmt.Errorf(
-			"sf from coldp failed: %w\noutput: %s", err, string(out),
-		)
-	}
-
-	slog.Info("sf from coldp completed", "output", string(out))
-
-	var sflibOpts []sflibcfg.Option
-	if cfg.LocalSchemaPath != "" {
-		sflibOpts = append(
-			sflibOpts,
-			sflibcfg.OptLocalSchemaPath(cfg.LocalSchemaPath),
-		)
-	}
-
-	arc := sflib.NewSfga(sflibOpts...)
-	arc.SetDb(sfgaOutPath + ".sqlite")
-	_, err = arc.Connect()
-	if err != nil {
-		return nil, fmt.Errorf("connecting to SFGA: %w", err)
-	}
-
-	return arc, nil
-}
-
-// NomCodeFlag returns the sf tool flag value for the configured
-// nomenclatural code.
-func NomCodeFlag(cfg config.Config) string {
-	switch cfg.Code.String() {
-	case "ICZN":
-		return "zoo"
-	case "ICN":
-		return "bot"
-	case "ICNP":
-		return "bact"
-	case "ICTV":
-		return "vir"
-	case "ICNCP":
-		return "cult"
-	default:
-		return ""
-	}
 }
 
 // FindColdpZip looks for a COLDP zip archive in the given directory.

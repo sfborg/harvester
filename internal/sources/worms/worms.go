@@ -75,6 +75,10 @@ func (w *worms) ToSfga(arc sfga.Archive) error {
 		return fmt.Errorf("worms: fetching DwCA: %w", err)
 	}
 
+	if err := w.importMeta(); err != nil {
+		return err
+	}
+
 	if err := w.importCore(); err != nil {
 		return err
 	}
