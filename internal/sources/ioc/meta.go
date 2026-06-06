@@ -23,9 +23,6 @@ func (l *ioc) importMeta() error {
 		"guidelines for spelling and construction."
 
 	meta.URL = "https://www.worldbirdnames.org"
-	if l.cfg.ArchiveDate != "" {
-		meta.Issued = l.cfg.ArchiveDate
-	}
 	l.sfga.InsertMeta(meta)
 	return nil
 }

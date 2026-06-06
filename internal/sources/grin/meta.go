@@ -21,9 +21,6 @@ func (g *grin) importMeta() error {
 			"to USDA-ARS projects that curate the collections. ",
 		URL: "https://npgsweb.ars-grin.gov/gringlobal/taxon/abouttaxonomy",
 	}
-	if g.cfg.ArchiveDate != "" {
-		meta.Issued = g.cfg.ArchiveDate
-	}
 	g.sfga.InsertMeta(&meta)
 	return nil
 }

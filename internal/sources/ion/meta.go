@@ -19,9 +19,6 @@ func (i *ion) importMeta() error {
 			"foundation for the most complete collection of organism names " +
 			"available today.",
 	}
-	if i.cfg.ArchiveDate != "" {
-		meta.Issued = i.cfg.ArchiveDate
-	}
 	i.sfga.InsertMeta(&meta)
 	return nil
 }

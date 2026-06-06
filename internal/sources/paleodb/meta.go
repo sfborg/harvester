@@ -13,9 +13,6 @@ Fossil occurrences from scientific publications are added to the database by our
 Thanks to our membership, which includes nearly 400 scientists from over 130 institutions in 24 countries, 
 the Paleobiology Database is able to provide scientists and the public with information about the fossil record.
 `,
-		Issued:  p.cfg.ArchiveDate,
-		Version: p.cfg.ArchiveVersion,
-
 		Contact: &coldp.Actor{
 			Email:        "info@paleobiodb.org",
 			Organization: "The Paleobiology Database",

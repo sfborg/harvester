@@ -17,11 +17,5 @@ func (n *nzor) importMeta() error {
 			"taxonomy", "nomenclature", "New Zealand", "biodiversity",
 		},
 	}
-	if n.cfg.ArchiveDate != "" {
-		meta.Issued = n.cfg.ArchiveDate
-	}
-	if n.cfg.ArchiveVersion != "" {
-		meta.Version = n.cfg.ArchiveVersion
-	}
 	return n.sfga.InsertMeta(&meta)
 }

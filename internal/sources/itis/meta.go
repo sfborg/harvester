@@ -15,10 +15,6 @@ func (t *itis) importMeta() error {
 		URL: "https://www.itis.gov",
 	}
 
-	if t.cfg.ArchiveDate != "" {
-		meta.Issued = t.cfg.ArchiveDate
-	}
-
 	// Try to get version from database metadata if available.
 	version, err := t.getVersion()
 	if err == nil && version != "" {

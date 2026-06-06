@@ -9,6 +9,7 @@ import (
 	"github.com/sfborg/harvester/internal/list"
 	"github.com/sfborg/harvester/pkg/config"
 	"github.com/sfborg/harvester/pkg/data"
+	"github.com/sfborg/sflib/pkg/coldp"
 	"github.com/sfborg/sflib/pkg/sfga"
 )
 
@@ -17,6 +18,24 @@ type harvester struct {
 	ds     map[string]data.Convertor
 	itisDB *sql.DB
 	sfga   sfga.Archive
+}
+
+// metaOverrideArchive wraps sfga.Archive and patches Issued/Version
+// on every InsertMeta call, so CLI -d/-v flags are applied globally
+// without any per-harvester boilerplate.
+type metaOverrideArchive struct {
+	sfga.Archive
+	cfg config.Config
+}
+
+func (m *metaOverrideArchive) InsertMeta(meta *coldp.Meta) error {
+	if m.cfg.ArchiveDate != "" {
+		meta.Issued = m.cfg.ArchiveDate
+	}
+	if m.cfg.ArchiveVersion != "" {
+		meta.Version = m.cfg.ArchiveVersion
+	}
+	return m.Archive.InsertMeta(meta)
 }
 
 func New(cfg config.Config) Harvester {
@@ -34,7 +53,7 @@ func (h *harvester) List() map[string]data.Convertor {
 
 func (h *harvester) Get(label, outPath string) error {
 	var err error
-	var sfga sfga.Archive
+	var arc sfga.Archive
 	var ds data.Convertor
 	var ok bool
 	var dlPath string
@@ -62,16 +81,17 @@ func (h *harvester) Get(label, outPath string) error {
 
 	slog.Info("creating SFG archive")
 	gn.Message("Creating empty SFGA file")
-	sfga, err = ds.InitSfga()
+	arc, err = ds.InitSfga()
 	if err != nil {
 		return err
 	}
 
-	err = ds.ToSfga(sfga)
+	wrapped := &metaOverrideArchive{Archive: arc, cfg: h.cfg}
+	err = ds.ToSfga(wrapped)
 	if err != nil {
 		return err
 	}
 
-	sfga.Export(outPath, ds.Config().WithZipOutput)
+	arc.Export(outPath, ds.Config().WithZipOutput)
 	return nil
 }

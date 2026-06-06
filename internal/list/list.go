@@ -16,6 +16,7 @@ import (
 	"github.com/sfborg/harvester/internal/sources/mycobank"
 	"github.com/sfborg/harvester/internal/sources/ncbi"
 	"github.com/sfborg/harvester/internal/sources/nzor"
+	"github.com/sfborg/harvester/internal/sources/ott"
 	"github.com/sfborg/harvester/internal/sources/paleodb"
 	"github.com/sfborg/harvester/internal/sources/scarabs"
 	"github.com/sfborg/harvester/internal/sources/wcvp"
@@ -42,6 +43,7 @@ func GetDataSets(cfg config.Config) map[string]data.Convertor {
 		lpsn.New(cfg),
 		ncbi.New(cfg),
 		nzor.New(cfg),
+		ott.New(cfg),
 		paleodb.New(cfg),
 		wcvp.New(cfg),
 		worldplants.New(cfg),

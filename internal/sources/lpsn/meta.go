@@ -20,11 +20,5 @@ func (l *lpsn) importMeta() error {
 			"taxonomy", "nomenclature", "bacteria", "archaea", "prokaryotes",
 		},
 	}
-	if l.cfg.ArchiveDate != "" {
-		meta.Issued = l.cfg.ArchiveDate
-	}
-	if l.cfg.ArchiveVersion != "" {
-		meta.Version = l.cfg.ArchiveVersion
-	}
 	return l.sfga.InsertMeta(&meta)
 }

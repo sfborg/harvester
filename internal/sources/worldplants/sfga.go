@@ -135,12 +135,7 @@ func (wp *worldplants) processDataset(
 	gn.Info("Fetching and inserting metadata")
 
 	// Fetch and insert metadata
-	meta, err := wp.fetchMetadata(
-		datasetID,
-		wp.cfg.ArchiveDate,
-		wp.cfg.ArchiveVersion,
-		suffix,
-	)
+	meta, err := wp.fetchMetadata(datasetID, suffix)
 	if err != nil {
 		return fmt.Errorf("failed to fetch metadata: %w", err)
 	}

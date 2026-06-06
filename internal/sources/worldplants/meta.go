@@ -18,8 +18,6 @@ import (
 // Reference: original lines 585-696
 func (wp *worldplants) fetchMetadata(
 	datasetID string,
-	issuedDate string,
-	version string,
 	suffix string,
 ) (*coldp.Meta, error) {
 	slog.Info("fetching metadata", "datasetID", datasetID)
@@ -54,12 +52,7 @@ func (wp *worldplants) fetchMetadata(
 		return nil, fmt.Errorf("failed to unmarshal metadata: %w", err)
 	}
 
-	meta, err := wp.buildMetaFromResponse(
-		metadata,
-		issuedDate,
-		version,
-		suffix,
-	)
+	meta, err := wp.buildMetaFromResponse(metadata, suffix)
 	if err != nil {
 		return nil, err
 	}
@@ -70,8 +63,6 @@ func (wp *worldplants) fetchMetadata(
 // buildMetaFromResponse constructs a coldp.Meta from the API response.
 func (wp *worldplants) buildMetaFromResponse(
 	metadata map[string]any,
-	issuedDate string,
-	version string,
 	suffix string,
 ) (*coldp.Meta, error) {
 	key := extractKey(metadata)
@@ -95,8 +86,6 @@ func (wp *worldplants) buildMetaFromResponse(
 		Alias:           alias,
 		Description:     description,
 		DOI:             "",
-		Issued:          issuedDate,
-		Version:         version,
 		GeographicScope: geographicScope,
 		TaxonomicScope:  taxonomicScope,
 		Confidence:      confidence,
