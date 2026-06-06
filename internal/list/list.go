@@ -2,6 +2,8 @@ package list
 
 import (
 	"github.com/sfborg/harvester/internal/sources/arctos"
+	"github.com/sfborg/harvester/internal/sources/brasilefauna"
+	"github.com/sfborg/harvester/internal/sources/brasilflora"
 	"github.com/sfborg/harvester/internal/sources/mdd"
 	"github.com/sfborg/harvester/internal/sources/clbsrc"
 	"github.com/sfborg/harvester/internal/sources/grin"
@@ -48,6 +50,8 @@ func GetDataSets(cfg config.Config) map[string]data.Convertor {
 
 		// ChecklistBank sources.
 		clbsrc.NewGeneric(cfg),
+		brasilefauna.New(cfg),
+		brasilflora.New(cfg),
 		iucn.New(cfg),
 		scarabs.New(cfg),
 		wsc.New(cfg),
